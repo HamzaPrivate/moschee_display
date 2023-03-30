@@ -1,0 +1,92 @@
+body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+    background-color: #ead5b4;
+}
+
+#zeiten {
+    font-family: 'Amiri', serif;
+    border-collapse: collapse;
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+#zeiten th,
+#zeiten td {
+    padding: 10px;
+    text-align: center;
+}
+
+#zeiten th {
+    background-color: #f8c471;
+    color: #000000;
+    font-size: 20px;
+    font-weight: bold;
+    border: 3px solid #000;
+}
+
+#zeiten td {
+    font-size: 30px;
+    border: 3px solid #000;
+
+}
+
+#zeiten td#jacija,
+#aksam,
+#ikindija,
+#podne,
+#izlasaksunca,
+#sabah {
+    background-color: #7ed6df;
+}
+
+@keyframes cf3FadeInOut {
+    0% {
+    opacity:1;
+  }
+  45% {
+  opacity:1;
+  }
+  55% {
+  opacity:0;
+  }
+  100% {
+  opacity:0;
+  }
+  }
+  
+
+img{
+    min-width: 43%;
+    max-width: 43%;
+    max-height: 666px;
+    border: 6px solid;
+    border-color: #926c2f;
+    margin-left: 20px;
+}
+
+#img-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    /* position: relative; */
+}
+
+/* #img-container >#bild1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    animation-name: cf3FadeInOut;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-direction: alternate;
+  } */
+  
