@@ -12,8 +12,8 @@ body {
     font-family: 'Amiri', serif;
     border-collapse: collapse;
     margin: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    box-shadow: 5px 5px 5px #00000075;
 }
 
 #zeiten th,
@@ -65,9 +65,10 @@ img{
     min-width: 43%;
     max-width: 43%;
     max-height: 666px;
-    border: 6px solid;
+    border: 3px solid;
     border-color: #926c2f;
-    margin-left: 20px;
+    margin: 4px;
+    box-shadow: 5px 5px 5px #6f4e18;
 }
 
 #img-container{
