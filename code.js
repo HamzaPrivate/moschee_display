@@ -7,7 +7,7 @@ console.log("1. now and midnight and timeUntilMidnight", now, midnight, timeUnti
 //
 var infosImg = document.getElementById("infos");
 var ahadithImg = document.getElementById("ahadith");
-var infosSources = ["infos/ramazan0.jpeg", "infos/info0.jpeg"];
+var infosSources = ["infos/ramazan0.jpeg", "infos/info0.jpeg", "infos/ramazan1.jpeg"];
 var ahadithSources = ["ahadith/ramazan0.jpeg", "ahadith/ramazan1.jpeg"];
 var infosIndex = Math.floor(Math.random() * infosSources.length);
 var ahadithIndex = Math.floor(Math.random() * ahadithSources.length);
