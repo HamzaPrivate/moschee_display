@@ -54,8 +54,8 @@ else
     console.log("Fehler in der Anzeige der Gebetszeiten.");
 setTimeout(reloadPage, timeUntilMidnight + 60000);
 setInterval(function () {
-    infosIndex = Math.floor(Math.random() * infosSources.length);
-    ahadithIndex = Math.floor(Math.random() * ahadithSources.length);
+    infosIndex = getNewPic(infosIndex, infosSources);
+    ahadithIndex = getNewPic(ahadithIndex, ahadithSources);
     infosImg.src = infosSources[infosIndex];
     ahadithImg.src = ahadithSources[ahadithIndex];
 }, 60000);
@@ -67,4 +67,11 @@ function getFormattedDate(date) {
     let formatted = fulldate.split(/Mon|Tue|Wed|Thu|Fri|Sat|Sun|2023/g);
     console.log("1.5 formatted in datefunction", formatted);
     return formatted[1] + now.getFullYear();
+}
+function getNewPic(indexToExclude, pictureGroup) {
+    let newIndex = Math.floor(Math.random() * pictureGroup.length);
+    while (newIndex === indexToExclude) {
+        newIndex = Math.floor(Math.random() * pictureGroup.length);
+    }
+    return newIndex;
 }
