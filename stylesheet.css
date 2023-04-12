@@ -84,8 +84,8 @@ img{
     z-index: 1;
     position: absolute;
     margin-top: 134px;
-    max-width: 1151px;
-    min-height: 672px;
+    min-width: 1262px;
+    min-height: 669px;
     border: unset;
     box-shadow: unset;
     animation-name: cf3FadeInOut;
