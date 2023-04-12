@@ -45,19 +45,9 @@ body {
     background-color: #7ed6df;
 }
 
-@keyframes cf3FadeIn {
-    0% {
-    opacity:0;
-  }
-  45% {
-  opacity:0;
-  }
-  55% {
-  opacity:1;
-  }
-  100% {
-  opacity:1;
-  }
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
   }
 
 
@@ -82,17 +72,14 @@ img{
 #broad{
     align-self: center;
     z-index: 1;
-    position: absolute;
-    margin-top: 134px;
-    min-width: 1262px;
-    min-height: 669px;
+    min-width: 86%;
+    max-width: 86%;
+    max-height: 666px;
     border: unset;
     box-shadow: unset;
-    animation-name: cf3FadeInOut;
+    animation-name: fadeIn;
     animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-duration: 2s;
-    animation-direction: alternate;
+    animation-duration: 1.5s;
 }
 
 
