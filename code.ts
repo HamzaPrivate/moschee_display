@@ -1,8 +1,9 @@
 var now = new Date();
 var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 var timeUntilMidnight = midnight.getTime() - now.getTime();
-console.log("1. now and midnight and timeUntilMidnight",now, midnight, timeUntilMidnight);
+console.log("1. now and midnight and timeUntilMidnight", now, midnight, timeUntilMidnight);
 //
+var broadImg = document.getElementById("broad") as HTMLImageElement;
 var infosImg = document.getElementById("infos")! as HTMLImageElement;
 var ahadithImg = document.getElementById("ahadith")! as HTMLImageElement;
 var infosSources = ["infos/ramazan0.jpeg", "infos/info0.jpeg", "infos/ramazan1.jpeg"];
@@ -42,7 +43,7 @@ map.set("Apr 30 2023", "3:36|5:37|13:04|17:07|20:31|22:32");
 
 const prayerTable = document.getElementById("zeiten") as HTMLTableElement;
 const prayerTimes = map.get(getFormattedDate("" + now).trim());//check
-console.log("2. getformattedDate",getFormattedDate(now+""));
+console.log("2. getformattedDate", getFormattedDate(now + ""));
 //injecting prayer times into the table
 if (prayerTable && prayerTimes) {
     let splitter = prayerTimes.split("|");
@@ -52,30 +53,41 @@ if (prayerTable && prayerTimes) {
     }
 }
 else console.log("Fehler in der Anzeige der Gebetszeiten.");
-
+broadImg.src = "broad/broad1.jpeg";
+broadImg.style.border = "3px solid";
+broadImg.style.borderColor = "#926c2f";
+broadImg.style.boxShadow = infosImg.style.boxShadow;
 
 setTimeout(reloadPage, timeUntilMidnight + 60000);
 setInterval(function () {
+    broadImg.style.border = "0px";
+    broadImg.src = "";
     infosIndex = getNewPic(infosIndex, infosSources);
     ahadithIndex = getNewPic(ahadithIndex, ahadithSources);
     infosImg.src = infosSources[infosIndex];
     ahadithImg.src = ahadithSources[ahadithIndex];
-}, 60000);
+}, 60000);//60000
+setInterval(() => {
+    broadImg.src = "broad/broad1.jpeg";
+    broadImg.style.border = "3px solid";
+    broadImg.style.borderColor = "#926c2f";
+    broadImg.style.boxShadow = infosImg.style.boxShadow;
+}, 245000);  //250000
 
 
 //help functions
-function reloadPage() { window.location.reload();}
+function reloadPage() { window.location.reload(); }
 //returns formatted date in Mar 27 2023
 function getFormattedDate(date: string): string {
     let fulldate = "" + now;
     let formatted = fulldate.split(/Mon|Tue|Wed|Thu|Fri|Sat|Sun|2023/g);
-    console.log("1.5 formatted in datefunction",formatted);
+    console.log("1.5 formatted in datefunction", formatted);
     return formatted[1] + now.getFullYear();
 }
 
-function getNewPic(indexToExclude: number, pictureGroup: string[]): number{
+function getNewPic(indexToExclude: number, pictureGroup: string[]): number {
     let newIndex = Math.floor(Math.random() * pictureGroup.length);
-    while(newIndex === indexToExclude){
+    while (newIndex === indexToExclude) {
         newIndex = Math.floor(Math.random() * pictureGroup.length);
     }
     return newIndex;

@@ -5,6 +5,7 @@ var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 var timeUntilMidnight = midnight.getTime() - now.getTime();
 console.log("1. now and midnight and timeUntilMidnight", now, midnight, timeUntilMidnight);
 //
+var broadImg = document.getElementById("broad");
 var infosImg = document.getElementById("infos");
 var ahadithImg = document.getElementById("ahadith");
 var infosSources = ["infos/ramazan0.jpeg", "infos/info0.jpeg", "infos/ramazan1.jpeg"];
@@ -51,13 +52,25 @@ if (prayerTable && prayerTimes) {
 }
 else
     console.log("Fehler in der Anzeige der Gebetszeiten.");
+broadImg.src = "broad/broad1.jpeg";
+broadImg.style.border = "3px solid";
+broadImg.style.borderColor = "#926c2f";
+broadImg.style.boxShadow = infosImg.style.boxShadow;
 setTimeout(reloadPage, timeUntilMidnight + 60000);
 setInterval(function () {
+    broadImg.style.border = "0px";
+    broadImg.src = "";
     infosIndex = getNewPic(infosIndex, infosSources);
     ahadithIndex = getNewPic(ahadithIndex, ahadithSources);
     infosImg.src = infosSources[infosIndex];
     ahadithImg.src = ahadithSources[ahadithIndex];
-}, 60000);
+}, 60000); //60000
+setInterval(() => {
+    broadImg.src = "broad/broad1.jpeg";
+    broadImg.style.border = "3px solid";
+    broadImg.style.borderColor = "#926c2f";
+    broadImg.style.boxShadow = infosImg.style.boxShadow;
+}, 245000); //250000
 //help functions
 function reloadPage() { window.location.reload(); }
 //returns formatted date in Mar 27 2023

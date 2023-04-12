@@ -45,29 +45,29 @@ body {
     background-color: #7ed6df;
 }
 
-@keyframes cf3FadeInOut {
+@keyframes cf3FadeIn {
     0% {
-    opacity:1;
+    opacity:0;
   }
   45% {
-  opacity:1;
+  opacity:0;
   }
   55% {
-  opacity:0;
+  opacity:1;
   }
   100% {
-  opacity:0;
+  opacity:1;
   }
   }
-  
+
 
 img{
     min-width: 43%;
     max-width: 43%;
     max-height: 666px;
+    margin: 4px;
     border: 3px solid;
     border-color: #926c2f;
-    margin: 4px;
     box-shadow: 5px 5px 5px #6f4e18;
 }
 
@@ -78,6 +78,23 @@ img{
 
     /* position: relative; */
 }
+
+#broad{
+    align-self: center;
+    z-index: 1;
+    position: absolute;
+    margin-top: 134px;
+    max-width: 1151px;
+    min-height: 672px;
+    border: unset;
+    box-shadow: unset;
+    animation-name: cf3FadeInOut;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-direction: alternate;
+}
+
 
 /* #img-container >#bild1 {
     position: absolute;
