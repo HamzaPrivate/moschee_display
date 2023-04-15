@@ -122,8 +122,8 @@ function videoComing() {
 }
 function displayVideo() {
     infosImg.style.display = "none";
-    video.style.minWidth = "fit-content";
-    video.style.maxWidth = "fit-content";
+    video.style.minWidth = "auto";
+    video.style.maxWidth = "auto";
     video.style.display = "unset";
     video.src = infosSources[infosIndex];
 }
