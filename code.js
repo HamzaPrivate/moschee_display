@@ -30,11 +30,20 @@ console.log("1. now and midnight and timeUntilMidnight", now, midnight, timeUnti
 var broadImg = document.getElementById("broad");
 var infosImg = document.getElementById("infos");
 var ahadithImg = document.getElementById("ahadith");
-var infosSources = ["infos/ramazan0.jpeg", "infos/info0.jpeg", "infos/ramazan1.jpeg"];
-var ahadithSources = ["ahadith/ramazan0.jpeg", "ahadith/ramazan1.jpeg", "ahadith/ramazan2.jpeg"];
+var video = document.getElementById("vid");
+var infosSources = ["infos/info0.jpeg", "infos/vid1.mp4", "infos/vid2.mp4", "infos/vid3.mp4", "infos/r4.jpeg"];
+var ahadithSources = ["ahadith/ramazan0.jpeg", "ahadith/ramazan1.jpeg", "ahadith/ramazan2.jpeg", "ahadith/r3.jpeg"];
+var broadSources = ["broad/broad1.jpeg", "broad/broad2.jpeg"];
 var infosIndex = Math.floor(Math.random() * infosSources.length);
 var ahadithIndex = Math.floor(Math.random() * ahadithSources.length);
-infosImg.src = infosSources[infosIndex];
+var broadIndex = Math.floor(Math.random() * broadSources.length);
+if (videoComing()) {
+    displayVideo();
+}
+else {
+    infosImg.src = infosSources[infosIndex];
+    video.style.display = "none";
+}
 ahadithImg.src = ahadithSources[ahadithIndex];
 (_a = document.querySelector("body")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
     reloadPage();
@@ -56,25 +65,33 @@ else
 var image_container = document.getElementById("img-container");
 image_container.style.display = "none";
 //broadImg init
-broadImg.src = "broad/broad1.jpeg";
+broadImg.src = "broad/broad2.jpeg";
 broadImg.style.border = "3px solid";
 broadImg.style.borderColor = "#926c2f";
 broadImg.style.boxShadow = "5px 5px 5px #6f4e18";
 setTimeout(reloadPage, timeUntilMidnight + 60000);
 setInterval(function () {
-    broadImg.style.display = "none";
-    broadImg.style.border = "0px";
-    broadImg.style.boxShadow = "";
+    let bStyle = broadImg.style;
+    bStyle.display = "none";
+    bStyle.border = "0px";
+    bStyle.boxShadow = "";
     broadImg.src = "";
     image_container.style.display = "flex";
+    infosImg.style.display = "unset";
     infosIndex = getNewPic(infosIndex, infosSources);
     ahadithIndex = getNewPic(ahadithIndex, ahadithSources);
-    infosImg.src = infosSources[infosIndex];
+    if (videoComing())
+        displayVideo();
+    else {
+        infosImg.src = infosSources[infosIndex];
+        video.style.display = "none";
+    }
     ahadithImg.src = ahadithSources[ahadithIndex];
 }, 60000); //60000
 setInterval(() => {
     image_container.style.display = "none";
-    broadImg.src = "broad/broad1.jpeg";
+    broadIndex = getNewPic(broadIndex, broadSources);
+    broadImg.src = broadSources[broadIndex];
     let bStyle = broadImg.style;
     bStyle.border = "3px solid";
     bStyle.borderColor = "#926c2f";
@@ -83,7 +100,7 @@ setInterval(() => {
     bStyle.animationTimingFunction = "ease-in-out";
     bStyle.animationDuration = "1.5s";
     bStyle.display = "unset";
-}, 245000); //245000
+}, 180050); //125000
 //help functions
 function reloadPage() { window.location.reload(); }
 //returns formatted date in Mar 27 2023
@@ -99,4 +116,14 @@ function getNewPic(indexToExclude, pictureGroup) {
         newIndex = Math.floor(Math.random() * pictureGroup.length);
     }
     return newIndex;
+}
+function videoComing() {
+    return infosSources[infosIndex].endsWith("mp4");
+}
+function displayVideo() {
+    infosImg.style.display = "none";
+    video.style.minWidth = "fit-content";
+    video.style.maxWidth = "fit-content";
+    video.style.display = "unset";
+    video.src = infosSources[infosIndex];
 }

@@ -51,7 +51,7 @@ body {
   }
 
 
-img{
+img, video{
     min-width: 43%;
     max-width: 43%;
     max-height: 666px;
