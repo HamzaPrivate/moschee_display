@@ -100,7 +100,7 @@ setInterval(() => {
     bStyle.animationTimingFunction = "ease-in-out";
     bStyle.animationDuration = "1.5s";
     bStyle.display = "unset";
-}, 180050); //125000
+}, 180002); //125000
 //help functions
 function reloadPage() { window.location.reload(); }
 //returns formatted date in Mar 27 2023

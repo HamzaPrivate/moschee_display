@@ -102,7 +102,7 @@ setInterval(() => {
     bStyle.animationTimingFunction = "ease-in-out";
     bStyle.animationDuration = "1.5s"
     bStyle.display = "unset"
-}, 180050);  //125000
+}, 180002);  //125000
 
 
 //help functions
