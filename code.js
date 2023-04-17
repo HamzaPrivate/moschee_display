@@ -1,11 +1,9 @@
 "use strict";
 var _a;
+(_a = document.querySelector("body")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
+    reloadPage();
+});
 const map = new Map();
-map.set("Apr 10 2023", "4:36|6:20|13:08|16:51|19:57|21:41");
-map.set("Apr 11 2023", "4:33|6:18|13:08|16:52|19:58|21:43");
-map.set("Apr 12 2023", "4:30|6:15|13:08|16:53|20:00|21:45");
-map.set("Apr 13 2023", "4:27|6:13|13:07|16:54|20:02|21:48");
-map.set("Apr 14 2023", "4:24|6:11|13:07|16:55|20:04|21:50");
 map.set("Apr 15 2023", "4:21|6:09|13:07|16:56|20:05|21:53");
 map.set("Apr 16 2023", "4:18|6:06|13:07|16:56|20:07|21:55");
 map.set("Apr 17 2023", "4:15|6:04|13:06|16:57|20:09|21:58");
@@ -22,6 +20,7 @@ map.set("Apr 27 2023", "3:45|5:43|13:05|17:05|20:26|22:24");
 map.set("Apr 28 2023", "3:42|5:41|13:04|17:06|20:28|22:27");
 map.set("Apr 29 2023", "3:39|5:39|13:04|17:06|20:30|22:30");
 map.set("Apr 30 2023", "3:36|5:37|13:04|17:07|20:31|22:32");
+//#############################################################
 var now = new Date();
 var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 var timeUntilMidnight = midnight.getTime() - now.getTime();
@@ -33,21 +32,17 @@ var ahadithImg = document.getElementById("ahadith");
 var video = document.getElementById("vid");
 var infosSources = ["infos/info0.jpeg", "infos/vid1.mp4", "infos/vid2.mp4", "infos/vid3.mp4", "infos/r4.jpeg"];
 var ahadithSources = ["ahadith/ramazan0.jpeg", "ahadith/ramazan1.jpeg", "ahadith/ramazan2.jpeg", "ahadith/r3.jpeg"];
-var broadSources = ["broad/broad1.jpeg", "broad/broad2.jpeg"];
+var broadSources = ["broad/broad1.jpeg", "broad/broad2.jpeg", "broad/sufara.jpeg"];
 var infosIndex = Math.floor(Math.random() * infosSources.length);
 var ahadithIndex = Math.floor(Math.random() * ahadithSources.length);
 var broadIndex = Math.floor(Math.random() * broadSources.length);
-if (videoComing()) {
+if (videoComing())
     displayVideo();
-}
 else {
     infosImg.src = infosSources[infosIndex];
     video.style.display = "none";
 }
 ahadithImg.src = ahadithSources[ahadithIndex];
-(_a = document.querySelector("body")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
-    reloadPage();
-});
 const prayerTable = document.getElementById("zeiten");
 const prayerTimes = map.get(getFormattedDate("" + now).trim()); //check
 console.log("2. getformattedDate", getFormattedDate(now + ""));
@@ -65,7 +60,7 @@ else
 var image_container = document.getElementById("img-container");
 image_container.style.display = "none";
 //broadImg init
-broadImg.src = "broad/broad2.jpeg";
+broadImg.src = "broad/sufara.jpeg";
 broadImg.style.border = "3px solid";
 broadImg.style.borderColor = "#926c2f";
 broadImg.style.boxShadow = "5px 5px 5px #6f4e18";
@@ -110,6 +105,12 @@ function getFormattedDate(date) {
     console.log("1.5 formatted in datefunction", formatted);
     return formatted[1] + now.getFullYear();
 }
+/**
+ *
+ * @param indexToExclude current index to the current picture
+ * @param pictureGroup the respective array where the files(paths) are stored in
+ * @returns
+ */
 function getNewPic(indexToExclude, pictureGroup) {
     let newIndex = Math.floor(Math.random() * pictureGroup.length);
     while (newIndex === indexToExclude) {
