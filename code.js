@@ -60,27 +60,17 @@ else
 var image_container = document.getElementById("img-container");
 displayBroadImage();
 setTimeout(reloadPage, timeUntilMidnight + 60000);
+//counter to display exactly 4 images before broad one is displayed
+var counter = 0;
 setInterval(function () {
-    let bStyle = broadImg.style;
-    bStyle.display = "none";
-    bStyle.border = "0px";
-    bStyle.boxShadow = "";
-    broadImg.src = "";
-    image_container.style.display = "flex";
-    infosImg.style.display = "unset";
-    infosIndex = getNewPic(infosIndex, infosSources);
-    ahadithIndex = getNewPic(ahadithIndex, ahadithSources);
-    if (videoComing())
-        displayVideo();
-    else {
-        infosImg.src = infosSources[infosIndex];
-        video.style.display = "none";
-    }
-    ahadithImg.src = ahadithSources[ahadithIndex];
+    if (counter < 2)
+        displayDoubleImage();
+    counter++;
 }, 60000); //60000
 setInterval(() => {
+    counter = 0;
     displayBroadImage();
-}, 120050); //120050
+}, 180020); //180020
 //help functions
 function reloadPage() { window.location.reload(); }
 //returns formatted date in Mar 27 2023
@@ -125,4 +115,22 @@ function displayBroadImage() {
     bStyle.animationTimingFunction = "ease-in-out";
     bStyle.animationDuration = "1.5s";
     bStyle.display = "unset";
+}
+function displayDoubleImage() {
+    let bStyle = broadImg.style;
+    bStyle.display = "none";
+    bStyle.border = "0px";
+    bStyle.boxShadow = "";
+    broadImg.src = "";
+    image_container.style.display = "flex";
+    infosImg.style.display = "unset";
+    infosIndex = getNewPic(infosIndex, infosSources);
+    ahadithIndex = getNewPic(ahadithIndex, ahadithSources);
+    if (videoComing())
+        displayVideo();
+    else {
+        infosImg.src = infosSources[infosIndex];
+        video.style.display = "none";
+    }
+    ahadithImg.src = ahadithSources[ahadithIndex];
 }
