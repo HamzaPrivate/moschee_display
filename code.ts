@@ -28,8 +28,8 @@ var broadImg = document.getElementById("broad") as HTMLImageElement;
 var infosImg = document.getElementById("infos")! as HTMLImageElement;
 var ahadithImg = document.getElementById("ahadith")! as HTMLImageElement;
 var video = document.getElementById("vid") as HTMLVideoElement;
-var infosSources = ["infos/info0.jpeg", "infos/vid1.mp4", "infos/vid2.mp4", "infos/vid3.mp4", "infos/r4.jpeg"];
-var ahadithSources = ["ahadith/ramazan0.jpeg", "ahadith/ramazan1.jpeg", "ahadith/ramazan2.jpeg", "ahadith/r3.jpeg"];
+var infosSources = ["infos/info0.jpeg", "infos/r4.jpeg", "infos/r3.jpeg"];//video sources used to be here
+var ahadithSources = ["ahadith/ramazan0.jpeg", "ahadith/ramazan1.jpeg", "ahadith/ramazan2.jpeg"];
 var broadSources = ["broad/broad1.jpeg", "broad/broad2.jpeg", "broad/sufara.jpeg"];
 var infosIndex = Math.floor(Math.random() * infosSources.length);
 var ahadithIndex = Math.floor(Math.random() * ahadithSources.length);
@@ -55,14 +55,9 @@ if (prayerTable && prayerTimes) {
 else console.log("Fehler in der Anzeige der Gebetszeiten.");
 
 
-//imagecontainer init
+//starts displaying here
 var image_container = document.getElementById("img-container")!;
-image_container.style.display = "none";
-//broadImg init
-broadImg.src = "broad/sufara.jpeg";
-broadImg.style.border = "3px solid";
-broadImg.style.borderColor = "#926c2f";
-broadImg.style.boxShadow = "5px 5px 5px #6f4e18";
+displayBroadImage();
 
 setTimeout(reloadPage, timeUntilMidnight + 60000);
 setInterval(function () {
@@ -83,18 +78,8 @@ setInterval(function () {
     ahadithImg.src = ahadithSources[ahadithIndex];
 }, 60000);//60000
 setInterval(() => {
-    image_container.style.display = "none";
-    broadIndex = getNewPic(broadIndex, broadSources);
-    broadImg.src = broadSources[broadIndex];
-    let bStyle = broadImg.style;
-    bStyle.border = "3px solid";
-    bStyle.borderColor = "#926c2f";
-    bStyle.boxShadow = "5px 5px 5px #6f4e18";
-    bStyle.animationName = "fadeIn";
-    bStyle.animationTimingFunction = "ease-in-out";
-    bStyle.animationDuration = "1.5s"
-    bStyle.display = "unset"
-}, 180002);  //125000
+    displayBroadImage();
+}, 120050);  //120050
 
 //help functions
 function reloadPage() { window.location.reload(); }
@@ -130,4 +115,18 @@ function displayVideo(): void {
     video.style.maxWidth = "auto";
     video.style.display = "unset";
     video.src = infosSources[infosIndex];
+}
+
+function displayBroadImage(): void{
+    image_container.style.display = "none";
+    broadIndex = getNewPic(broadIndex, broadSources);
+    broadImg.src = broadSources[broadIndex];
+    let bStyle = broadImg.style;
+    bStyle.border = "3px solid";
+    bStyle.borderColor = "#926c2f";
+    bStyle.boxShadow = "5px 5px 5px #6f4e18";
+    bStyle.animationName = "fadeIn";
+    bStyle.animationTimingFunction = "ease-in-out";
+    bStyle.animationDuration = "1.5s"
+    bStyle.display = "unset"
 }
