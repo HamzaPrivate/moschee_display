@@ -111,15 +111,14 @@ function displayVideo(): void {
 function displayBroadVideo(): void {
     image_container.style.display = "none";
     broadImg.style.display = "none"
-    video.src = "broad/bayrVid.mp4";
     let vStyle = video.style;
+    vStyle.display = "unset"
     vStyle.border = "5px solid";
     vStyle.borderColor = "#024411";
     vStyle.boxShadow = "11px 11px 11px #6f4e18";
     vStyle.animationName = "fadeIn";
     vStyle.animationTimingFunction = "ease-in-out";
     vStyle.animationDuration = "1.5s"
-    vStyle.display = "unset"
 }
 
 function displayBroadImage(): void {
