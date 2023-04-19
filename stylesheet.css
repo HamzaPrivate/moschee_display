@@ -51,7 +51,7 @@ body {
   }
 
 
-img, video{
+img /*,video*/{
     min-width: 43%;
     max-width: 43%;
     max-height: 666px;
@@ -69,10 +69,10 @@ img, video{
     /* position: relative; */
 }
 
-#broad{
+#broad, video{
     align-self: center;
     z-index: 1;
-    min-width: 86%;
+    min-width: auto;
     max-width: 86%;
     max-height: 666px;
     border: unset;
