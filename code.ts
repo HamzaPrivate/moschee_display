@@ -3,8 +3,6 @@ document.querySelector("body")?.addEventListener("click", () => {
 })
 const map = new Map<string, string>();
 
-map.set("Apr 19 2023", "4:09|6:00|13:06|16:59|20:12|22:03");
-map.set("Apr 20 2023", "4:06|5:58|13:06|17:00|20:14|22:05");
 map.set("Apr 21 2023", "4:03|5:56|13:06|17:00|20:16|22:08");
 map.set("Apr 22 2023", "4:00|5:53|13:05|17:01|20:18|22:10");
 map.set("Apr 23 2023", "3:57|5:51|13:05|17:02|20:19|22:13");
@@ -28,7 +26,7 @@ var video = document.getElementById("vid")! as HTMLVideoElement;
 //
 var infosSources = ["infos/info0.jpeg", "infos/r4.jpeg"];//video sources used to be here
 var ahadithSources = ["ahadith/ramazan0.jpeg", "ahadith/ramazan1.jpeg", "ahadith/ramazan2.jpeg"];
-var broadSources = ["broad/broad1.jpeg", "broad/broad2.jpeg", "broad/sufara.jpeg"];
+var broadSources = ["broad/broad1.jpeg", "broad/sufara.jpeg"];
 //
 var infosIndex = Math.floor(Math.random() * infosSources.length);
 var ahadithIndex = Math.floor(Math.random() * ahadithSources.length);
@@ -60,17 +58,13 @@ displayBroadVideo();//displayBroadImage();######################################
 //counter to display exactly 4 images before broad one is displayed
 var counter: number = 0;
 setInterval(function () {
-    if (counter < 2) displayBroadImage();//displayDoubleImage(); ###############################to change back...
-    else if(counter == 2){
+    if (counter < 3) displayBroadImage();//displayDoubleImage(); ###############################to change back...
+    else if(counter == 3){
         displayBroadVideo(); //displayBroadImage(); ###############################to change back...
         counter = 0;
     }
     counter++;
 }, 60000);//60000
-// setInterval(() => {
-//     counter = 0;
-//     displayBroadVideo(); //displayBroadImage(); ###############################to change back...
-// }, 40020);  //180020
 
 //help functions
 function reloadPage() { window.location.reload(); }
@@ -114,7 +108,7 @@ function displayBroadVideo(): void {
     let vStyle = video.style;
     vStyle.display = "unset"
     vStyle.border = "5px solid";
-    vStyle.borderColor = "#024411";
+    vStyle.borderColor = "#926c2f";
     vStyle.boxShadow = "11px 11px 11px #6f4e18";
     vStyle.animationName = "fadeIn";
     vStyle.animationTimingFunction = "ease-in-out";
@@ -154,5 +148,5 @@ function displayDoubleImage() {
     }
     ahadithImg.src = ahadithSources[ahadithIndex];
 }
-//after as soon as midnight +1min hits page reloads in order to inject new prayer times again
+
 setTimeout(reloadPage, timeUntilMidnight + 60000);
