@@ -34,10 +34,10 @@ var broadIndex = Math.floor(Math.random() * broadSources.length);
 
 if (videoComing()) displayVideo();
 else {
-    infosImg.src = infosSources[infosIndex];
+    // infosImg.src = infosSources[infosIndex];
+    ahadithImg.src = ahadithSources[ahadithIndex];
     video.style.display = "none";
 }
-ahadithImg.src = ahadithSources[ahadithIndex];
 
 const prayerTable = document.getElementById("zeiten") as HTMLTableElement;
 const prayerTimes = map.get(getFormattedDate("" + now).trim());//check
@@ -54,14 +54,17 @@ else console.log("Fehler in der Anzeige der Gebetszeiten.");
 
 //starts displaying here by starting with a broad img
 var image_container = document.getElementById("img-container")!;
-displayBroadVideo();//displayBroadImage();####################################################to change back after bayram sunday
+displayBroadImage();
+//displayBroadImage();####################################################to change back after bayram sunday
 //counter to display exactly 4 images before broad one is displayed
 var counter: number = 0;
 setInterval(function () {
     if (counter < 3) displayBroadImage();//displayDoubleImage(); ###############################to change back...
     else if(counter == 3){
-        displayBroadVideo(); //displayBroadImage(); ###############################to change back...
+        if(videoComing())displayBroadVideo(); //displayBroadImage(); ###############################to change back...
+        else displayBroadImage();
         counter = 0;
+        return;
     }
     counter++;
 }, 60000);//60000
