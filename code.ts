@@ -26,7 +26,7 @@ var video = document.getElementById("vid")! as HTMLVideoElement;
 //
 var infosSources = ["infos/info0.jpeg", "infos/r4.jpeg"];//video sources used to be here
 var ahadithSources = ["ahadith/ramazan0.jpeg", "ahadith/ramazan1.jpeg", "ahadith/ramazan2.jpeg"];
-var broadSources = ["broad/broad1.jpeg", "broad/sufara.jpeg", "broad/b3.jpg"];
+var broadSources = ["broad/broad1.jpeg", "broad/sufara.jpeg"];
 //
 var infosIndex = Math.floor(Math.random() * infosSources.length);
 var ahadithIndex = Math.floor(Math.random() * ahadithSources.length);
