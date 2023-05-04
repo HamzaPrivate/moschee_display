@@ -139,8 +139,8 @@ body {
     justify-content: center;
     border: 2px solid rgb(32, 2, 2);
     border-radius: 50%;
-    backdrop-filter: blur(100px);
-    background: rgba(255, 255, 255, 0.05);
+    /* backdrop-filter: blur(100px); */
+    background: #123a4e;
     box-shadow: 0 0 30px rgba(0, 0, 0, 1);
 
 }
