@@ -49,7 +49,7 @@ var video = document.getElementById("vid");
 //
 var infosSources = ["infos/info0.jpeg", "infos/r4.jpeg"]; //video sources used to be here
 var ahadithSources = ["ahadith/ramazan0.jpeg", "ahadith/ramazan1.jpeg", "ahadith/ramazan2.jpeg"];
-var broadSources = ["broad/broad1.jpeg", "broad/sufara.jpeg", "broad/halka.jpeg", "broad/b3.jpeg"];
+var broadSources = ["broad/broad1.jpeg", "broad/sufara.jpeg", "broad/halka.jpeg", "broad/b3.jpeg", "broad/b4.jpeg"];
 //
 var infosIndex = Math.floor(Math.random() * infosSources.length);
 var ahadithIndex = Math.floor(Math.random() * ahadithSources.length);
@@ -171,3 +171,16 @@ function displayDoubleImage() {
     ahadithImg.src = ahadithSources[ahadithIndex];
 }
 setTimeout(reloadPage, timeUntilMidnight + 60000);
+const degree = 6;
+const hr = document.querySelector("#hr");
+const min = document.querySelector("#min");
+const sec = document.querySelector("#sec");
+setInterval(() => {
+    const date = new Date();
+    const hh = date.getHours() * 30;
+    const mm = date.getMinutes() * degree;
+    const ss = date.getSeconds() * degree;
+    hr.style.transform = `rotateZ(${hh + (mm / 12)}deg)`;
+    min.style.transform = `rotateZ(${mm}deg)`;
+    sec.style.transform = `rotateZ(${ss}deg)`;
+});
