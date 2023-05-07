@@ -47,8 +47,8 @@ var infosImg = document.getElementById("infos");
 var ahadithImg = document.getElementById("ahadith");
 var video = document.getElementById("vid");
 //
-var infosSources = ["infos/info0.jpeg", "infos/r4.jpeg"]; //video sources used to be here
-var ahadithSources = ["ahadith/ramazan0.jpeg", "ahadith/ramazan1.jpeg", "ahadith/ramazan2.jpeg"];
+var infosSources = ["infos/info0.jpeg", "infos/i1.jpeg"]; //video sources used to be here
+var ahadithSources = ["ahadith/a0.jpeg", "ahadith/a1.jpeg"];
 var broadSources = ["broad/broad1.jpeg", "broad/sufara.jpeg", "broad/halka.jpeg"];
 //
 var infosIndex = Math.floor(Math.random() * infosSources.length);
@@ -77,15 +77,13 @@ else
 //starts displaying here by starting with a broad img
 var image_container = document.getElementById("img-container");
 displayBroadImage();
-//displayBroadImage();####################################################to change back after bayram sunday
-//counter to display exactly 4 images before broad one is displayed
 var counter = 0;
 setInterval(function () {
-    if (counter < 3)
-        displayBroadImage(); //displayDoubleImage(); ###############################to change back...
-    else if (counter == 3) {
+    if (counter < 2)
+        displayDoubleImage(); //displayDoubleImage(); 
+    else if (counter == 2) {
         if (videoComing())
-            displayBroadVideo(); //displayBroadImage(); ###############################to change back...
+            displayBroadVideo(); //displayBroadImage(); 
         else
             displayBroadImage();
         counter = 0;
