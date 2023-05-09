@@ -48,7 +48,7 @@ var ahadithImg = document.getElementById("ahadith");
 var video = document.getElementById("vid");
 //
 var infosSources = ["infos/info0.jpeg", "infos/i1.jpeg"]; //video sources used to be here
-var ahadithSources = ["ahadith/a0.jpeg", "ahadith/a1.jpeg"];
+var ahadithSources = ["ahadith/a0.jpeg", "ahadith/a1.jpeg", "ahadith/a2.jpeg"];
 var broadSources = ["broad/broad1.jpeg", "broad/sufara.jpeg", "broad/halka.jpeg"];
 //
 var infosIndex = Math.floor(Math.random() * infosSources.length);
