@@ -90,7 +90,7 @@ setInterval(function () {
         return;
     }
     counter++;
-}, 2000); //60000
+}, 60000); //60000
 //help functions
 function reloadPage() { window.location.reload(); }
 //returns formatted date in Mar 27 2023
