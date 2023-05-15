@@ -47,8 +47,8 @@ var infosImg = document.getElementById("infos");
 var ahadithImg = document.getElementById("ahadith");
 var video = document.getElementById("vid");
 //
-var infosSources = ["infos/info0.jpeg", "infos/i1.jpeg"]; //video sources used to be here
-var ahadithSources = ["ahadith/a0.jpeg", "ahadith/a1.jpeg", "ahadith/a2.jpeg"];
+var infosSources = ["infos/info0.jpeg"]; //video sources used to be here
+var ahadithSources = ["ahadith/a0.jpeg"];
 var broadSources = ["broad/broad1.jpeg", "broad/sufara.jpeg", "broad/halka.jpeg"];
 //
 var infosIndex = Math.floor(Math.random() * infosSources.length);
@@ -57,7 +57,7 @@ var broadIndex = Math.floor(Math.random() * broadSources.length);
 if (videoComing())
     displayVideo();
 else {
-    // infosImg.src = infosSources[infosIndex];
+    infosImg.src = infosSources[infosIndex];
     ahadithImg.src = ahadithSources[ahadithIndex];
     video.style.display = "none";
 }
@@ -80,17 +80,17 @@ displayBroadImage();
 var counter = 0;
 setInterval(function () {
     if (counter < 2)
-        displayDoubleImage(); //displayDoubleImage(); 
+        displayBroadImage(); //displayDoubleImage(); 
     else if (counter == 2) {
         if (videoComing())
             displayBroadVideo(); //displayBroadImage(); 
         else
-            displayBroadImage();
+            displayDoubleImage();
         counter = 0;
         return;
     }
     counter++;
-}, 60000); //60000
+}, 2000); //60000
 //help functions
 function reloadPage() { window.location.reload(); }
 //returns formatted date in Mar 27 2023
@@ -107,6 +107,8 @@ function getFormattedDate(date) {
  * @returns
  */
 function getNewPic(indexToExclude, pictureGroup) {
+    if (pictureGroup.length == 1)
+        return indexToExclude;
     let newIndex = Math.floor(Math.random() * pictureGroup.length);
     while (newIndex === indexToExclude) {
         newIndex = Math.floor(Math.random() * pictureGroup.length);

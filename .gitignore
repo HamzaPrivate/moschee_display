@@ -2,3 +2,16 @@ node_modules
 package-lock.json
 package.json
 unused
+
+# Mac/OSX
+.DS_Store
+
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+# Local History for <a href="https://www.jcchouinard.com/python-with-vscode/">Visual Studio Code</a>
+.history/

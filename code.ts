@@ -47,8 +47,8 @@ var infosImg = document.getElementById("infos")! as HTMLImageElement;
 var ahadithImg = document.getElementById("ahadith")! as HTMLImageElement;
 var video = document.getElementById("vid")! as HTMLVideoElement;
 //
-var infosSources = ["infos/info0.jpeg", "infos/i1.jpeg"];//video sources used to be here
-var ahadithSources = ["ahadith/a0.jpeg", "ahadith/a1.jpeg", "ahadith/a2.jpeg"];
+var infosSources = ["infos/info0.jpeg"];//video sources used to be here
+var ahadithSources = ["ahadith/a0.jpeg"];
 var broadSources = ["broad/broad1.jpeg", "broad/sufara.jpeg", "broad/halka.jpeg"];
 //
 var infosIndex = Math.floor(Math.random() * infosSources.length);
@@ -57,7 +57,7 @@ var broadIndex = Math.floor(Math.random() * broadSources.length);
 
 if (videoComing()) displayVideo();
 else {
-    // infosImg.src = infosSources[infosIndex];
+    infosImg.src = infosSources[infosIndex];
     ahadithImg.src = ahadithSources[ahadithIndex];
     video.style.display = "none";
 }
@@ -80,15 +80,15 @@ var image_container = document.getElementById("img-container")!;
 displayBroadImage();
 var counter: number = 0;
 setInterval(function () {
-    if (counter < 2) displayDoubleImage();//displayDoubleImage(); 
+    if (counter < 2) displayBroadImage();//displayDoubleImage(); 
     else if(counter == 2){
         if(videoComing())displayBroadVideo(); //displayBroadImage(); 
-        else displayBroadImage();
+        else displayDoubleImage();
         counter = 0;
         return;
     }
     counter++;
-}, 60000);//60000
+}, 2000);//60000
 
 //help functions
 function reloadPage() { window.location.reload(); }
@@ -107,6 +107,7 @@ function getFormattedDate(date: string): string {
  * @returns 
  */
 function getNewPic(indexToExclude: number, pictureGroup: string[]): number {
+    if(pictureGroup.length == 1) return indexToExclude;
     let newIndex = Math.floor(Math.random() * pictureGroup.length);
     while (newIndex === indexToExclude) {
         newIndex = Math.floor(Math.random() * pictureGroup.length);
