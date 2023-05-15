@@ -57,7 +57,7 @@ var broadIndex = Math.floor(Math.random() * broadSources.length);
 if (videoComing())
     displayVideo();
 else {
-    infosImg.src = infosSources[infosIndex];
+    // infosImg.src = infosSources[infosIndex];
     ahadithImg.src = ahadithSources[ahadithIndex];
     video.style.display = "none";
 }
@@ -107,7 +107,7 @@ function getFormattedDate(date) {
  * @returns
  */
 function getNewPic(indexToExclude, pictureGroup) {
-    if (pictureGroup.length == 1)
+    if (pictureGroup.length === 1)
         return indexToExclude;
     let newIndex = Math.floor(Math.random() * pictureGroup.length);
     while (newIndex === indexToExclude) {

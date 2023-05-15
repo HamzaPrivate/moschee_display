@@ -45,15 +45,19 @@ console.log("1. now and midnight and timeUntilMidnight", now, midnight, timeUnti
 var broadImg = document.getElementById("broad") as HTMLImageElement;
 var infosImg = document.getElementById("infos")! as HTMLImageElement;
 var ahadithImg = document.getElementById("ahadith")! as HTMLImageElement;
-var infosSources = ["infos/ramazan0.jpeg", "infos/info0.jpeg"];
-var ahadithSources = ["ahadith/ramazan0.jpeg", "ahadith/ramazan1.jpeg"];
+var video = document.getElementById("vid")! as HTMLVideoElement;
+//
+var infosSources = ["infos/info0.jpeg"];//video sources used to be here
+var ahadithSources = ["ahadith/a0.jpeg"];
+var broadSources = ["broad/broad1.jpeg", "broad/sufara.jpeg", "broad/halka.jpeg"];
+//
 var infosIndex = Math.floor(Math.random() * infosSources.length);
 var ahadithIndex = Math.floor(Math.random() * ahadithSources.length);
 var broadIndex = Math.floor(Math.random() * broadSources.length);
 
 if (videoComing()) displayVideo();
 else {
-    infosImg.src = infosSources[infosIndex];
+    // infosImg.src = infosSources[infosIndex];
     ahadithImg.src = ahadithSources[ahadithIndex];
     video.style.display = "none";
 }
@@ -103,7 +107,7 @@ function getFormattedDate(date: string): string {
  * @returns 
  */
 function getNewPic(indexToExclude: number, pictureGroup: string[]): number {
-    if(pictureGroup.length == 1) return indexToExclude;
+    if(pictureGroup.length===1) return indexToExclude;
     let newIndex = Math.floor(Math.random() * pictureGroup.length);
     while (newIndex === indexToExclude) {
         newIndex = Math.floor(Math.random() * pictureGroup.length);
