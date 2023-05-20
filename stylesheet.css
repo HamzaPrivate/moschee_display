@@ -95,45 +95,12 @@ body {
 
 }
 
-/* .container .circle{
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    animation: 2s ease-in infinite alternate;
-}
-.container .circle:nth-child(1){
-    width: 100px;
-    height: 100px;
-    top: -60px;
-    left: -60px;
-    background: linear-gradient(#e524c3, #8626b2);
-    animation-name: move-up;
-}
-
-@keyframes move-up{
-    to{
-        transform: translateY(-10px);
-    }
-}
-
-.container .circle:nth-child(2){
-    width: 120px;
-    height: 120px;
-    bottom: -20px;
-    right: -20px;
-    background: linear-gradient(#d64612, #e48307);
-    animation-name: move-down;
-}
-
-@keyframes move-down {
-    to{
-        transform: translateY(10px);
-    }
-} */
-
 .clock{
-    width: 230px;
-    height: 230px;
+    margin: none;
+    position: relative;
+    right: 13%;
+    width: 180px;
+    height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -179,11 +146,11 @@ body {
     height: 190px;
 }
 
-.clock .second,
+/* .clock .second,
 .clock .second .sec{
     width: 230px;
     height: 230px;
-}
+} */
 
 .clock .hour .hr,
 .clock .minute .min,
@@ -198,7 +165,7 @@ body {
     content: '';
     position: absolute;
     width: 8px;
-    height: 80px;
+    height: 75px;
     background-color: #000000;
     z-index: 10;
     border-radius:10px ;
@@ -218,7 +185,7 @@ body {
     content: '';
     position: absolute;
     width: 3px;
-    height: 140px;
+    height: 90px;
     background: #f8c471;
     z-index: 12;
     border-radius: 2px;
