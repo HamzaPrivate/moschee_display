@@ -3,14 +3,6 @@ document.querySelector("body")?.addEventListener("click", () => {
 })
 const map = new Map<string, string>();
 
-map.set("May 19 2023", "3:11|5:04|13:03|17:20|21:03|22:55");
-map.set("May 20 2023", "3:10|5:03|13:03|17:20|21:04|22:55");
-map.set("May 21 2023", "3:10|5:01|13:03|17:21|21:05|22:56");
-map.set("May 22 2023", "3:09|5:00|13:04|17:21|21:07|22:57");
-map.set("May 23 2023", "3:08|4:59|13:04|17:22|21:08|22:58");
-map.set("May 24 2023", "3:08|4:58|13:04|17:22|21:10|22:59");
-map.set("May 25 2023", "3:07|4:56|13:04|17:23|21:11|22:59");
-map.set("May 26 2023", "3:07|4:55|13:04|17:23|21:12|23:00");
 map.set("May 27 2023", "3:06|4:54|13:04|17:24|21:14|23:01");
 map.set("May 28 2023", "3:06|4:53|13:04|17:24|21:15|23:02");
 map.set("May 29 2023", "3:05|4:52|13:04|17:25|21:16|23:02");
@@ -28,9 +20,9 @@ var infosImg = document.getElementById("infos")! as HTMLImageElement;
 var ahadithImg = document.getElementById("ahadith")! as HTMLImageElement;
 var video = document.getElementById("vid")! as HTMLVideoElement;
 
-var infosSources = ["infos/i0.jpeg", "infos/i1.jpeg", "infos/i2.jpeg"];//upright video sources possible
-var ahadithSources = ["ahadith/a0.jpeg", "ahadith/a1.jpeg"];
-var broadSources = ["broad/broad1.jpeg", "broad/sufara.jpeg", "broad/halka.jpeg"];//broad video sources possible
+var infosSources = ["infos/i0.jpeg", "infos/i1.jpeg", "infos/i2.jpeg", "infos/i3.jpeg"];//upright video sources possible
+var ahadithSources = ["ahadith/a0.jpeg", "ahadith/a1.jpeg", "ahadith/a2.jpeg"];
+var broadSources = ["broad/broad1.jpeg", "broad/sufara.jpeg"];//broad video sources possible
 
 var infosIndex = Math.floor(Math.random() * infosSources.length);
 var ahadithIndex = Math.floor(Math.random() * ahadithSources.length);
@@ -40,7 +32,7 @@ if (videoComing()) displayVideo();
 else video.style.display = "none";
 
 const prayerTable = document.getElementById("zeiten") as HTMLTableElement;
-const prayerTimes = map.get(getFormattedDate("" + now).trim());//check
+const prayerTimes = map.get(getFormattedDate("" + now).trim());
 console.log("2. getformattedDate", getFormattedDate(now + ""));
 //injecting prayer times into the table
 if (prayerTable && prayerTimes) {
@@ -57,10 +49,10 @@ var image_container = document.getElementById("img-container")!;
 displayBroadImage();
 var counter: number = 0;
 setInterval(function () {
-    if (counter < 2) displayBroadImage();//displayDoubleImage(); 
+    if (counter < 2) displayDoubleImage();//displayDoubleImage(); 
     else if(counter == 2){
         if(videoComing())displayBroadVideo(); //displayBroadImage(); 
-        else displayDoubleImage();
+        else displayBroadImage();
         counter = 0;
         return;
     }
