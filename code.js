@@ -1,6 +1,6 @@
 "use strict";
 var _a;
-(_a = document.querySelector("body")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
+(_a = document.querySelector("table")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
     reloadPage();
 });
 const map = new Map();
@@ -13,6 +13,20 @@ var now = new Date();
 var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 var timeUntilMidnight = midnight.getTime() - now.getTime();
 console.log("1. now and midnight and timeUntilMidnight", now, midnight, timeUntilMidnight);
+const prayerTable = document.getElementById("zeiten");
+const prayerTimes = map.get(getFormattedDate("" + now).trim());
+console.log("2. getformattedDate", getFormattedDate(now + ""));
+//injecting prayer times into the table
+if (prayerTable && prayerTimes) {
+    let splitter = prayerTimes.split("|");
+    let cells = prayerTable.rows[1].cells;
+    for (let i = 0; i < splitter.length; i++) {
+        cells[i].textContent = splitter[i];
+    }
+}
+else
+    console.log("Fehler in der Anzeige der Gebetszeiten.");
+//main images
 var broadImg = document.getElementById("broad");
 var infosImg = document.getElementById("infos");
 var ahadithImg = document.getElementById("ahadith");
@@ -27,35 +41,18 @@ if (videoComing())
     displayVideo();
 else
     video.style.display = "none";
-const prayerTable = document.getElementById("zeiten");
-const prayerTimes = map.get(getFormattedDate("" + now).trim());
-console.log("2. getformattedDate", getFormattedDate(now + ""));
-//injecting prayer times into the table
-if (prayerTable && prayerTimes) {
-    let splitter = prayerTimes.split("|");
-    let cells = prayerTable.rows[1].cells;
-    for (let i = 0; i < splitter.length; i++) {
-        cells[i].textContent = splitter[i];
-    }
-}
-else
-    console.log("Fehler in der Anzeige der Gebetszeiten.");
 //starts displaying here by starting with a broad img
 var image_container = document.getElementById("img-container");
 displayBroadImage();
 var counter = 0;
+broadImg.addEventListener("click", () => {
+    displayOrder();
+});
+image_container.addEventListener("click", () => {
+    displayOrder();
+});
 setInterval(function () {
-    if (counter < 2)
-        displayDoubleImage(); //displayDoubleImage(); 
-    else if (counter == 2) {
-        if (videoComing())
-            displayBroadVideo(); //displayBroadImage(); 
-        else
-            displayBroadImage();
-        counter = 0;
-        return;
-    }
-    counter++;
+    displayOrder();
 }, 60000); //60000
 //help functions
 function reloadPage() { window.location.reload(); }
@@ -72,9 +69,9 @@ function getFormattedDate(date) {
  * @param pictureGroup the respective array where the files are stored in
  * @returns
  */
-function getNewPic(indexToExclude, pictureGroup) {
+function getNewPic(pictureGroup, indexToExclude) {
     if (pictureGroup.length === 1)
-        return indexToExclude;
+        return indexToExclude || Math.floor(Math.random() * pictureGroup.length);
     let newIndex = Math.floor(Math.random() * pictureGroup.length);
     while (newIndex === indexToExclude) {
         newIndex = Math.floor(Math.random() * pictureGroup.length);
@@ -106,7 +103,7 @@ function displayBroadVideo() {
 function displayBroadImage() {
     image_container.style.display = "none";
     video.style.display = "none";
-    broadIndex = getNewPic(broadIndex, broadSources);
+    broadIndex = getNewPic(broadSources, broadIndex);
     broadImg.src = broadSources[broadIndex];
     let bStyle = broadImg.style;
     bStyle.border = "5px solid";
@@ -126,8 +123,8 @@ function displayDoubleImage() {
     broadImg.src = "";
     image_container.style.display = "flex";
     infosImg.style.display = "unset";
-    infosIndex = getNewPic(infosIndex, infosSources);
-    ahadithIndex = getNewPic(ahadithIndex, ahadithSources);
+    infosIndex = getNewPic(infosSources, infosIndex);
+    ahadithIndex = getNewPic(ahadithSources, ahadithIndex);
     if (videoComing())
         displayVideo();
     else {
@@ -135,6 +132,19 @@ function displayDoubleImage() {
         video.style.display = "none";
     }
     ahadithImg.src = ahadithSources[ahadithIndex];
+}
+function displayOrder() {
+    if (counter < 2)
+        displayDoubleImage(); //displayDoubleImage(); 
+    else if (counter == 2) {
+        if (videoComing())
+            displayBroadVideo(); //displayBroadImage(); 
+        else
+            displayBroadImage();
+        counter = 0;
+        return;
+    }
+    counter++;
 }
 setTimeout(reloadPage, timeUntilMidnight + 60000);
 const degree = 6;

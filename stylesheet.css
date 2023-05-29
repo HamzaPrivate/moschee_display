@@ -196,3 +196,16 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+#img-preview{
+    position: absolute;
+    z-index: 3;
+    left: 80%;
+}
+
+#infos-next, #ahadith-next {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+}
+

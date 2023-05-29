@@ -1,4 +1,4 @@
-document.querySelector("body")?.addEventListener("click", () => {
+document.querySelector("table")?.addEventListener("click", () => {
     reloadPage();
 })
 const map = new Map<string, string>();
@@ -14,7 +14,20 @@ var now = new Date();
 var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 var timeUntilMidnight = midnight.getTime() - now.getTime();
 console.log("1. now and midnight and timeUntilMidnight", now, midnight, timeUntilMidnight);
+const prayerTable = document.getElementById("zeiten") as HTMLTableElement;
+const prayerTimes = map.get(getFormattedDate("" + now).trim());
+console.log("2. getformattedDate", getFormattedDate(now + ""));
+//injecting prayer times into the table
+if (prayerTable && prayerTimes) {
+    let splitter = prayerTimes.split("|");
+    let cells = prayerTable.rows[1].cells;
+    for (let i = 0; i < splitter.length; i++) {
+        cells[i].textContent = splitter[i];
+    }
+}
+else console.log("Fehler in der Anzeige der Gebetszeiten.");
 
+//main images
 var broadImg = document.getElementById("broad") as HTMLImageElement;
 var infosImg = document.getElementById("infos")! as HTMLImageElement;
 var ahadithImg = document.getElementById("ahadith")! as HTMLImageElement;
@@ -31,33 +44,20 @@ var broadIndex = Math.floor(Math.random() * broadSources.length);
 if (videoComing()) displayVideo();
 else video.style.display = "none";
 
-const prayerTable = document.getElementById("zeiten") as HTMLTableElement;
-const prayerTimes = map.get(getFormattedDate("" + now).trim());
-console.log("2. getformattedDate", getFormattedDate(now + ""));
-//injecting prayer times into the table
-if (prayerTable && prayerTimes) {
-    let splitter = prayerTimes.split("|");
-    let cells = prayerTable.rows[1].cells;
-    for (let i = 0; i < splitter.length; i++) {
-        cells[i].textContent = splitter[i];;
-    }
-}
-else console.log("Fehler in der Anzeige der Gebetszeiten.");
-
 //starts displaying here by starting with a broad img
 var image_container = document.getElementById("img-container")!;
 displayBroadImage();
 var counter: number = 0;
+broadImg.addEventListener("click", () => {
+   displayOrder()
+})
+image_container.addEventListener("click", () => {
+    displayOrder()
+ })
 setInterval(function () {
-    if (counter < 2) displayDoubleImage();//displayDoubleImage(); 
-    else if(counter == 2){
-        if(videoComing())displayBroadVideo(); //displayBroadImage(); 
-        else displayBroadImage();
-        counter = 0;
-        return;
-    }
-    counter++;
+   displayOrder();
 }, 60000);//60000
+
 
 //help functions
 function reloadPage() { window.location.reload(); }
@@ -75,8 +75,8 @@ function getFormattedDate(date: string): string {
  * @param pictureGroup the respective array where the files are stored in
  * @returns 
  */
-function getNewPic(indexToExclude: number, pictureGroup: string[]): number {
-    if(pictureGroup.length===1) return indexToExclude;
+function getNewPic(pictureGroup: string[], indexToExclude?: number): number {
+    if (pictureGroup.length === 1) return indexToExclude || Math.floor(Math.random() * pictureGroup.length);
     let newIndex = Math.floor(Math.random() * pictureGroup.length);
     while (newIndex === indexToExclude) {
         newIndex = Math.floor(Math.random() * pictureGroup.length);
@@ -112,7 +112,7 @@ function displayBroadVideo(): void {
 function displayBroadImage(): void {
     image_container.style.display = "none";
     video.style.display = "none";
-    broadIndex = getNewPic(broadIndex, broadSources);
+    broadIndex = getNewPic(broadSources, broadIndex);
     broadImg.src = broadSources[broadIndex];
     let bStyle = broadImg.style;
     bStyle.border = "5px solid";
@@ -133,8 +133,8 @@ function displayDoubleImage() {
     broadImg.src = "";
     image_container.style.display = "flex";
     infosImg.style.display = "unset";
-    infosIndex = getNewPic(infosIndex, infosSources);
-    ahadithIndex = getNewPic(ahadithIndex, ahadithSources);
+    infosIndex = getNewPic(infosSources, infosIndex);
+    ahadithIndex = getNewPic(ahadithSources, ahadithIndex);
     if (videoComing()) displayVideo();
     else {
         infosImg.src = infosSources[infosIndex];
@@ -143,21 +143,32 @@ function displayDoubleImage() {
     ahadithImg.src = ahadithSources[ahadithIndex];
 }
 
+function displayOrder(){
+    if (counter < 2) displayDoubleImage();//displayDoubleImage(); 
+    else if (counter == 2) {
+        if (videoComing()) displayBroadVideo(); //displayBroadImage(); 
+        else displayBroadImage();
+        counter = 0;
+        return;
+    }
+    counter++;
+}
+
 setTimeout(reloadPage, timeUntilMidnight + 60000);
 
 const degree = 6;
 const hr = document.querySelector("#hr")! as HTMLSpanElement
-const min = document.querySelector("#min")!as HTMLSpanElement
-const sec = document.querySelector("#sec")!as HTMLSpanElement
+const min = document.querySelector("#min")! as HTMLSpanElement
+const sec = document.querySelector("#sec")! as HTMLSpanElement
 
-setInterval(()=>{
+setInterval(() => {
 
     const date = new Date();
-    const hh = date.getHours() *30;
-    const mm = date.getMinutes() *degree
-    const ss = date.getSeconds() *degree
+    const hh = date.getHours() * 30;
+    const mm = date.getMinutes() * degree
+    const ss = date.getSeconds() * degree
 
-    hr.style.transform = `rotateZ(${hh+ (mm / 12)}deg)`;
+    hr.style.transform = `rotateZ(${hh + (mm / 12)}deg)`;
     min.style.transform = `rotateZ(${mm}deg)`
     sec.style.transform = `rotateZ(${ss}deg)`
 })
