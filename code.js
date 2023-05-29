@@ -4,11 +4,7 @@ var _a;
     reloadPage();
 });
 const map = new Map();
-map.set("May 27 2023", "3:06|4:54|13:04|17:24|21:14|23:01");
-map.set("May 28 2023", "3:06|4:53|13:04|17:24|21:15|23:02");
-map.set("May 29 2023", "3:05|4:52|13:04|17:25|21:16|23:02");
-map.set("May 30 2023", "3:05|4:51|13:04|17:26|21:18|23:03");
-map.set("May 31 2023", "3:04|4:50|13:05|17:26|21:19|23:04");
+initMap();
 var now = new Date();
 var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 var timeUntilMidnight = midnight.getTime() - now.getTime();
@@ -26,6 +22,9 @@ if (prayerTable && prayerTimes) {
 }
 else
     console.log("Fehler in der Anzeige der Gebetszeiten.");
+//time-until
+var timeUntil = document.getElementById("time");
+calcTimeTillPrayer();
 //main images
 var broadImg = document.getElementById("broad");
 var infosImg = document.getElementById("infos");
@@ -53,6 +52,7 @@ image_container.addEventListener("click", () => {
 });
 setInterval(function () {
     displayOrder();
+    calcTimeTillPrayer();
 }, 60000); //60000
 //help functions
 function reloadPage() { window.location.reload(); }
@@ -62,6 +62,27 @@ function getFormattedDate(date) {
     let formatted = fulldate.split(/Mon|Tue|Wed|Thu|Fri|Sat|Sun|2023/g);
     console.log("1.5 formatted in datefunction", formatted);
     return formatted[1] + now.getFullYear();
+}
+function calcTimeTillPrayer() {
+    var _a;
+    const currentHour = now.getHours();
+    const currentMinute = now.getMinutes();
+    const currentDate = new Date();
+    currentDate.setHours(currentHour, currentMinute, 0);
+    const targetDate = new Date();
+    let cells = prayerTable.rows[1].cells;
+    for (let i = 0; i < cells.length; i++) {
+        let time = (_a = cells[i].textContent) === null || _a === void 0 ? void 0 : _a.split(":");
+        if (Number(time[0]) > currentHour) {
+            targetDate.setHours(Number(time[0]), Number(time[1]), 0);
+            cells[i].style.color = "red";
+            break;
+        }
+    }
+    const timeDiffMinutes = Math.floor((targetDate.getTime() - currentDate.getTime()) / 60000);
+    const hours = Math.floor(timeDiffMinutes / 60);
+    const minutes = timeDiffMinutes % 60;
+    timeUntil.textContent = ` ${hours}:${minutes}`;
 }
 /**
  *
@@ -160,3 +181,10 @@ setInterval(() => {
     min.style.transform = `rotateZ(${mm}deg)`;
     sec.style.transform = `rotateZ(${ss}deg)`;
 });
+function initMap() {
+    map.set("May 27 2023", "3:06|4:54|13:04|17:24|21:14|23:01");
+    map.set("May 28 2023", "3:06|4:53|13:04|17:24|21:15|23:02");
+    map.set("May 29 2023", "3:05|4:52|13:04|17:25|21:16|23:02");
+    map.set("May 30 2023", "3:05|4:51|13:04|17:26|21:18|23:03");
+    map.set("May 31 2023", "3:04|4:50|13:05|17:26|21:19|23:04");
+}

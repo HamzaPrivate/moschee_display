@@ -17,7 +17,6 @@ body {
     box-shadow: 5px 5px 5px #00000075;
     table-layout: fixed ;
     width: 100% ;
-    border-collapse: collapse ;
 }
 
 #zeiten th,
@@ -49,6 +48,19 @@ body {
     background-color: #7ed6df;
 }
 
+#time-until{
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-family: "Courier New", Courier, monospace;
+    padding: 1%;
+}
+
+#time{
+    white-space: pre;
+    color: red;
+}
+
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }
@@ -60,7 +72,7 @@ body {
     max-width: 43%;
     max-height: 666px;
     margin: 4px;
-    border: 3px solid;
+    border: 2px solid;
     border-color: #926c2f; 
     /* #926c2f */
     box-shadow: 5px 5px 5px #6f4e18;
@@ -196,16 +208,3 @@ body {
     justify-content: center;
     align-items: center;
 }
-
-#img-preview{
-    position: absolute;
-    z-index: 3;
-    left: 80%;
-}
-
-#infos-next, #ahadith-next {
-    width: 100px;
-    height: 100px;
-    border: 1px solid black;
-}
-
