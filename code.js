@@ -65,8 +65,9 @@ function getFormattedDate(date) {
 }
 function calcTimeTillPrayer() {
     var _a;
-    const currentHour = now.getHours();
-    const currentMinute = now.getMinutes();
+    const today = new Date();
+    const currentHour = today.getHours();
+    const currentMinute = today.getMinutes();
     const currentDate = new Date();
     currentDate.setHours(currentHour, currentMinute, 0);
     const targetDate = new Date();
@@ -82,7 +83,10 @@ function calcTimeTillPrayer() {
     const timeDiffMinutes = Math.floor((targetDate.getTime() - currentDate.getTime()) / 60000);
     const hours = Math.floor(timeDiffMinutes / 60);
     const minutes = timeDiffMinutes % 60;
-    timeUntil.textContent = ` ${hours}:${minutes}`;
+    if (hours == 0)
+        timeUntil.textContent = ` ${minutes}min`;
+    else
+        timeUntil.textContent = ` ${hours}h:${minutes}min`;
 }
 /**
  *
