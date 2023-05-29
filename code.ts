@@ -39,7 +39,7 @@ if (prayerTable && prayerTimes) {
     let splitter = prayerTimes.split("|");
     let cells = prayerTable.rows[1].cells;
     for (let i = 0; i < splitter.length; i++) {
-        cells[i].textContent = splitter[i];
+        cells[i].textContent = splitter[i];;
     }
 }
 else console.log("Fehler in der Anzeige der Gebetszeiten.");
