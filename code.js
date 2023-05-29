@@ -22,8 +22,8 @@ if (prayerTable && prayerTimes) {
 }
 else
     console.log("Fehler in der Anzeige der Gebetszeiten.");
-//time-until
-var timeUntil = document.getElementById("time");
+//time calc for next prayer
+var time = document.getElementById("time");
 calcTimeTillPrayer();
 //main images
 var broadImg = document.getElementById("broad");
@@ -84,9 +84,13 @@ function calcTimeTillPrayer() {
     const hours = Math.floor(timeDiffMinutes / 60);
     const minutes = timeDiffMinutes % 60;
     if (hours == 0)
-        timeUntil.textContent = ` ${minutes}min`;
+        time.textContent = ` ${minutes}min`;
     else
-        timeUntil.textContent = ` ${hours}h:${minutes}min`;
+        time.textContent = ` ${hours}h:${minutes}min`;
+    if ((currentHour >= 0 && currentHour < 9)) {
+        time.textContent = "";
+        document.getElementById("time-until").textContent = "";
+    }
 }
 /**
  *
