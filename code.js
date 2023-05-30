@@ -75,12 +75,15 @@ function calcTimeTillPrayer() {
     console.log(currentHour);
     for (let i = 0; i < cells.length; i++) {
         let time = (_a = cells[i].textContent) === null || _a === void 0 ? void 0 : _a.split(":");
+        //if number in table cell > current hour OR number in table cell = current hour but minutes are greater
+        //display the cell content red and set that cell as the target
         if (Number(time[0]) > currentHour || (Number(time[0]) == currentHour && Number(time[1]) > currentMinute)) {
             targetDate.setHours(Number(time[0]), Number(time[1]), 0);
             cells[i].style.color = "red";
             break;
         }
     }
+    //calculate time difference
     const timeDiffMinutes = Math.floor((targetDate.getTime() - currentDate.getTime()) / 60000);
     const hours = Math.floor(timeDiffMinutes / 60);
     const minutes = timeDiffMinutes % 60;
