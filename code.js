@@ -72,9 +72,10 @@ function calcTimeTillPrayer() {
     currentDate.setHours(currentHour, currentMinute, 0);
     const targetDate = new Date();
     let cells = prayerTable.rows[1].cells;
+    console.log(currentHour);
     for (let i = 0; i < cells.length; i++) {
         let time = (_a = cells[i].textContent) === null || _a === void 0 ? void 0 : _a.split(":");
-        if (Number(time[0]) > currentHour) {
+        if (Number(time[0]) > currentHour || (Number(time[0]) == currentHour && Number(time[1]) > currentMinute)) {
             targetDate.setHours(Number(time[0]), Number(time[1]), 0);
             cells[i].style.color = "red";
             break;
