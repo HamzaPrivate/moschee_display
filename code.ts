@@ -80,6 +80,7 @@ function calcTimeTillPrayer(){
     console.log(currentHour)
     for (let i = 0; i < cells.length; i++) {
         let time = cells[i].textContent?.split(":");
+        cells[i].style.color = "black";
         //if number in table cell > current hour OR number in table cell = current hour but minutes are greater
         //display the cell content red and set that cell as the target
         if(Number(time![0])>currentHour || (Number(time![0])==currentHour && Number(time![1])>currentMinute)){
