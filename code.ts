@@ -95,7 +95,9 @@ function calcTimeTillPrayer(){
     const minutes = timeDiffMinutes % 60;
     if(hours == 0) time.textContent = ` ${minutes}min`;
     else time.textContent = ` ${hours}h:${minutes}min`;
-    if((currentHour >= 0 && currentHour < 9)){
+    let todayStr = ""+today;
+    console.log(todayStr)
+    if((currentHour >= 0 && currentHour < 9) || (todayStr.includes("Fri") && currentHour<=14)){
         time.textContent = "";
         document.getElementById("time-until")!.textContent! = "";
     }
