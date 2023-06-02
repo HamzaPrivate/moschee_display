@@ -30,7 +30,7 @@ var infosImg = document.getElementById("infos")! as HTMLImageElement;
 var ahadithImg = document.getElementById("ahadith")! as HTMLImageElement;
 var video = document.getElementById("vid")! as HTMLVideoElement;
 
-var infosSources = ["infos/i0.jpeg", "infos/i1.jpeg", "infos/i2.jpeg", "infos/i3.jpeg"];//upright video sources possible
+var infosSources = ["infos/i0.jpeg", "infos/i1.jpeg", "infos/i2.jpeg"];//upright video sources possible
 var ahadithSources = ["ahadith/a0.jpeg", "ahadith/a1.jpeg", "ahadith/a2.jpeg"];
 var broadSources = ["broad/broad1.jpeg", "broad/sufara.jpeg"];//broad video sources possible
 
