@@ -47,7 +47,7 @@ body {
     background-color: #7ed6df;
 }
 
-#time-until{
+#text-before-time{
     display: flex;
     justify-content: center;
     color: white;
