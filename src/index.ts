@@ -1,14 +1,16 @@
-"use strict";
-var _a;
-(_a = document.querySelector("table")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
+import {camelCase} from 'lodash';
+
+document.querySelector("table")?.addEventListener("click", () => {
     reloadPage();
-});
-const map = new Map();
+})
+console.log(camelCase("hello world"));
+const map = new Map<string, string>();
 initMap();
+
 var now = new Date();
 var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 var timeUntilMidnight = midnight.getTime() - now.getTime();
-const prayerTable = document.getElementById("zeiten");
+const prayerTable = document.getElementById("zeiten") as HTMLTableElement;
 const date = getFormattedDate("" + now).trim();
 const prayerTimes = map.get(date);
 //injecting prayer times into the table
@@ -19,67 +21,75 @@ if (prayerTable && prayerTimes) {
         cells[i].textContent = splitter[i];
     }
 }
-else
-    throw new Error("Fehler in der Anzeige der Gebetszeiten.");
+else throw new Error("Fehler in der Anzeige der Gebetszeiten.");
+
 //time calc for next prayer
-var time = document.getElementById("time");
+var time = document.getElementById("time") as HTMLSpanElement;
+
 //main images
-var imageContainer = document.getElementById("img-container");
-var broadImg = document.getElementById("broad");
-var infosImg = document.getElementById("infos");
-var ahadithImg = document.getElementById("ahadith");
-var video = document.getElementById("vid");
+var imageContainer = document.getElementById("img-container")!;
+var broadImg = document.getElementById("broad") as HTMLImageElement;
+var infosImg = document.getElementById("infos")! as HTMLImageElement;
+var ahadithImg = document.getElementById("ahadith")! as HTMLImageElement;
+var video = document.getElementById("vid")! as HTMLVideoElement;
+
 const path = "pictures/";
 var infosSources = [`${path}infos/i0.jpeg`, `${path}infos/i1.jpeg`, `${path}infos/i2.jpeg`];
 var ahadithSources = [`${path}ahadith/a0.jpeg`, `${path}ahadith/a1.jpeg`, `${path}ahadith/a2.jpeg`];
-var broadSources = [`${path}broad/b1.jpeg`, `${path}broad/b2.jpeg`]; //broad video sources possible
+var broadSources = [`${path}broad/b1.jpeg`, `${path}broad/b2.jpeg`];//broad video sources possible
+
 var infosIndex = Math.floor(Math.random() * infosSources.length);
 var ahadithIndex = Math.floor(Math.random() * ahadithSources.length);
 var broadIndex = Math.floor(Math.random() * broadSources.length);
+
+
 //starts displaying here
-if (videoComing())
-    displayVideo();
-else
-    displayBroadImage();
+if (videoComing()) displayVideo();
+else displayBroadImage();
 calcTimeTillPrayer();
+
 broadImg.addEventListener("click", () => {
-    displayNextResource();
-});
+    displayNextResource()
+})
 imageContainer.addEventListener("click", () => {
-    displayNextResource();
-});
+    displayNextResource()
+})
 setInterval(function () {
     displayNextResource();
     calcTimeTillPrayer();
-}, 60000); //60000
+}, 60000);//60000
+
+
 //help functions
 function reloadPage() { window.location.reload(); }
+
 /**
- *
- * @param date
+ * 
+ * @param date 
  * @returns formatted date as in Mar 27 2023
  */
-function getFormattedDate(date) {
+function getFormattedDate(date: string): string {
     let fulldate = "" + now;
     let formatted = fulldate.split(/Mon|Tue|Wed|Thu|Fri|Sat|Sun|2023|2024/g);
     return formatted[1] + now.getFullYear();
 }
+
 function calcTimeTillPrayer() {
-    var _a;
     const currentDate = new Date();
     const currentHour = currentDate.getHours();
     const currentMinute = currentDate.getMinutes();
+
     currentDate.setHours(currentHour, currentMinute, 0);
     //find the next prayer time from the given table and set it as the target time
     const targetDate = new Date();
     let cells = prayerTable.rows[1].cells;
-    console.log(currentHour);
+    console.log(currentHour)
     for (let i = 0; i < cells.length; i++) {
-        let time = (_a = cells[i].textContent) === null || _a === void 0 ? void 0 : _a.split(":");
+        let time = cells[i].textContent?.split(":");
         cells[i].style.color = "black";
         //display the time in cell red and set it as the target if the time in the cell is the closest to the current time
-        if (Number(time[0]) > currentHour || (Number(time[0]) == currentHour && Number(time[1]) > currentMinute)) {
-            targetDate.setHours(Number(time[0]), Number(time[1]), 0);
+        if (Number(time![0]) > currentHour || (Number(time![0]) == currentHour && Number(time![1]) > currentMinute)) {
+            targetDate.setHours(Number(time![0]), Number(time![1]), 0);
             cells[i].style.color = "red";
             break;
         }
@@ -88,22 +98,20 @@ function calcTimeTillPrayer() {
     const timeDiffMinutes = Math.floor((targetDate.getTime() - currentDate.getTime()) / 60000);
     const hours = Math.floor(timeDiffMinutes / 60);
     const minutes = timeDiffMinutes % 60;
-    if (hours == 0)
-        time.textContent = ` ${minutes}min`;
-    else
-        time.textContent = ` ${hours}h:${minutes}min`;
+    if (hours == 0) time.textContent = ` ${minutes}min`;
+    else time.textContent = ` ${hours}h:${minutes}min`;
     let todayStr = "" + currentDate;
     //edgecases morning prayer and friday prayer
     if ((currentHour >= 0 && currentHour < 9) || (todayStr.includes("Fri") && currentHour <= 14)) {
         time.textContent = "";
-        document.getElementById("text-before-time").textContent = "";
+        document.getElementById("text-before-time")!.textContent! = "";
     }
 }
-var displayCounter = 0;
+
+var displayCounter: number = 0;
 function displayNextResource() {
     //2x double image, 1x broad or video into repeat
-    if (displayCounter < 2)
-        displayDoubleImage();
+    if (displayCounter < 2) displayDoubleImage();
     else if (displayCounter == 2) {
         if (videoComing()) {
             displayVideo();
@@ -116,40 +124,44 @@ function displayNextResource() {
     }
     displayCounter++;
 }
+
 /**
- *
+ * 
  * @param indexToExclude current index to the current pic/vid
  * @param pictureGroup the respective array where the pic/vid is stored in
- * @returns
+ * @returns 
  */
-function getNewPicIndex(pictureGroup, indexToExclude) {
+function getNewPicIndex(pictureGroup: string[], indexToExclude?: number): number {
     //if indexToExclude not defined
-    if (pictureGroup.length === 1)
-        return indexToExclude || Math.floor(Math.random() * pictureGroup.length);
+    if (pictureGroup.length === 1) return indexToExclude || Math.floor(Math.random() * pictureGroup.length);
     let newIndex = Math.floor(Math.random() * pictureGroup.length);
     while (newIndex === indexToExclude) {
         newIndex = Math.floor(Math.random() * pictureGroup.length);
     }
     return newIndex;
 }
-function videoComing() {
+
+function videoComing(): boolean {
     return broadSources[broadIndex].endsWith("mp4");
 }
-function displayVideo() {
+
+function displayVideo(): void {
     imageContainer.style.display = "none";
-    broadImg.style.display = "none";
+    broadImg.style.display = "none"
     let vStyle = video.style;
-    vStyle.display = "unset";
+    vStyle.display = "unset"
     vStyle.border = "5px solid";
     vStyle.borderColor = "#926c2f";
     vStyle.boxShadow = "11px 11px 11px #6f4e18";
     vStyle.animationName = "fadeIn";
     vStyle.animationTimingFunction = "ease-in-out";
-    vStyle.animationDuration = "1.5s";
+    vStyle.animationDuration = "1.5s"
     video.src = broadSources[broadIndex];
     broadIndex = getNewPicIndex(broadSources, broadIndex);
+
 }
-function displayBroadImage() {
+
+function displayBroadImage(): void {
     imageContainer.style.display = "none";
     video.style.display = "none";
     broadImg.src = broadSources[broadIndex];
@@ -159,10 +171,11 @@ function displayBroadImage() {
     bStyle.boxShadow = "11px 11px 11px #6f4e18";
     bStyle.animationName = "fadeIn";
     bStyle.animationTimingFunction = "ease-in-out";
-    bStyle.animationDuration = "1.5s";
-    bStyle.display = "unset";
+    bStyle.animationDuration = "1.5s"
+    bStyle.display = "unset"
     broadIndex = getNewPicIndex(broadSources, broadIndex);
 }
+
 function displayDoubleImage() {
     video.style.display = "none";
     let bStyle = broadImg.style;
@@ -177,21 +190,28 @@ function displayDoubleImage() {
     infosImg.src = infosSources[infosIndex];
     ahadithImg.src = ahadithSources[ahadithIndex];
 }
+
 setTimeout(reloadPage, timeUntilMidnight + 60000);
+
+
 //clock
 const degree = 6;
-const hr = document.querySelector("#hr");
-const min = document.querySelector("#min");
-const sec = document.querySelector("#sec");
+const hr = document.querySelector("#hr")! as HTMLSpanElement
+const min = document.querySelector("#min")! as HTMLSpanElement
+const sec = document.querySelector("#sec")! as HTMLSpanElement
 setInterval(() => {
+
     const date = new Date();
     const hh = date.getHours() * 30;
-    const mm = date.getMinutes() * degree;
-    const ss = date.getSeconds() * degree;
+    const mm = date.getMinutes() * degree
+    const ss = date.getSeconds() * degree
+
     hr.style.transform = `rotateZ(${hh + (mm / 12)}deg)`;
-    min.style.transform = `rotateZ(${mm}deg)`;
-    sec.style.transform = `rotateZ(${ss}deg)`;
-});
+    min.style.transform = `rotateZ(${mm}deg)`
+    sec.style.transform = `rotateZ(${ss}deg)`
+})
+
+
 function initMap() {
     map.set("May 31 2023", "3:04|4:50|13:05|17:26|21:19|23:04");
     map.set("Jun 01 2023", "3:04|4:49|13:05|17:26|21:20|23:04");
