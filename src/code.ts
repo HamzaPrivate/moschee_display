@@ -30,7 +30,7 @@ var infosImg = document.getElementById("infos")! as HTMLImageElement;
 var ahadithImg = document.getElementById("ahadith")! as HTMLImageElement;
 var video = document.getElementById("vid")! as HTMLVideoElement;
 
-const path = "../pictures/";
+const path = "pictures/";
 var infosSources = [`${path}infos/i0.jpeg`, `${path}infos/i1.jpeg`, `${path}infos/i2.jpeg`];
 var ahadithSources = [`${path}ahadith/a0.jpeg`, `${path}ahadith/a1.jpeg`, `${path}ahadith/a2.jpeg`];
 var broadSources = [`${path}broad/b1.jpeg`, `${path}broad/b2.jpeg`];//broad video sources possible
