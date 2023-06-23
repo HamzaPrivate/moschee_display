@@ -1,9 +1,8 @@
 import {camelCase} from 'lodash';
-
+console.log(camelCase("hello world"));
 document.querySelector("table")?.addEventListener("click", () => {
     reloadPage();
 })
-console.log(camelCase("hello world"));
 const map = new Map<string, string>();
 initMap();
 

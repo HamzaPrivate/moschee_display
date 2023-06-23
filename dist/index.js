@@ -2,10 +2,10 @@
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 const lodash_1 = require("lodash");
+console.log((0, lodash_1.camelCase)("hello world"));
 (_a = document.querySelector("table")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
     reloadPage();
 });
-console.log((0, lodash_1.camelCase)("hello world"));
 const map = new Map();
 initMap();
 var now = new Date();
