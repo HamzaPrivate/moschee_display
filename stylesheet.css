@@ -6,12 +6,12 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: xx-large;
     /* background-color: #ead5b4; */
-    background-image: url(./pictures/broad/background.jpg);
+    background-image: url(./pictures/misc/background.jpg);
     background-position: center;
     background-size: cover;
 }
 
-#zeiten {
+#prayerTable {
     font-family: 'Amiri', serif;
     margin-bottom: 5px;
     border-radius: 10px;
@@ -20,13 +20,13 @@ body {
     width: 100% ;
 }
 
-#zeiten th,
-#zeiten td {
+#prayerTable th,
+#prayerTable td {
     padding: 10px;
     text-align: center;
 }
 
-#zeiten th {
+#prayerTable th {
     background-color: #f8c471;
     color: #000000;
     font-size: 20px;
@@ -34,18 +34,18 @@ body {
     border: 3px solid #3a0f0f32;
 }
 
-#zeiten td {
+#prayerTable td {
     font-size: 30px;
     border: 3px solid #3a0f0f32;
 
 }
 
-#zeiten td#jacija,
-#aksam,
-#ikindija,
-#podne,
-#izlasaksunca,
-#sabah {
+#prayerTable td#p5,
+#p4,
+#p3,
+#p2,
+#p11,
+#p1 {
     background-color: #7ed6df;
 }
 
@@ -67,7 +67,7 @@ body {
   }
 
 
-#infos, #ahadith, #broad /*,video*/{
+#narrow1, #narrow2, #broad /*,video*/{
     min-width: 43%;
     max-width: 43%;
     max-height: 666px;
