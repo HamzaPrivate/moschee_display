@@ -1,37 +1,39 @@
 import * as MMD from './ResourceDisplayer';
-import { calcTimeTillPrayer, timeUntilMidnight } from './PrayerTable';
+import { calcTimeTillPrayer, initiatePrayerTable, timeUntilMidnight } from './PrayerTable';
 
 //page reload on table click
 document.querySelector("table")?.addEventListener("click", () => {
     window.location.reload();
 })
 //page reload upon midnight+1min
-setTimeout(()=>window.location.reload(), timeUntilMidnight + 60000);
+setTimeout(() => window.location.reload(), timeUntilMidnight + 60000);
 
-//starts displaying here
-if (MMD.videoComing()) MMD.displayVideo();
-else MMD.displayBroadImage();
-calcTimeTillPrayer();
+main();
 
-setInterval(function () {
-    MMD.displayNextResource();
+function main() {
+    MMD.videoComing()? MMD.displayVideo(): MMD.displayBroadImage();
+    initiatePrayerTable();
     calcTimeTillPrayer();
-}, 60000);//60000
 
-//clock
-const degree = 6;
-const hr = document.querySelector("#hr")! as HTMLSpanElement
-const min = document.querySelector("#min")! as HTMLSpanElement
-const sec = document.querySelector("#sec")! as HTMLSpanElement
-setInterval(() => {
+    setInterval(()=> {
+        MMD.displayNextResource();
+        calcTimeTillPrayer();
+    }, 60000);//60000
 
-    const date = new Date();
-    const hh = date.getHours() * 30;
-    const mm = date.getMinutes() * degree
-    const ss = date.getSeconds() * degree
+    //clock
+    const degree = 6;
+    const hr = document.querySelector("#hr")! as HTMLSpanElement
+    const min = document.querySelector("#min")! as HTMLSpanElement
+    const sec = document.querySelector("#sec")! as HTMLSpanElement
+    setInterval(() => {
 
-    hr.style.transform = `rotateZ(${hh + (mm / 12)}deg)`;
-    min.style.transform = `rotateZ(${mm}deg)`
-    sec.style.transform = `rotateZ(${ss}deg)`
-})
+        const date = new Date();
+        const hh = date.getHours() * 30;
+        const mm = date.getMinutes() * degree
+        const ss = date.getSeconds() * degree
 
+        hr.style.transform = `rotateZ(${hh + (mm / 12)}deg)`;
+        min.style.transform = `rotateZ(${mm}deg)`
+        sec.style.transform = `rotateZ(${ss}deg)`
+    })
+}

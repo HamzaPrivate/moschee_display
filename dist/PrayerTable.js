@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.calcTimeTillPrayer = exports.timeUntilMidnight = void 0;
+exports.calcTimeTillPrayer = exports.initiatePrayerTable = exports.timeUntilMidnight = void 0;
 const DateFormatter_1 = require("./DateFormatter");
 const PrayerTimes_1 = require("./PrayerTimes");
 var time = document.getElementById("time");
@@ -8,18 +8,21 @@ var now = new Date();
 var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 exports.timeUntilMidnight = midnight.getTime() - now.getTime();
 const prayerTable = document.getElementById("prayerTable");
-const date = (0, DateFormatter_1.getFormattedDate)(now);
-const prayerTimes = PrayerTimes_1.map.get(date);
-//injecting prayer times into the table
-if (prayerTable && prayerTimes) {
-    let splitter = prayerTimes.split("|");
-    let cells = prayerTable.rows[1].cells;
-    for (let i = 0; i < splitter.length; i++) {
-        cells[i].textContent = splitter[i];
+function initiatePrayerTable() {
+    const date = (0, DateFormatter_1.getFormattedDate)(now);
+    const prayerTimes = PrayerTimes_1.map.get(date);
+    //injecting prayer times into the table
+    if (prayerTable && prayerTimes) {
+        let splitter = prayerTimes.split("|");
+        let cells = prayerTable.rows[1].cells;
+        for (let i = 0; i < splitter.length; i++) {
+            cells[i].textContent = splitter[i];
+        }
     }
+    else
+        throw new Error(`Fehler in der Gebetszeitentabelle. prayerTable:${prayerTable}, prayerTimes: ${prayerTimes}`);
 }
-else
-    throw new Error(`Fehler in der Gebetszeitentabelle. prayerTable:${prayerTable}, prayerTimes: ${prayerTimes}`);
+exports.initiatePrayerTable = initiatePrayerTable;
 function calcTimeTillPrayer() {
     var _a;
     const currentDate = new Date();

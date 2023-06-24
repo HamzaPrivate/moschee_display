@@ -58,6 +58,8 @@ function videoComing() {
 }
 exports.videoComing = videoComing;
 function displayVideo() {
+    if (!videoComing())
+        return;
     imageContainer.style.display = "none";
     broadImg.style.display = "none";
     let vStyle = video.style;
@@ -80,7 +82,6 @@ function displayBroadImage() {
     bStyle.border = "5px solid";
     bStyle.borderColor = "#926c2f";
     bStyle.boxShadow = "11px 11px 11px #6f4e18";
-    bStyle.animationName = "fadeIn";
     bStyle.animationTimingFunction = "ease-in-out";
     bStyle.animationDuration = "1.5s";
     bStyle.display = "unset";
@@ -91,8 +92,6 @@ function displayDoubleImage() {
     video.style.display = "none";
     let bStyle = broadImg.style;
     bStyle.display = "none";
-    bStyle.border = "0px";
-    bStyle.boxShadow = "";
     broadImg.src = "";
     imageContainer.style.display = "flex";
     narrow1.src = narrow1Sources[narrow1Index];

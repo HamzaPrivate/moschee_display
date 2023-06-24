@@ -6,17 +6,21 @@ var now = new Date();
 var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 export const timeUntilMidnight = midnight.getTime() - now.getTime();
 const prayerTable = document.getElementById("prayerTable") as HTMLTableElement;
-const date = getFormattedDate(now);
-const prayerTimes = map.get(date);
-//injecting prayer times into the table
-if (prayerTable && prayerTimes) {
-    let splitter = prayerTimes.split("|");
-    let cells = prayerTable.rows[1].cells;
-    for (let i = 0; i < splitter.length; i++) {
-        cells[i].textContent = splitter[i];
+
+
+export function initiatePrayerTable() {
+    const date = getFormattedDate(now);
+    const prayerTimes = map.get(date);
+    //injecting prayer times into the table
+    if (prayerTable && prayerTimes) {
+        let splitter = prayerTimes.split("|");
+        let cells = prayerTable.rows[1].cells;
+        for (let i = 0; i < splitter.length; i++) {
+            cells[i].textContent = splitter[i];
+        }
     }
+    else throw new Error(`Fehler in der Gebetszeitentabelle. prayerTable:${prayerTable}, prayerTimes: ${prayerTimes}`);
 }
-else throw new Error(`Fehler in der Gebetszeitentabelle. prayerTable:${prayerTable}, prayerTimes: ${prayerTimes}` );
 
 export function calcTimeTillPrayer() {
     const currentDate = new Date();
