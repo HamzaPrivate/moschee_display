@@ -9,6 +9,8 @@ body {
     background-image: url(./pictures/misc/background.jpg);
     background-position: center;
     background-size: cover;
+    height: max-content;
+
 }
 
 #prayerTable {
@@ -76,7 +78,7 @@ body {
     box-shadow: 5px 5px 5px #6f4e18;
     animation-name: fadeIn;
     animation-timing-function: ease-in-out;
-    animation-duration: 1.5s;
+    animation-duration: 1.2s;
     align-self: center;
     max-width: 86%;
 }
