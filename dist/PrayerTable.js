@@ -1,28 +1,49 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.calcTimeTillPrayer = exports.initiatePrayerTable = exports.timeUntilMidnight = void 0;
-const DateFormatter_1 = require("./DateFormatter");
 const PrayerTimes_1 = require("./PrayerTimes");
 var time = document.getElementById("time");
 var now = new Date();
 var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 exports.timeUntilMidnight = midnight.getTime() - now.getTime();
 const prayerTable = document.getElementById("prayerTable");
+/**
+* Initializes the prayer table by injecting the corresponding prayer times for the current date.
+* If the prayer table and prayer times are available, the function populates the table cells with the times.
+* Otherwise, an error is thrown.
+*/
 function initiatePrayerTable() {
-    const date = (0, DateFormatter_1.getFormattedDate)(now);
-    const prayerTimes = PrayerTimes_1.map.get(date);
-    //injecting prayer times into the table
-    if (prayerTable && prayerTimes) {
-        let splitter = prayerTimes.split("|");
-        let cells = prayerTable.rows[1].cells;
-        for (let i = 0; i < splitter.length; i++) {
-            cells[i].textContent = splitter[i];
+    return __awaiter(this, void 0, void 0, function* () {
+        const prayerTimes = yield (0, PrayerTimes_1.getTodaysPrayerTimes)();
+        //injecting prayer times into the table
+        console.log(prayerTimes);
+        if (prayerTable && prayerTimes) {
+            let cells = prayerTable.rows[1].cells;
+            for (let i = 0; i < prayerTimes.length; i++) {
+                cells[i].textContent = prayerTimes[i];
+            }
         }
-    }
-    else
-        throw new Error(`Fehler in der Gebetszeitentabelle. prayerTable:${prayerTable}, prayerTimes: ${prayerTimes}`);
+        else
+            throw new Error(`Fehler in der Gebetszeitentabelle. prayerTable:${prayerTable}, prayerTimes: ${prayerTimes}`);
+    });
 }
 exports.initiatePrayerTable = initiatePrayerTable;
+/**
+* Calculates the time remaining until the next prayer based on the current time and the prayer table.
+* The function determines the closest prayer time from the table and sets it as the target time.
+* It then calculates the time difference between the current time and the target time in hours and minutes.
+* The calculated time difference is displayed in the corresponding HTML element.
+* Note: The function assumes the presence of HTML elements with IDs: "time" and "text-before-time".
+*/
 function calcTimeTillPrayer() {
     var _a;
     const currentDate = new Date();

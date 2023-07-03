@@ -1,35 +1,37 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.map = void 0;
-exports.map = new Map();
-exports.map.set("1 7 2023", "3:05|4:47|13:11|17:35|21:33|23:14");
-exports.map.set("2 7 2023", "3:06|4:48|13:11|17:35|21:33|23:14");
-exports.map.set("3 7 2023", "3:06|4:49|13:11|17:35|21:32|23:14");
-exports.map.set("4 7 2023", "3:07|4:49|13:11|17:35|21:32|23:14");
-exports.map.set("5 7 2023", "3:07|4:50|13:12|17:35|21:31|23:13");
-exports.map.set("6 7 2023", "3:08|4:51|13:12|17:35|21:31|23:13");
-exports.map.set("7 7 2023", "3:08|4:52|13:12|17:35|21:30|23:13");
-exports.map.set("8 7 2023", "3:09|4:53|13:12|17:34|21:29|23:13");
-exports.map.set("9 7 2023", "3:10|4:54|13:12|17:34|21:29|23:12");
-exports.map.set("10 7 2023", "3:10|4:55|13:12|17:34|21:28|23:12");
-exports.map.set("11 7 2023", "3:11|4:56|13:12|17:34|21:27|23:11");
-exports.map.set("12 7 2023", "3:11|4:57|13:13|17:34|21:26|23:11");
-exports.map.set("13 7 2023", "3:12|4:59|13:13|17:33|21:25|23:11");
-exports.map.set("14 7 2023", "3:13|5:00|13:13|17:33|21:24|23:10");
-exports.map.set("15 7 2023", "3:13|5:01|13:13|17:33|21:23|23:10");
-exports.map.set("16 7 2023", "3:14|5:02|13:13|17:33|21:22|23:09");
-exports.map.set("17 7 2023", "3:15|5:04|13:13|17:32|21:21|23:08");
-exports.map.set("18 7 2023", "3:16|5:05|13:13|17:32|21:20|23:08");
-exports.map.set("19 7 2023", "3:16|5:06|13:13|17:31|21:18|23:07");
-exports.map.set("20 7 2023", "3:17|5:07|13:13|17:31|21:17|23:07");
-exports.map.set("21 7 2023", "3:18|5:09|13:13|17:31|21:16|23:06");
-exports.map.set("22 7 2023", "3:19|5:10|13:13|17:30|21:15|23:05");
-exports.map.set("23 7 2023", "3:19|5:12|13:13|17:30|21:13|23:05");
-exports.map.set("24 7 2023", "3:20|5:13|13:13|17:29|21:12|23:04");
-exports.map.set("25 7 2023", "3:21|5:15|13:13|17:29|21:10|23:03");
-exports.map.set("26 7 2023", "3:22|5:16|13:13|17:28|21:09|23:02");
-exports.map.set("27 7 2023", "3:22|5:18|13:13|17:27|21:07|23:01");
-exports.map.set("28 7 2023", "3:23|5:19|13:13|17:27|21:06|23:01");
-exports.map.set("29 7 2023", "3:24|5:21|13:13|17:26|21:04|23:00");
-exports.map.set("30 7 2023", "3:25|5:22|13:13|17:25|21:03|22:59");
-exports.map.set("31 7 2023", "3:26|5:24|13:13|17:25|21:01|22:58");
+exports.getTodaysPrayerTimes = void 0;
+const DateFormatter_1 = require("./DateFormatter");
+function getTodaysPrayerTimes() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const response = yield fetch('PrayerTimes.json');
+            const data = yield response.json();
+            const currentDate = new Date();
+            const today = (0, DateFormatter_1.getFormattedDate)(currentDate);
+            if (data.hasOwnProperty(today)) {
+                const prayerTimes = data[today].split('|');
+                // Perform any further actions with the prayer times for today
+                return prayerTimes;
+            }
+            else {
+                console.log('Prayer times for today are not available.');
+                return [];
+            }
+        }
+        catch (error) {
+            console.error('Error:', error);
+            return [];
+        }
+    });
+}
+exports.getTodaysPrayerTimes = getTodaysPrayerTimes;

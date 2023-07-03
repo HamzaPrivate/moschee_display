@@ -20,6 +20,11 @@ broadImg.addEventListener("click", () => {
 imageContainer.addEventListener("click", () => {
     displayNextResource();
 });
+/**
+*
+* Displays the next resource based on the value of the displayCounter variable.
+* The function alternates between displaying two narrow images and one broad image or video in a repeated manner.
+*/
 var displayCounter = 0;
 function displayNextResource() {
     //2x narrow image, 1x broad or video into repeat
@@ -53,10 +58,18 @@ function getNewPicIndex(pictureGroup, indexToExclude) {
     }
     return newIndex;
 }
+/**
+* Checks if the current source of the broad image ends with ".mp4" to determine if a video is available.
+* @returns A boolean value indicating whether a video is available.
+*/
 function videoComing() {
     return broadSources[broadIndex].endsWith("mp4");
 }
 exports.videoComing = videoComing;
+/**
+* Displays a video in the video element while hiding the image container and broad image.
+* If the video is not available, the function will return early.
+*/
 function displayVideo() {
     if (!videoComing())
         return;
@@ -74,6 +87,9 @@ function displayVideo() {
     broadIndex = getNewPicIndex(broadSources, broadIndex);
 }
 exports.displayVideo = displayVideo;
+/**
+* Displays a broad image in the image container while hiding the video and other elements.
+*/
 function displayBroadImage() {
     imageContainer.style.display = "none";
     video.style.display = "none";
@@ -88,6 +104,9 @@ function displayBroadImage() {
     broadIndex = getNewPicIndex(broadSources, broadIndex);
 }
 exports.displayBroadImage = displayBroadImage;
+/**
+* Displays a double image in the image container while hiding the video and other elements.
+*/
 function displayDoubleImage() {
     video.style.display = "none";
     let bStyle = broadImg.style;

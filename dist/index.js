@@ -22,6 +22,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 const MMD = __importStar(require("./ResourceDisplayer"));
@@ -34,25 +43,27 @@ const PrayerTable_1 = require("./PrayerTable");
 setTimeout(() => window.location.reload(), PrayerTable_1.timeUntilMidnight + 60000);
 main();
 function main() {
-    MMD.videoComing() ? MMD.displayVideo() : MMD.displayBroadImage();
-    (0, PrayerTable_1.initiatePrayerTable)();
-    (0, PrayerTable_1.calcTimeTillPrayer)();
-    setInterval(() => {
-        MMD.displayNextResource();
+    return __awaiter(this, void 0, void 0, function* () {
+        MMD.videoComing() ? MMD.displayVideo() : MMD.displayBroadImage();
+        yield (0, PrayerTable_1.initiatePrayerTable)();
         (0, PrayerTable_1.calcTimeTillPrayer)();
-    }, 60000); //60000
-    //clock
-    const degree = 6;
-    const hr = document.querySelector("#hr");
-    const min = document.querySelector("#min");
-    const sec = document.querySelector("#sec");
-    setInterval(() => {
-        const date = new Date();
-        const hh = date.getHours() * 30;
-        const mm = date.getMinutes() * degree;
-        const ss = date.getSeconds() * degree;
-        hr.style.transform = `rotateZ(${hh + (mm / 12)}deg)`;
-        min.style.transform = `rotateZ(${mm}deg)`;
-        sec.style.transform = `rotateZ(${ss}deg)`;
+        setInterval(() => {
+            MMD.displayNextResource();
+            (0, PrayerTable_1.calcTimeTillPrayer)();
+        }, 60000); //60000
+        //clock
+        const degree = 6;
+        const hr = document.querySelector("#hr");
+        const min = document.querySelector("#min");
+        const sec = document.querySelector("#sec");
+        setInterval(() => {
+            const date = new Date();
+            const hh = date.getHours() * 30;
+            const mm = date.getMinutes() * degree;
+            const ss = date.getSeconds() * degree;
+            hr.style.transform = `rotateZ(${hh + (mm / 12)}deg)`;
+            min.style.transform = `rotateZ(${mm}deg)`;
+            sec.style.transform = `rotateZ(${ss}deg)`;
+        });
     });
 }

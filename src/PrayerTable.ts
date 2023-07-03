@@ -1,5 +1,5 @@
 import { getFormattedDate } from "./DateFormatter";
-import { map } from "./PrayerTimes";
+import { getTodaysPrayerTimes } from "./PrayerTimes";
 
 var time = document.getElementById("time") as HTMLSpanElement;
 var now = new Date();
@@ -8,20 +8,33 @@ export const timeUntilMidnight = midnight.getTime() - now.getTime();
 const prayerTable = document.getElementById("prayerTable") as HTMLTableElement;
 
 
-export function initiatePrayerTable() {
-    const date = getFormattedDate(now);
-    const prayerTimes = map.get(date);
+
+/**
+* Initializes the prayer table by injecting the corresponding prayer times for the current date.
+* If the prayer table and prayer times are available, the function populates the table cells with the times.
+* Otherwise, an error is thrown.
+*/
+export async function initiatePrayerTable() {
+    const prayerTimes = await getTodaysPrayerTimes();
     //injecting prayer times into the table
+    console.log(prayerTimes);
     if (prayerTable && prayerTimes) {
-        let splitter = prayerTimes.split("|");
         let cells = prayerTable.rows[1].cells;
-        for (let i = 0; i < splitter.length; i++) {
-            cells[i].textContent = splitter[i];
+        for (let i = 0; i < prayerTimes.length; i++) {
+            cells[i].textContent = prayerTimes[i];
         }
     }
     else throw new Error(`Fehler in der Gebetszeitentabelle. prayerTable:${prayerTable}, prayerTimes: ${prayerTimes}`);
 }
 
+
+/**
+* Calculates the time remaining until the next prayer based on the current time and the prayer table.
+* The function determines the closest prayer time from the table and sets it as the target time.
+* It then calculates the time difference between the current time and the target time in hours and minutes.
+* The calculated time difference is displayed in the corresponding HTML element.
+* Note: The function assumes the presence of HTML elements with IDs: "time" and "text-before-time".
+*/
 export function calcTimeTillPrayer() {
     const currentDate = new Date();
     const currentHour = currentDate.getHours();

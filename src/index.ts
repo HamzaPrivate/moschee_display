@@ -10,9 +10,9 @@ setTimeout(() => window.location.reload(), timeUntilMidnight + 60000);
 
 main();
 
-function main() {
+async function main() {
     MMD.videoComing()? MMD.displayVideo(): MMD.displayBroadImage();
-    initiatePrayerTable();
+    await initiatePrayerTable();
     calcTimeTillPrayer();
 
     setInterval(()=> {
