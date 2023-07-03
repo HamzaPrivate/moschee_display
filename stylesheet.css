@@ -6,19 +6,24 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: xx-large;
     /* background-color: #ead5b4; */
-    background-image: url(./pictures/misc/background.jpg);
-    background-position: center;
-    background-size: cover;
-    height: max-content;
+    margin: 1;
+}
 
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
 #prayerTable {
     margin-bottom: 5px;
     border-radius: 10px;
     box-shadow: 5px 5px 5px #00000075;
-    table-layout: fixed ;
-    width: 100% ;
+    table-layout: fixed;
+    width: 100%;
 }
 
 #prayerTable th,
@@ -50,30 +55,40 @@ body {
     background-color: #7ed6df;
 }
 
-#text-before-time{
+#text-before-time {
     display: flex;
     justify-content: center;
     color: white;
 }
 
-#time{
+#time {
     white-space: pre;
     color: red;
 }
 
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
 
 
-#narrow1, #narrow2, #broad /*,video*/{
+#narrow1,
+#narrow2,
+#broad
+
+/*,video*/
+    {
     min-width: 43%;
     max-width: 43%;
     max-height: 666px;
     margin: 2px;
     border: 2px solid;
-    border-color: #926c2f; 
+    border-color: #926c2f;
     /* #926c2f */
     box-shadow: 5px 5px 5px #6f4e18;
     animation-name: fadeIn;
@@ -83,7 +98,7 @@ body {
     max-width: 86%;
 }
 
-#img-container{
+#img-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -91,13 +106,14 @@ body {
     /* position: relative; */
 }
 
-#broad, video{
+#broad,
+video {
     min-width: auto;
     max-width: 86%;
     max-height: 666px;
-} 
+}
 
-.container{
+.container {
     position: absolute;
     z-index: 2;
     left: 2%;
@@ -105,7 +121,7 @@ body {
 
 }
 
-.clock{
+.clock {
     margin: none;
     position: relative;
     right: 13%;
@@ -122,12 +138,12 @@ body {
 
 }
 
-.clock .clock-bg img{
+.clock .clock-bg img {
     width: 100%;
     height: 100%;
 }
 
-.clock::before{
+.clock::before {
     content: '';
     position: absolute;
     width: 15px;
@@ -144,14 +160,14 @@ body {
 }
 
 .clock .hour,
-.clock .hour .hr{
+.clock .hour .hr {
     width: 160px;
     height: 160px;
 
 }
 
 .clock .minute,
-.clock .minute .min{
+.clock .minute .min {
     /* width: 190px; */
     height: 190px;
 }
@@ -164,25 +180,25 @@ body {
 
 .clock .hour .hr,
 .clock .minute .min,
-.clock .second .sec{
+.clock .second .sec {
     display: flex;
     justify-content: center;
     position: absolute;
     border-radius: 50%;
 }
 
-.clock .hour .hr::before{
+.clock .hour .hr::before {
     content: '';
     position: absolute;
     width: 8px;
     height: 75px;
     background-color: #000000;
     z-index: 10;
-    border-radius:10px ;
+    border-radius: 10px;
 }
 
-.clock .minute .min::before{
-    content : '';
+.clock .minute .min::before {
+    content: '';
     position: absolute;
     width: 4px;
     height: 90px;
@@ -191,7 +207,7 @@ body {
     border-radius: 8px;
 }
 
-.clock .second .sec::before{
+.clock .second .sec::before {
     content: '';
     position: absolute;
     width: 3px;
@@ -201,7 +217,7 @@ body {
     border-radius: 2px;
 }
 
-#tableClockContainer{
+#tableClockContainer {
     display: flex;
     justify-content: center;
     align-items: center;
