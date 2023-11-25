@@ -47,23 +47,9 @@ function main() {
         MMD.videoComing() ? MMD.displayVideo() : MMD.displayBroadImage();
         yield (0, PrayerTable_1.initiatePrayerTable)();
         (0, PrayerTable_1.calcTimeTillPrayer)();
-        setInterval(() => {
-            MMD.displayNextResource();
-            (0, PrayerTable_1.calcTimeTillPrayer)();
-        }, 60000); //60000
-        //clock
-        const degree = 6;
-        const hr = document.querySelector("#hr");
-        const min = document.querySelector("#min");
-        const sec = document.querySelector("#sec");
-        setInterval(() => {
-            const date = new Date();
-            const hh = date.getHours() * 30;
-            const mm = date.getMinutes() * degree;
-            const ss = date.getSeconds() * degree;
-            hr.style.transform = `rotateZ(${hh + (mm / 12)}deg)`;
-            min.style.transform = `rotateZ(${mm}deg)`;
-            sec.style.transform = `rotateZ(${ss}deg)`;
-        });
+        // setInterval(()=> {
+        //     MMD.displayNextResource();
+        //     calcTimeTillPrayer();
+        // }, 60000);//60000
     });
 }

@@ -4,60 +4,102 @@
 <head>
     <title>IKRE</title>
     <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="clock.css">
 </head>
 
 <body>
-    <img class="background-image" src="./pictures/misc/background.jpg" alt="Background Image">
-    <div id="tableClockContainer">
-        <div>
-        <table id="prayerTable">
-            <tr>
-                <th>Zora</th>
-                <th>Izlazak Sunca</th>
-                <th>Podne</th>
-                <th>Ikindija</th>
-                <th>Aksam</th>
-                <th>Jacija</th>
-            </tr>
-            <tr>
-                <td id="p1"></td>
-                <td id="p11"></td>
-                <td id="p2"></td>
-                <td id="p3"></td>
-                <td id="p4"></td>
-                <td id="p5"></td>
-            </tr>
-        </table>
-        <div id="text-before-time">
-            vrijeme do ezana:   
-            <span id="time">    </span>   
+    <!-- <img class="background-image" src="./pictures/misc/background.jpg" alt="Background Image"> -->
+    <div class="all-content">
+        <div id="tableClockContainer" class="glass">
+            <div id="clock-container" class="bt-layout-middle">
+                <table id="bt-middle-table">
+                    <tbody>
+                        <tr>
+                            <td id="bt-top-line">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td id="time_text">17:57</td>
+                                            <td>
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="char1"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="digit1">0</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td>
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="char2"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="digit2">3</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="bt-bot-line">Saturday - November 25</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="prayerdiv">
+                <div class="sabah">
+                    <span>Sabah</span>
+                    <span>6:11</span>
+                </div>
+                <div class="izlazak">
+                    <span>Izl. Sunca</span>
+                    <span>7:22</span>
+                </div>
+                <div class="podne">
+                    <span>Podne</span>
+                    <span>12:00</span>
+                </div>
+                <div class="ikindija">
+                    <span>Ikindija</span>
+                    <span>15:00</span>
+                </div>
+                <div class="aksam">
+                    <span>Aksam</span>
+                    <span>17:00</span>
+                </div>
+                <div class="jacija">
+                    <span>Jacija</span>
+                    <span>19:00</span>
+                </div>
+
+            </div>
+            <span id="time"> </span>
         </div>
-    </div>
-        <div class="container">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="clock">
-            <div class="clock-bg">
-                <img src="pictures/misc/clock.png" alt="">
-            </div>
-            <div class="hour">
-                <span class="hr" id="hr"></span>
-            </div>
-            <div class="minute">
-                <span class="min" id="min"></span>
-            </div>
-            <div class="second">
-                <span class="sec" id="sec"></span>
+        <div id="header-img-footer-container">
+            <div id="header" class="">Dzemat Ikre Berlin</div>
+                <div id="img-container">
+                    <div id="narrow-img-container">
+                        <img id="narrow1" src="" class="fade-in-animation ">
+                        <img id="narrow2" src="" class="fade-in-animation ">
+                    </div>
+                    <img src="" id="broad" class="fade-in-animation ">
+                </div>
+            <div id="text-before-time" class="glass">
+                vrijeme do ezana:   
+                <span id="time"> 22 min</span>   
             </div>
         </div>
+        
     </div>
-    </div>
-    <div id="img-container">
-        <img id="narrow1" src="">
-        <img id="narrow2" src="">
-    </div>
-    <img src="" id="broad">
-    <video id="vid" src="" autoplay muted loop></video>
     <script type="module" src="dist/main.js"></script>
 </body>
 
