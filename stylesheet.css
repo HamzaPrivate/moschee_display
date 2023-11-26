@@ -21,22 +21,26 @@ body {
 } 
 .day {
     background: linear-gradient(to bottom, #00aaa2, #08456e);
-    & * {
-        color: white;
-    }
+}
+
+.day * {
+    color: white;
 }
 
  .night {
-    background: linear-gradient(to bottom, rgb(8, 19, 90), #010419); /* Dark blue to dark purple */    & * {
-        color: white;
-    }
+    background: linear-gradient(to bottom, rgb(8, 19, 90), #010419); /* Dark blue to dark purple */    
+}
+
+.night * {
+    color: white;
 }
 
 .sunrise {
     background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
-    & * {
-        color: black;
-    }
+}
+
+.sunrise * {
+    color: black;
 }
 
 .all-content {
