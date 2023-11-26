@@ -45,10 +45,10 @@ body {
     flex-direction: row;
     width: 99%;
     height: 100%;
+}
 
-    &>* {
-        flex: 1;
-    }
+.all-content > * {
+    flex: 1;
 }
 
 #header-img-footer-container {
@@ -56,14 +56,14 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
+}
 
-    & :first-child {
-        flex: 0.05;
-    }
+#header-img-footer-container:first-child {
+    flex: 0.05;
+}
 
-    & :nth-child(2) {
-        flex: 0.95;
-    }
+#header-img-footer-container:nth-child(2) {
+    flex: 0.95;
 }
 
 #header,
