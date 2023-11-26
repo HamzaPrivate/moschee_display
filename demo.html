@@ -5,9 +5,10 @@
     <title>IKRE</title>
     <link rel="stylesheet" href="stylesheet.css">
     <link rel="stylesheet" href="clock.css">
+    <!-- <link href='https://unpkg.com/css.gg@2.0.0/icons/css/stopwatch.css' rel='stylesheet'> -->
 </head>
 
-<body>
+<body class="night">
     <!-- <img class="background-image" src="./pictures/misc/background.jpg" alt="Background Image"> -->
     <div class="all-content">
         <div id="tableClockContainer" class="glass">
@@ -19,7 +20,7 @@
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <td id="time_text">17:57</td>
+                                            <td id="time_text">17:58</td>
                                             <td>
                                                 <table>
                                                     <tbody>
@@ -50,53 +51,56 @@
                             </td>
                         </tr>
                         <tr>
-                            <td id="bt-bot-line">Saturday - November 25</td>
+                            <td id="bt-bot-line">Četvrtak - 16. Novembar</td>
                         </tr>
                     </tbody>
                 </table>
+                <div id="text-before-time" class="glass">
+                    do ezana:   
+                    <span id="time" class="hightlight-red"> 22 min</span>   
+                </div>
             </div>
             <div class="prayerdiv">
-                <div class="sabah">
+                <div class="sabah ">
                     <span>Sabah</span>
                     <span>6:11</span>
                 </div>
-                <div class="izlazak">
+                <div class="izlazak ">
                     <span>Izl. Sunca</span>
                     <span>7:22</span>
                 </div>
-                <div class="podne">
+                <div class="podne selectedPrayer glass">
                     <span>Podne</span>
-                    <span>12:00</span>
+                    <span class="hightlight-red">12:00</span>
                 </div>
                 <div class="ikindija">
                     <span>Ikindija</span>
                     <span>15:00</span>
                 </div>
                 <div class="aksam">
-                    <span>Aksam</span>
+                    <span>Akšam</span>
                     <span>17:00</span>
                 </div>
                 <div class="jacija">
                     <span>Jacija</span>
                     <span>19:00</span>
                 </div>
+                <div class="dzuma">
+                    <span>Džuma</span>
+                    <span>13:00</span>
+                </div>
 
             </div>
-            <span id="time"> </span>
         </div>
         <div id="header-img-footer-container">
-            <div id="header" class="">Dzemat Ikre Berlin</div>
+            <div id="header" data-text="17:58" class="three-d">Džemat Ikre Berlin</div>
                 <div id="img-container">
                     <div id="narrow-img-container">
-                        <img id="narrow1" src="" class="fade-in-animation ">
-                        <img id="narrow2" src="" class="fade-in-animation ">
+                        <img id="narrow1" src="" class="fade-in-animation shadow">
+                        <img id="narrow2" src="" class="fade-in-animation shadow">
                     </div>
-                    <img src="" id="broad" class="fade-in-animation ">
+                    <img src="" id="broad" class="fade-in-animation shadow">
                 </div>
-            <div id="text-before-time" class="glass">
-                vrijeme do ezana:   
-                <span id="time"> 22 min</span>   
-            </div>
         </div>
         
     </div>

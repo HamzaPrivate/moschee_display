@@ -1,11 +1,11 @@
-.background-image {
+/* .background-image {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
-}
+} */
 
 body {
     font-size: xx-large;
@@ -18,6 +18,25 @@ body {
     background-color: black;
     color: white;
     font-family: Syncopate !important;
+} 
+.day {
+    background: linear-gradient(to bottom, #00aaa2, #08456e);
+    & * {
+        color: white;
+    }
+}
+
+ .night {
+    background: linear-gradient(to bottom, rgb(8, 19, 90), #010419); /* Dark blue to dark purple */    & * {
+        color: white;
+    }
+}
+
+.sunrise {
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+    & * {
+        color: black;
+    }
 }
 
 .all-content {
@@ -25,7 +44,7 @@ body {
     justify-content: center;
     flex-direction: row;
     width: 99vw;
-    height: 99vh;
+    height: 100vh;
 
     &>* {
         flex: 1;
@@ -37,45 +56,65 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
+
     & :first-child {
-        flex: 0.1;
+        flex: 0.05;
     }
+
     & :nth-child(2) {
         flex: 0.95;
     }
-    & :last-child {
-        flex: 0.05;
-    }
 }
 
-#header, #text-before-time{
+#header,
+#text-before-time {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 5em; /* Adjust the font size for the time */
+    /* Adjust the font size for the time */
     font-weight: bold;
+    white-space: nowrap;
+}
+
+#header {
+    position: relative;
+    font-size: 2.5em;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 36%;
+        top: 50%;
+        height: 5px; /* Adjust the line height as needed */
+        width: 200px; /* Adjust the line length as needed */
+        background-color: white; /* Adjust the line color as needed */
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        right: 36%;
+        top: 50%;
+        height: 5px; /* Adjust the line height as needed */
+        width: 200px; /* Adjust the line length as needed */
+        background-color: white; /* Adjust the line color as needed */
+    }
 }
 
 #text-before-time {
-    transform: translateY(1.5vh);
-    display: flex;
-    justify-content: center;
-    color: white;
+    font-weight: lighter;
+    margin-top: 15%;
+    width: 78%;
+    border-radius: 15px;
 }
 
 #time {
-    white-space: pre;
-    color: red;
+    margin-left: 5%;
 }
 
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
+.hightlight-red {
+    white-space: nowrap;
+    color: red;
 }
 
 #img-container {
@@ -98,7 +137,8 @@ body {
     justify-content: center;
     position: absolute;
     width: 49%;
-    height: 95%;
+    height: 97%;
+
     & :first-child {
         margin-right: 2%;
     }
@@ -109,9 +149,6 @@ body {
         min-height: 100%;
         max-width: 100%;
         max-height: 100%;
-        border: 2px solid;
-        border-color: #926c2f;
-        box-shadow: 5px 5px 5px #ffffff;
     }
 }
 
@@ -120,16 +157,11 @@ body {
     max-width: 100%;
     max-height: 100%;
     width: 100%;
-    height: auto;
-    
-    /* Optional: Maintain aspect ratio and fit within the space */
-    border: 11px solid;
-    border-color: #ffffff;
-    box-shadow: 11px 11px 11x #ffffff;
+    height: 97%;
 }
 
 #tableClockContainer {
-    margin: 33px;
+    margin-right: 33px;
     font-size: 100px;
     display: flex;
     flex-direction: column;
@@ -138,27 +170,29 @@ body {
     max-width: 25%;
 }
 
+
 .prayerdiv {
     display: flex;
     flex-direction: column;
     width: 75%;
     height: 100%;
+    &>* {
+        padding: 2%;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        border-bottom: 1px solid;
+    }
+
+    &>*:last-child {
+        border-bottom: none;
+        margin-bottom: 10%;
+    }
 }
 
-.sabah,
-.izlazak,
-.podne,
-.ikindija,
-.aksam,
-.jacija {
-    /* border: 1px solid black; Add a border for visibility */
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-}
 
 .fade-in-animation {
     animation-name: fadeIn;
@@ -168,9 +202,26 @@ body {
 
 .glass {
     background: rgba(255, 255, 255, 0.1);
-    /* Adjust the alpha (fourth value) for transparency */
-    border-radius: 60px;
-    /* Optional: Add rounded corners */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(1px);
 }
+
+.shadow{
+    border: 11px solid;
+    /* border-color: black; */
+    box-shadow: 5px 4px 25px 2px #000000; /* Adjust the shadow properties as needed */
+}
+
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+  
