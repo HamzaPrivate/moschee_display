@@ -84,7 +84,7 @@ body {
 #header::before {
     content: "";
     position: absolute;
-    left: 36%;
+    left: 77%;
     top: 50%;
     height: 5px; /* Adjust the line height as needed */
     width: 200px; /* Adjust the line length as needed */
@@ -94,7 +94,7 @@ body {
 #header::after {
     content: "";
     position: absolute;
-    right: 36%;
+    right: 77%;
     top: 50%;
     height: 5px; /* Adjust the line height as needed */
     width: 200px; /* Adjust the line length as needed */
@@ -138,10 +138,6 @@ body {
     position: absolute;
     width: 49%;
     height: 97%;
-}
-
-#narrow-img-container:first-child {
-    margin-right: 2%;
 }
 
 #narrow-img-container>* {
@@ -207,7 +203,7 @@ body {
 }
 
 .shadow{
-    border: 11px solid;
+    border: 3px solid;
     /* border-color: black; */
     box-shadow: 5px 4px 25px 2px #000000; /* Adjust the shadow properties as needed */
 }
