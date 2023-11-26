@@ -1,4 +1,4 @@
-var imageContainer = document.getElementById("img-container")!;
+var imageContainer = document.getElementById("narrow-img-container")!;
 var broadImg = document.getElementById("broad") as HTMLImageElement;
 var narrow1 = document.getElementById("narrow1") as HTMLImageElement;
 var narrow2 = document.getElementById("narrow2") as HTMLImageElement;
@@ -93,14 +93,14 @@ export function displayVideo(): void {
 */
 export function displayBroadImage(): void {
     imageContainer.style.display = "none";
-    video.style.display = "none";
+    // video.style.display = "none";
     broadImg.src = broadSources[broadIndex];
     let bStyle = broadImg.style;
-    bStyle.border = "5px solid";
-    bStyle.borderColor = "#926c2f";
-    bStyle.boxShadow = "11px 11px 11px #6f4e18";
-    bStyle.animationTimingFunction = "ease-in-out";
-    bStyle.animationDuration = "1.5s"
+    // bStyle.border = "5px solid";
+    // bStyle.borderColor = "#926c2f";
+    // bStyle.boxShadow = "11px 11px 11px #6f4e18";
+    // bStyle.animationTimingFunction = "ease-in-out";
+    // bStyle.animationDuration = "1.5s"
     bStyle.display = "unset"
     broadIndex = getNewPicIndex(broadSources, broadIndex);
 }
@@ -109,9 +109,8 @@ export function displayBroadImage(): void {
 * Displays a double image in the image container while hiding the video and other elements.
 */
 export function displayDoubleImage() {
-    video.style.display = "none";
-    let bStyle = broadImg.style;
-    bStyle.display = "none";
+    // video.style.display = "none";
+    broadImg.style.display = "none";
     broadImg.src = "";
     imageContainer.style.display = "flex";
     narrow1.src = narrow1Sources[narrow1Index];
