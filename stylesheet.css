@@ -105,20 +105,20 @@ body {
 #header {
     position: relative;
     font-size: 1.5em;
-    color: #000; /* Initial color (black) */
-    animation: textcolor 4s linear infinite alternate;
+    color: white;
+    /* animation: textcolor 4s linear infinite alternate; */
     display: inline-block;
     text-align: center;
 }
 
-@keyframes textcolor {
+/* @keyframes textcolor {
     from {
-        color: #000; /* Initial color (black) */
+        color: #000; 
     }
     to {
-        color: #fff; /* Final color (white) */
+        color: #fff;
     }
-}
+} */
 
 /* @keyframes textclip {
     to {
@@ -126,7 +126,7 @@ body {
     }
 } */
 
-#header::before {
+/* #header::before {
     content: "";
     position: absolute;
     left: 67%;
@@ -144,7 +144,7 @@ body {
     height: 5px;
     width: 100px;
     background-color: white;
-}
+} */
 
 #text-before-time {
     font-weight: lighter;
