@@ -110,7 +110,7 @@ body {
     background-size: 200% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: textclip 4s linear infinite;
+    animation: textclip 2s linear infinite;
     display: inline-block;
     text-align: center;
 }
@@ -189,11 +189,10 @@ body {
     max-width: 25%;
 }
 
-
 .prayerdiv {
     display: flex;
     flex-direction: column;
-    width: 75%;
+    width: 85%;
     height: 100%;
 }
 
@@ -208,7 +207,10 @@ body {
     border-bottom: 1px solid;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    font-size: x-large;
+}
+
+.prayerdiv * {
+    font-size: 25px !important;
 }
 
 .prayerdiv > * > *{
