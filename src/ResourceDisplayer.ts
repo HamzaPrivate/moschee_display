@@ -96,11 +96,7 @@ export function displayBroadImage(): void {
     // video.style.display = "none";
     broadImg.src = broadSources[broadIndex];
     let bStyle = broadImg.style;
-    // bStyle.border = "5px solid";
-    // bStyle.borderColor = "#926c2f";
-    // bStyle.boxShadow = "11px 11px 11px #6f4e18";
-    // bStyle.animationTimingFunction = "ease-in-out";
-    // bStyle.animationDuration = "1.5s"
+
     bStyle.display = "unset"
     broadIndex = getNewPicIndex(broadSources, broadIndex);
 }
