@@ -77,10 +77,10 @@ function calcTimeTillPrayer() {
         time.textContent = ` ${hours}h:${minutes}min`;
     let todayStr = "" + currentDate;
     //edgecases morning prayer and friday prayer
-    // if ((currentHour >= 0 && currentHour < 9) || (todayStr.includes("Fri") && currentHour <= 14)) {
-    //     time.textContent = "";
-    //     document.getElementById("text-before-time")!.textContent! = "";
-    // }
+    if ((currentHour >= 0 && currentHour < 9) || (todayStr.includes("Fri") && currentHour <= 14)) {
+        time.textContent = "";
+        document.getElementById("text-before-time").textContent = "";
+    }
 }
 exports.calcTimeTillPrayer = calcTimeTillPrayer;
 function intiateDatum() {
