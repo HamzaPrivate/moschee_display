@@ -62,9 +62,11 @@ function main() {
         yield (0, PrayerTable_1.initiatePrayerTable)();
         initiateDatum();
         (0, PrayerTable_1.calcTimeTillPrayer)();
+        adaptBackground();
         setInterval(() => {
             MMD.displayNextResource();
             (0, PrayerTable_1.calcTimeTillPrayer)();
+            adaptBackground();
         }, 60000); //60000
         setInterval(() => {
             //increment time
@@ -82,6 +84,35 @@ function main() {
             digit1.textContent = `${addZero(date.getSeconds())}`;
         }, 1000); //60000
     });
+}
+function adaptBackground() {
+    const bg = document.querySelector("body").classList;
+    const time = new Date();
+    const hour = time.getHours();
+    if (hour >= 0 && hour < 6) {
+        bg.remove("day");
+        bg.remove("evening");
+        bg.remove("night");
+        bg.add("night");
+    }
+    else if (hour >= 6 && hour < 12) {
+        bg.remove("day");
+        bg.remove("evening");
+        bg.remove("night");
+        bg.add("sunrise");
+    }
+    else if (hour >= 12 && hour < 18) {
+        bg.remove("day");
+        bg.remove("evening");
+        bg.remove("night");
+        bg.add("day");
+    }
+    else if (hour >= 18 && hour < 24) {
+        bg.remove("day");
+        bg.remove("evening");
+        bg.remove("night");
+        bg.add("night");
+    }
 }
 function initiateDatum() {
     const date = new Date();
