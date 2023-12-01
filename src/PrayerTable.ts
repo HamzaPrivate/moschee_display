@@ -17,7 +17,7 @@ var textCol = prayerTable[0].style.color;
 export async function initiatePrayerTable() {
     const prayerTimes = await getTodaysPrayerTimes();
     //injecting prayer times into the table
-    console.log(prayerTimes);
+    // console.log(prayerTimes);
     if (prayerTable && prayerTimes) {
         for (let i = 0; i < prayerTimes.length; i++) {
             console.log(prayerTable[i]);
@@ -37,7 +37,7 @@ export async function initiatePrayerTable() {
 */
 export function calcTimeTillPrayer() {
     const currentDate = new Date();
-    console.log(currentDate);
+    // console.log(currentDate);
     const currentHour = currentDate.getHours();
     const currentMinute = currentDate.getMinutes();
 

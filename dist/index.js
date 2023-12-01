@@ -43,8 +43,7 @@ const PrayerTable_1 = require("./PrayerTable");
 setTimeout(() => window.location.reload(), PrayerTable_1.timeUntilMidnight + 60000);
 const digit1 = document.querySelector("#digit1");
 const timeText = document.querySelector("#time_text");
-// Request a screen wake lock
-if ('wakeLock' in navigator) {
+if ('wakeLock' in navigator && 'request' in navigator.wakeLock) {
     navigator.wakeLock.request('screen')
         .then((wakeLock) => {
         console.log('Screen wake lock is active!');
@@ -54,6 +53,9 @@ if ('wakeLock' in navigator) {
         .catch((error) => {
         console.error('Failed to acquire screen wake lock:', error);
     });
+}
+else {
+    console.warn('Wake Lock API or request method is not supported in this browser.');
 }
 main();
 function main() {
@@ -72,7 +74,6 @@ function main() {
             //increment time
             const date = new Date();
             const seconds = date.getSeconds();
-            console.log(seconds);
             if (seconds == 0) {
                 const minutes = date.getMinutes();
                 timeText.textContent = `${addZero(date.getHours())}:${addZero(minutes)}`;

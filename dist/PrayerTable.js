@@ -26,7 +26,7 @@ function initiatePrayerTable() {
     return __awaiter(this, void 0, void 0, function* () {
         const prayerTimes = yield (0, PrayerTimes_1.getTodaysPrayerTimes)();
         //injecting prayer times into the table
-        console.log(prayerTimes);
+        // console.log(prayerTimes);
         if (prayerTable && prayerTimes) {
             for (let i = 0; i < prayerTimes.length; i++) {
                 console.log(prayerTable[i]);
@@ -48,7 +48,7 @@ exports.initiatePrayerTable = initiatePrayerTable;
 function calcTimeTillPrayer() {
     var _a;
     const currentDate = new Date();
-    console.log(currentDate);
+    // console.log(currentDate);
     const currentHour = currentDate.getHours();
     const currentMinute = currentDate.getMinutes();
     currentDate.setHours(currentHour, currentMinute, 0);
