@@ -100,30 +100,45 @@ function initiateDatum() {
 }
 function mapToBosnianMonth(month) {
     switch (month) {
-        case "Januar": return "Januar";
-        case "Februar": return "Februar";
-        case "März": return "Mart";
+        case "Januar":
+        case "January": return "Januar";
+        case "Februar":
+        case "February": return "Februar";
+        case "März":
+        case "March": return "Mart";
         case "April": return "April";
-        case "Mai": return "Maj";
-        case "Juni": return "Juni";
-        case "Juli": return "Juli";
+        case "Mai":
+        case "May": return "Maj";
+        case "Juni":
+        case "June": return "Juni";
+        case "Juli":
+        case "July": return "Juli";
         case "August": return "August";
         case "September": return "Septembar";
-        case "Oktober": return "Oktobar";
+        case "Oktober":
+        case "October": return "Oktobar";
         case "November": return "Novembar";
-        case "Dezember": return "Decembar";
+        case "Dezember":
+        case "December": return "Decembar";
         default: return "";
     }
 }
 function mapToBosnianDay(day) {
     switch (day) {
-        case "Montag": return "Ponedjeljak";
-        case "Dienstag": return "Utorak";
-        case "Mittwoch": return "Srijeda";
-        case "Donnerstag": return "Četvrtak";
-        case "Freitag": return "Petak";
-        case "Samstag": return "Subota";
-        case "Sonntag": return "Nedjelja";
+        case "Montag":
+        case "Monday": return "Ponedjeljak";
+        case "Dienstag":
+        case "Tuesday": return "Utorak";
+        case "Mittwoch":
+        case "Wednesday": return "Srijeda";
+        case "Donnerstag":
+        case "Thursday": return "Četvrtak";
+        case "Freitag":
+        case "Friday": return "Petak";
+        case "Samstag":
+        case "Saturday": return "Subota";
+        case "Sonntag":
+        case "Sunday": return "Nedjelja";
         default: return "";
     }
 }
