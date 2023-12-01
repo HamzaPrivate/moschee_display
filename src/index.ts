@@ -18,20 +18,6 @@ setTimeout(() => window.location.reload(), timeUntilMidnight + 60000);
 const digit1 = document.querySelector("#digit1");
 const timeText = document.querySelector("#time_text");
 
-if ('wakeLock' in navigator && 'request' in navigator.wakeLock) {
-    navigator.wakeLock.request('screen')
-        .then((wakeLock) => {
-            console.log('Screen wake lock is active!');
-
-            // You can release the wake lock when it's no longer needed
-            //wakeLock.release();
-        })
-        .catch((error) => {
-            console.error('Failed to acquire screen wake lock:', error);
-        });
-} else {
-    console.warn('Wake Lock API or request method is not supported in this browser.');
-}
 
 
 main();
@@ -63,6 +49,15 @@ async function main() {
 
         digit1!.textContent = `${addZero(date.getSeconds())}`;
     }, 1000);//60000
+    if ('wakeLock' in navigator && 'request' in navigator.wakeLock) {
+        try {
+            await navigator.wakeLock.request('screen');
+        } catch(err) {
+           console.log(err);
+        }
+    } else {
+        console.warn('Wake Lock API or request method is not supported in this browser.');
+    }
 
 }
 

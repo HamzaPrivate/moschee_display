@@ -7,6 +7,7 @@ var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 export const timeUntilMidnight = midnight.getTime() - now.getTime();
 const prayerTable = document.getElementsByClassName("namaztime") as HTMLCollectionOf<HTMLSpanElement>;
 var textCol = prayerTable[0].style.color;
+var toEzan = document.getElementById("text-before-time")!;
 
 
 /**
@@ -55,6 +56,10 @@ export function calcTimeTillPrayer() {
             cells[i].style.color = "red";
             cells[i].parentElement!.classList.add("glass");
             break;
+        }
+        else if (i == cells.length - 1) {
+            cells[0].style.color = "red";
+            cells[0].parentElement!.classList.add("glass");
         }
     }
     //calculate time difference
