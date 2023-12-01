@@ -1,7 +1,13 @@
 import * as MMD from './ResourceDisplayer';
-import { calcTimeTillPrayer, initiatePrayerTable, intiateDatum, timeUntilMidnight } from './PrayerTable';
+import { adaptBackground, calcTimeTillPrayer, initiatePrayerTable, timeUntilMidnight } from './PrayerTable';
 import { time } from 'console';
+import NoSleep from 'nosleep.js';
 
+var noSleep = new NoSleep();
+document.addEventListener('click', function enableNoSleep() {
+    document.removeEventListener('click', enableNoSleep, false);
+    noSleep.enable();
+  }, false);
 //page reload on table click
 document.querySelector("table")?.addEventListener("click", () => {
     window.location.reload();
@@ -58,36 +64,6 @@ async function main() {
         digit1!.textContent = `${addZero(date.getSeconds())}`;
     }, 1000);//60000
 
-}
-
-function adaptBackground() {
-    const bg = document.querySelector("body")!.classList;
-    const time = new Date();
-    const hour = time.getHours();
-    if(hour >= 0 && hour < 6) {
-        bg.remove("day");
-        bg.remove("evening");
-        bg.remove("night");
-        bg.add("night");
-    }
-    else if(hour >= 6 && hour < 12) {
-        bg.remove("day");
-        bg.remove("evening");
-        bg.remove("night");
-        bg.add("sunrise");
-    }
-    else if(hour >= 12 && hour < 18) {
-        bg.remove("day");
-        bg.remove("evening");
-        bg.remove("night");
-        bg.add("day");
-    }
-    else if(hour >= 18 && hour < 24) {
-        bg.remove("day");
-        bg.remove("evening");
-        bg.remove("night");
-        bg.add("night");
-    }
 }
 
 function initiateDatum(){

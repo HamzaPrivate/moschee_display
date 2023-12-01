@@ -31,10 +31,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 const MMD = __importStar(require("./ResourceDisplayer"));
 const PrayerTable_1 = require("./PrayerTable");
+const nosleep_js_1 = __importDefault(require("nosleep.js"));
+var noSleep = new nosleep_js_1.default();
+document.addEventListener('click', function enableNoSleep() {
+    document.removeEventListener('click', enableNoSleep, false);
+    noSleep.enable();
+}, false);
 //page reload on table click
 (_a = document.querySelector("table")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
     window.location.reload();
@@ -64,11 +73,11 @@ function main() {
         yield (0, PrayerTable_1.initiatePrayerTable)();
         initiateDatum();
         (0, PrayerTable_1.calcTimeTillPrayer)();
-        adaptBackground();
+        (0, PrayerTable_1.adaptBackground)();
         setInterval(() => {
             MMD.displayNextResource();
             (0, PrayerTable_1.calcTimeTillPrayer)();
-            adaptBackground();
+            (0, PrayerTable_1.adaptBackground)();
         }, 60000); //60000
         setInterval(() => {
             //increment time
@@ -85,35 +94,6 @@ function main() {
             digit1.textContent = `${addZero(date.getSeconds())}`;
         }, 1000); //60000
     });
-}
-function adaptBackground() {
-    const bg = document.querySelector("body").classList;
-    const time = new Date();
-    const hour = time.getHours();
-    if (hour >= 0 && hour < 6) {
-        bg.remove("day");
-        bg.remove("evening");
-        bg.remove("night");
-        bg.add("night");
-    }
-    else if (hour >= 6 && hour < 12) {
-        bg.remove("day");
-        bg.remove("evening");
-        bg.remove("night");
-        bg.add("sunrise");
-    }
-    else if (hour >= 12 && hour < 18) {
-        bg.remove("day");
-        bg.remove("evening");
-        bg.remove("night");
-        bg.add("day");
-    }
-    else if (hour >= 18 && hour < 24) {
-        bg.remove("day");
-        bg.remove("evening");
-        bg.remove("night");
-        bg.add("night");
-    }
 }
 function initiateDatum() {
     const date = new Date();

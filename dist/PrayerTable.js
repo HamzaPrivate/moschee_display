@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.intiateDatum = exports.calcTimeTillPrayer = exports.initiatePrayerTable = exports.timeUntilMidnight = void 0;
+exports.adaptBackground = exports.calcTimeTillPrayer = exports.initiatePrayerTable = exports.timeUntilMidnight = void 0;
 const PrayerTimes_1 = require("./PrayerTimes");
 var time = document.getElementById("time");
 var now = new Date();
@@ -83,7 +83,33 @@ function calcTimeTillPrayer() {
     }
 }
 exports.calcTimeTillPrayer = calcTimeTillPrayer;
-function intiateDatum() {
-    //TODO: add date
+function adaptBackground() {
+    const bg = document.querySelector("body").classList;
+    const time = new Date();
+    const hour = time.getHours();
+    if (hour >= 0 && hour < 6) {
+        bg.remove("day");
+        bg.remove("evening");
+        bg.remove("night");
+        bg.add("night");
+    }
+    else if (hour >= 6 && hour < 12) {
+        bg.remove("day");
+        bg.remove("evening");
+        bg.remove("night");
+        bg.add("sunrise");
+    }
+    else if (hour >= 12 && hour < 18) {
+        bg.remove("day");
+        bg.remove("evening");
+        bg.remove("night");
+        bg.add("day");
+    }
+    else if (hour >= 18 && hour < 24) {
+        bg.remove("day");
+        bg.remove("evening");
+        bg.remove("night");
+        bg.add("night");
+    }
 }
-exports.intiateDatum = intiateDatum;
+exports.adaptBackground = adaptBackground;
