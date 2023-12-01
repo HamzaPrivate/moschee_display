@@ -106,21 +106,40 @@ body {
     position: relative;
     font-size: 1.5em;
     color: #fff;
-    background: linear-gradient(-225deg, black, white);
+    /* background: linear-gradient(-225deg, black, white);
     background-size: 200% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: textclip 2s linear infinite;
-    display: inline-block;
+    display: inline-block; */
     text-align: center;
 }
 
-@keyframes textclip {
+/* @keyframes textclip {
     to {
         background-position: 200% center;
     }
+} */
+
+#header::before {
+    content: "";
+    position: absolute;
+    left: 67%;
+    top: 50%;
+    height: 5px; /* Adjust the line height as needed */
+    width: 100px; /* Adjust the line length as needed */
+    background-color: white; /* Adjust the line color as needed */
 }
 
+#header::after {
+    content: "";
+    position: absolute;
+    right: 67%;
+    top: 50%;
+    height: 5px; /* Adjust the line height as needed */
+    width: 100px; /* Adjust the line length as needed */
+    background-color: white; /* Adjust the line color as needed */
+}
 
 #text-before-time {
     font-weight: lighter;
