@@ -105,14 +105,19 @@ body {
 #header {
     position: relative;
     font-size: 1.5em;
-    color: #fff;
-    /* background: linear-gradient(-225deg, black, white);
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: textclip 2s linear infinite;
-    display: inline-block; */
+    color: #000; /* Initial color (black) */
+    animation: textcolor 4s linear infinite alternate;
+    display: inline-block;
     text-align: center;
+}
+
+@keyframes textcolor {
+    from {
+        color: #000; /* Initial color (black) */
+    }
+    to {
+        color: #fff; /* Final color (white) */
+    }
 }
 
 /* @keyframes textclip {
@@ -126,9 +131,9 @@ body {
     position: absolute;
     left: 67%;
     top: 50%;
-    height: 5px; /* Adjust the line height as needed */
-    width: 100px; /* Adjust the line length as needed */
-    background-color: white; /* Adjust the line color as needed */
+    height: 5px;
+    width: 100px; 
+    background-color: white;
 }
 
 #header::after {
@@ -136,9 +141,9 @@ body {
     position: absolute;
     right: 67%;
     top: 50%;
-    height: 5px; /* Adjust the line height as needed */
-    width: 100px; /* Adjust the line length as needed */
-    background-color: white; /* Adjust the line color as needed */
+    height: 5px;
+    width: 100px;
+    background-color: white;
 }
 
 #text-before-time {
