@@ -122,25 +122,25 @@ function adaptBackground() {
     const hour = time.getHours();
     if (hour >= 0 && hour < 6) {
         bg.remove("day");
-        bg.remove("evening");
+        bg.remove("sunrise");
         bg.remove("night");
         bg.add("night");
     }
     else if (hour >= 6 && hour < 12) {
         bg.remove("day");
-        bg.remove("evening");
+        bg.remove("sunrise");
         bg.remove("night");
         bg.add("sunrise");
     }
     else if (hour >= 12 && hour < 18) {
         bg.remove("day");
-        bg.remove("evening");
+        bg.remove("sunrise");
         bg.remove("night");
         bg.add("day");
     }
     else if (hour >= 18 && hour < 24) {
         bg.remove("day");
-        bg.remove("evening");
+        bg.remove("sunrise");
         bg.remove("night");
         bg.add("night");
     }
