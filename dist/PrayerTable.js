@@ -110,7 +110,8 @@ function calcTimeTillPrayer() {
         time.textContent = ` ${hours}h:${minutes}min`;
     let todayStr = "" + currentDate;
     //edgecases morning prayer and friday prayer
-    if ((currentHour >= 0 && currentHour < 9) || (todayStr.includes("Fri") && currentHour <= 14)) {
+    console.log(currentHour);
+    if ((currentHour >= 0 && currentHour < 9) || (todayStr.includes("Fri") && currentHour <= 14 || time.textContent.trim() == "0min")) {
         time.textContent = "";
         document.getElementById("text-before-time").textContent = "";
     }
