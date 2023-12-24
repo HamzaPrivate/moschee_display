@@ -284,5 +284,13 @@ body {
     }
 }
 
+@media screen and (max-width: 999px) {
+    #tableClockContainer {
+        max-width: 100vw;
+        margin-left: 85%;
+    }
+    
+}
+
 
 
