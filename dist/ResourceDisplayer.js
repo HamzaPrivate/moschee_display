@@ -7,7 +7,7 @@ var narrow1 = document.getElementById("narrow1");
 var narrow2 = document.getElementById("narrow2");
 var video = document.getElementById("vid");
 const path = "pictures/narrow/";
-var narrow1Sources = [`${path}n0.jpeg`, `${path}n1.jpeg`, `${path}n5.jpeg, ${path}n6.jpeg`];
+var narrow1Sources = [`${path}n0.jpeg`, `${path}n1.jpeg`, `${path}n5.jpeg`, ` ${path}n6.jpeg`];
 var narrow2Sources = [`${path}n2.jpeg`, `${path}n3.jpeg`, `${path}n4.jpeg`];
 var broadSources = [`pictures/broad/b0.jpeg`, `pictures/broad/b1.jpeg`]; //broad video sources possible
 //2 narrow pictures fit on the display
