@@ -3,4 +3,3 @@ Gebetszeiten anzuzeigen, sowie die verbleibende Zeit bis zum nächsten Gebet. Au
 
 Website unter: https://hamzaprivate.github.io/moschee_display/demo.html
 (nicht für mobile konzipiert)
-![alt text](how_it_looks_like.JPG)
