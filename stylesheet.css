@@ -1,14 +1,19 @@
-/* .background-image {
+:root{
+    --light-shadow: #77571d;
+    --dark-shadow: #3e2904;
+}
+
+.background-image {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
-} */
+}
 
 body {
-    font-size: xx-large;
+    font-size: x-large;
     margin: 0;
     padding: 0;
     width: 100vw;
@@ -18,52 +23,74 @@ body {
     background-color: black;
     color: white;
     font-family: Syncopate !important;
+  
 } 
 .day {
-    background: linear-gradient(to bottom, #00aaa2, #08456e);
-    & * {
-        color: white;
-    }
+    background: linear-gradient(to bottom, rgba(0, 170, 162, 1), rgba(8, 69, 110, 1));
 }
 
- .night {
-    background: linear-gradient(to bottom, rgb(8, 19, 90), #010419); /* Dark blue to dark purple */    & * {
-        color: white;
-    }
+.day * {
+    color: white;
+}
+
+.night {
+    background: linear-gradient(to bottom, rgb(8, 19, 90), #010419); /* Dark blue to dark purple */    
+}
+
+.night * {
+    color: white;
 }
 
 .sunrise {
     background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
-    & * {
-        color: black;
-    }
+}
+
+.sunrise * {
+    color: black;
 }
 
 .all-content {
     display: flex;
     justify-content: center;
     flex-direction: row;
-    width: 99vw;
-    height: 100vh;
-
-    &>* {
-        flex: 1;
-    }
+    width: 100%;
+    height: 100%;
 }
+
+.all-content > * {
+    flex: 1;
+    margin-right: 1%;
+}
+
+#bt-top-line {
+    font-size: 1.5em !important;
+    border-radius: 15px 15px 0 0;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(1px);
+}
+
+#bt-bot-line {
+    border-radius: 0 0 15px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(1px);
+}
+
 
 #header-img-footer-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
+}
 
-    & :first-child {
-        flex: 0.05;
-    }
+#header-img-footer-container:first-child {
+    flex: 0.05;
+}
 
-    & :nth-child(2) {
-        flex: 0.95;
-    }
+#header-img-footer-container:nth-child(2) {
+    flex: 0.95;
 }
 
 #header,
@@ -75,44 +102,60 @@ body {
     font-weight: bold;
     white-space: nowrap;
 }
-
 #header {
     position: relative;
-    font-size: 2.5em;
-
-    &::before {
-        content: "";
-        position: absolute;
-        left: 36%;
-        top: 50%;
-        height: 5px; /* Adjust the line height as needed */
-        width: 200px; /* Adjust the line length as needed */
-        background-color: white; /* Adjust the line color as needed */
-    }
-
-    &::after {
-        content: "";
-        position: absolute;
-        right: 36%;
-        top: 50%;
-        height: 5px; /* Adjust the line height as needed */
-        width: 200px; /* Adjust the line length as needed */
-        background-color: white; /* Adjust the line color as needed */
-    }
+    font-size: 1.5em;
+    color: white;
+    /* animation: textcolor 4s linear infinite alternate; */
+    display: inline-block;
+    text-align: center;
 }
+
+/* @keyframes textcolor {
+    from {
+        color: #000; 
+    }
+    to {
+        color: #fff;
+    }
+} */
+
+/* @keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+} */
+
+/* #header::before {
+    content: "";
+    position: absolute;
+    left: 67%;
+    top: 50%;
+    height: 5px;
+    width: 100px; 
+    background-color: white;
+}
+
+#header::after {
+    content: "";
+    position: absolute;
+    right: 67%;
+    top: 50%;
+    height: 5px;
+    width: 100px;
+    background-color: white;
+} */
 
 #text-before-time {
     font-weight: lighter;
     margin-top: 15%;
     width: 78%;
-    border-radius: 15px;
+    border-radius: 8px;
+    width: 75%;
 }
 
 #time {
     margin-left: 5%;
-}
-
-.hightlight-red {
     white-space: nowrap;
     color: red;
 }
@@ -126,10 +169,10 @@ body {
     max-height: 100%;
     width: 100%;
     height: 100%;
+}
 
-    & * {
-        border-radius: 60px;
-    }
+#img-container * {
+    border-radius: 60px;
 }
 
 #narrow-img-container {
@@ -138,18 +181,18 @@ body {
     position: absolute;
     width: 49%;
     height: 97%;
+}
 
-    & :first-child {
-        margin-right: 2%;
-    }
+#narrow-img-container>* {
+    flex: 1;
+    min-width: 100%;
+    min-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
 
-    &>* {
-        flex: 1;
-        min-width: 100%;
-        min-height: 100%;
-        max-width: 100%;
-        max-height: 100%;
-    }
+#narrow-img-container>*:first-child {
+    margin-right: 1%;
 }
 
 #broad {
@@ -162,7 +205,7 @@ body {
 
 #tableClockContainer {
     margin-right: 33px;
-    font-size: 100px;
+    font-size: xx-large;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -170,29 +213,46 @@ body {
     max-width: 25%;
 }
 
-
 .prayerdiv {
     display: flex;
     flex-direction: column;
-    width: 75%;
+    width: 85%;
     height: 100%;
-    &>* {
-        padding: 2%;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        text-align: center;
-        border-bottom: 1px solid;
-    }
-
-    &>*:last-child {
-        border-bottom: none;
-        margin-bottom: 10%;
-    }
 }
 
+.prayerdiv > * {
+    padding: 2%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.prayerdiv * {
+    font-size: 25px !important;
+}
+
+.prayerdiv > * > *{
+    width: 33%;
+}
+
+.arabic-namaz-name{
+    text-align: end;
+}
+
+.bosnian-namaz-name{
+    text-align: start;
+}
+
+.prayerdiv > *:last-child {
+    border-bottom: none;
+    margin-bottom: 10%;
+}
 
 .fade-in-animation {
     animation-name: fadeIn;
@@ -207,7 +267,7 @@ body {
 }
 
 .shadow{
-    border: 11px solid;
+    border: 3px solid;
     /* border-color: black; */
     box-shadow: 5px 4px 25px 2px #000000; /* Adjust the shadow properties as needed */
 }
@@ -224,4 +284,13 @@ body {
     }
 }
 
-  
+@media screen and (max-width: 999px) {
+    #tableClockContainer {
+        max-width: 100vw;
+        margin-left: 85%;
+    }
+    
+}
+
+
+
