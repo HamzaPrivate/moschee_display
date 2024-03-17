@@ -6,7 +6,7 @@ var video = document.getElementById("vid") as HTMLVideoElement;
 
 const path = "pictures/narrow/";
 var narrow1Sources = [`${path}n0.jpeg`,` ${path}n6.jpeg`, `${path}n7.jpeg`, `${path}n8.jpeg`];
-var narrow2Sources = [`${path}n2.jpeg`,`${path}n3.jpeg`, `${path}n4.jpeg`];
+var narrow2Sources = [`${path}n2.jpeg`,`${path}n3.jpeg`, `${path}n4.jpeg`, `${path}n1.jpeg`];
 var broadSources = [`pictures/broad/b0.jpeg`, `pictures/broad/b1.jpeg`];//broad video sources possible
 
 //2 narrow pictures fit on the display
