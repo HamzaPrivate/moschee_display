@@ -124,11 +124,14 @@ function adaptBackground() {
         else if (hours >= 5 && hours < 8) {
             bg.style.backgroundImage = "url('pictures/broad/early.webp')";
         }
-        else if (hours >= 8 && hours < 18) {
+        else if (hours >= 8 && hours < 17) {
             bg.style.backgroundImage = "url('pictures/broad/mid.webp')";
         }
-        else if (hours >= 18 && hours < 24) {
+        else if (hours >= 17 && hours < 20) {
             bg.style.backgroundImage = "url('pictures/broad/late.webp')";
+        }
+        else if (hours >= 20 && hours < 24) {
+            bg.style.backgroundImage = "url('pictures/broad/night.webp')";
         }
     }
 }
