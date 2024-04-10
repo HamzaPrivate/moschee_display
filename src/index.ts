@@ -27,11 +27,11 @@ async function main() {
     await initiatePrayerTable();
     initiateDatum();
     calcTimeTillPrayer();
-    adaptBackground();
+    //adaptBackground();
     setInterval(()=> {
         MMD.displayNextResource();
         calcTimeTillPrayer();
-        adaptBackground();
+      //  adaptBackground();
     }, 60000);//60000
 
     setInterval(()=> {

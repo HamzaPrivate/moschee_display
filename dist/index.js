@@ -59,11 +59,11 @@ function main() {
         yield (0, PrayerTable_1.initiatePrayerTable)();
         initiateDatum();
         (0, PrayerTable_1.calcTimeTillPrayer)();
-        (0, PrayerTable_1.adaptBackground)();
+        //adaptBackground();
         setInterval(() => {
             MMD.displayNextResource();
             (0, PrayerTable_1.calcTimeTillPrayer)();
-            (0, PrayerTable_1.adaptBackground)();
+            //  adaptBackground();
         }, 60000); //60000
         setInterval(() => {
             //increment time

@@ -66,15 +66,13 @@ body {
     font-size: 1.5em !important;
     border-radius: 15px 15px 0 0;
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(1px);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 1);
 }
 
 #bt-bot-line {
     border-radius: 0 0 15px 15px;
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(1px);
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 1);
 }
 
 
@@ -103,14 +101,22 @@ body {
     white-space: nowrap;
 }
 #header {
-    position: relative;
-    font-size: 1.5em;
-    color: white;
-    /* animation: textcolor 4s linear infinite alternate; */
-    display: inline-block;
-    text-align: center;
+    margin-top: 1%;
+    margin-right: 3%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: x-large;
+    font-weight: normal;
+    max-height: 6vh;
 }
 
+.icon-text-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+}
 /* @keyframes textcolor {
     from {
         color: #000; 
@@ -229,7 +235,7 @@ body {
     align-items: center;
     text-align: center;
     border-bottom: 1px solid;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
 }
 
@@ -263,13 +269,28 @@ body {
 .glass {
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(1px);
 }
 
 .shadow{
     border: 3px solid;
     /* border-color: black; */
     box-shadow: 5px 4px 25px 2px #000000; /* Adjust the shadow properties as needed */
+}
+
+body {
+    /* Assuming your image is ready to tile seamlessly */
+    background-image: url('pictures/broad/mid.webp');
+    background-size: 100% auto; /* Set to 200% to cover the span of two images side by side */
+    animation: slide 10s linear infinite;
+}
+
+@keyframes slide {
+    from {
+        background-position: 0% 0;
+    }
+    to {
+        background-position: -100% 0; /* Moves the background from 0% to -100% to loop seamlessly */
+    }
 }
 
 
@@ -291,6 +312,7 @@ body {
     }
     
 }
+
 
 
 
