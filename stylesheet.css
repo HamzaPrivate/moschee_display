@@ -273,13 +273,12 @@ body {
 .shadow{
     border: 3px solid;
     /* border-color: black; */
-    box-shadow: 5px 4px 25px 2px #000000; /* Adjust the shadow properties as needed */
+    box-shadow: 5px 4px 25px 2px #000000;
 }
 
 body {
-    /* Assuming your image is ready to tile seamlessly */
-    background-image: url('pictures/broad/late.webp');
-    background-size: 100% auto; /* Set to 200% to cover the span of two images side by side */
+    background-image: url('pictures/broad/early.webp');
+    background-size: 100% auto;
     animation: slide 10s linear infinite;
 }
 
@@ -288,7 +287,7 @@ body {
         background-position: 0% 0;
     }
     to {
-        background-position: -100% 0; /* Moves the background from 0% to -100% to loop seamlessly */
+        background-position: -100% 0;
     }
 }
 
