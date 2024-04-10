@@ -278,7 +278,7 @@ body {
 
 body {
     /* Assuming your image is ready to tile seamlessly */
-    background-image: url('pictures/broad/mid.webp');
+    background-image: url('pictures/broad/late.webp');
     background-size: 100% auto; /* Set to 200% to cover the span of two images side by side */
     animation: slide 10s linear infinite;
 }
