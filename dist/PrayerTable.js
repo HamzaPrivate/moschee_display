@@ -110,7 +110,6 @@ function calcTimeTillPrayer() {
         time.textContent = ` ${hours}h:${minutes}min`;
     let todayStr = "" + currentDate;
     //edgecases morning prayer and friday prayer
-    console.log(currentHour);
     if ((currentHour >= 0 && currentHour < 9) || (todayStr.includes("Fri") && currentHour <= 14 || time.textContent.trim() == "0min")) {
         time.textContent = "";
         document.getElementById("text-before-time").textContent = "";
@@ -118,32 +117,17 @@ function calcTimeTillPrayer() {
 }
 exports.calcTimeTillPrayer = calcTimeTillPrayer;
 function adaptBackground() {
-    const bg = document.querySelector("body").classList;
+    const bg = document.querySelector("body");
     const time = new Date();
     const hour = time.getHours();
-    if (hour >= 0 && hour < 6) {
-        bg.remove("day");
-        bg.remove("sunrise");
-        bg.remove("night");
-        bg.add("night");
-    }
-    else if (hour >= 6 && hour < 12) {
-        bg.remove("day");
-        bg.remove("sunrise");
-        bg.remove("night");
-        bg.add("sunrise");
+    if (hour >= 6 && hour < 14) {
+        bg.style.backgroundImage = "url('pictures/broad/early.webp')";
     }
     else if (hour >= 12 && hour < 18) {
-        bg.remove("day");
-        bg.remove("sunrise");
-        bg.remove("night");
-        bg.add("day");
+        bg.style.backgroundImage = "url('pictures/broad/early.webp')";
     }
-    else if (hour >= 18 && hour < 24) {
-        bg.remove("day");
-        bg.remove("sunrise");
-        bg.remove("night");
-        bg.add("night");
+    else if ((hour >= 18 && hour < 24) || (hour >= 0 && hour < 6)) {
+        bg.style.backgroundImage = "url('pictures/broad/night.webp')";
     }
 }
 exports.adaptBackground = adaptBackground;
