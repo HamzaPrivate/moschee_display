@@ -121,16 +121,16 @@ function adaptBackground() {
         if (hours >= 0 && hours < 5) {
             bg.style.backgroundImage = "url('pictures/broad/dark.webp')";
         }
-        else if (hours >= 5 && hours < 8) {
+        else if (hours >= 5 && hours < 12) {
             bg.style.backgroundImage = "url('pictures/broad/early.webp')";
         }
-        else if (hours >= 8 && hours < 17) {
+        else if (hours >= 12 && hours < 20) {
             bg.style.backgroundImage = "url('pictures/broad/mid.webp')";
         }
-        else if (hours >= 17 && hours < 20) {
+        else if (hours >= 20 && hours < 22) {
             bg.style.backgroundImage = "url('pictures/broad/late.webp')";
         }
-        else if (hours >= 20 && hours < 24) {
+        else if (hours >= 22 && hours < 24) {
             bg.style.backgroundImage = "url('pictures/broad/night.webp')";
         }
     }
