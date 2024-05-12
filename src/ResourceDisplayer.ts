@@ -5,8 +5,8 @@ var narrow2 = document.getElementById("narrow2") as HTMLImageElement;
 var video = document.getElementById("vid") as HTMLVideoElement;
 
 const path = "pictures/narrow/";
-var narrow1Sources = [`${path}n6.jpeg`, `${path}n4.jpeg`, `${path}n5.jpeg`];
-var narrow2Sources = [`${path}n3.jpeg`, `${path}n1.jpeg`, `${path}halka.jpeg`];
+var narrow1Sources = [`${path}n6.jpeg`,  `${path}n5.jpeg`];
+var narrow2Sources = [ `${path}n1.jpeg`, `${path}halka.jpeg`];
 var broadSources = [`pictures/broad/b0.jpeg`];//broad video sources possible
 
 //2 narrow pictures fit on the display
@@ -29,8 +29,8 @@ imageContainer.addEventListener("click", () => {
 var displayCounter: number = 0;
 export function displayNextResource() {
     //2x narrow image, 1x broad or video into repeat
-    if (displayCounter < 4) displayDoubleImage();
-    else if (displayCounter == 4) {
+    if (displayCounter < 2) displayDoubleImage();
+    else if (displayCounter == 2) {
         if (videoComing()) {
             displayVideo();
         }
