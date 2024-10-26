@@ -24,7 +24,8 @@ export async function initiatePrayerTable() {
     // console.log(prayerTimes);
     //islMitternacht.textContent = calculateMiddleTime(prayerTimes[0], prayerTimes[5]);
     if (prayerTable && prayerTimes) {
-        for (let i = 0; i < prayerTimes.length; i++) {
+        //TODO -1 entfernen wenn Frühling
+        for (let i = 0; i < prayerTimes.length-1; i++) {
             prayerTable[i].textContent = prayerTimes[i];
         }
 
@@ -132,5 +133,6 @@ function savePrayerTimes(prayerTimes: string[]){
     dhuhr = prayerTimes[2];
     asr = prayerTimes[3];
     maghrib = prayerTimes[4];
-    isha = prayerTimes[5];
+    //TODO zu Frühling wieder aktivieren
+    //isha = prayerTimes[5];
 }
