@@ -38,6 +38,7 @@ var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 const MMD = __importStar(require("./ResourceDisplayer"));
 const PrayerTable_1 = require("./PrayerTable");
+const Utility_1 = require("./Utility");
 const nosleep_js_1 = __importDefault(require("nosleep.js"));
 var noSleep = new nosleep_js_1.default();
 document.addEventListener('click', function enableNoSleep() {
@@ -71,30 +72,19 @@ function main() {
             const seconds = date.getSeconds();
             if (seconds == 0) {
                 const minutes = date.getMinutes();
-                timeText.textContent = `${addZero(date.getHours())}:${addZero(minutes)}`;
+                timeText.textContent = `${(0, Utility_1.addZero)(date.getHours())}:${(0, Utility_1.addZero)(minutes)}`;
                 if (minutes == 0) {
                     const hours = date.getHours();
-                    timeText.textContent = `${addZero(hours)}:${addZero(minutes)}`;
+                    timeText.textContent = `${(0, Utility_1.addZero)(hours)}:${(0, Utility_1.addZero)(minutes)}`;
                 }
             }
-            digit1.textContent = `${addZero(date.getSeconds())}`;
+            digit1.textContent = `${(0, Utility_1.addZero)(date.getSeconds())}`;
         }, 1000); //60000
-        if ('wakeLock' in navigator && 'request' in navigator.wakeLock) {
-            try {
-                yield navigator.wakeLock.request('screen');
-            }
-            catch (err) {
-                console.log(err);
-            }
-        }
-        else {
-            console.warn('Wake Lock API or request method is not supported in this browser.');
-        }
     });
 }
 function initiateDatum() {
     const date = new Date();
-    timeText.textContent = `${addZero(date.getHours())}:${addZero(date.getMinutes())}`;
+    timeText.textContent = `${(0, Utility_1.addZero)(date.getHours())}:${(0, Utility_1.addZero)(date.getMinutes())}`;
     const datumText = document.querySelector("#bt-bot-line");
     datumText.textContent = `${mapToBosnianDay(date.toLocaleString('default', { weekday: 'long' }))} - ${date.getDate()}. ${mapToBosnianMonth(date.toLocaleString('default', { month: 'long' }))}`;
 }
@@ -141,7 +131,4 @@ function mapToBosnianDay(day) {
         case "Sunday": return "Nedjelja";
         default: return "";
     }
-}
-function addZero(number) {
-    return number < 10 ? `0${number}` : `${number}`;
 }

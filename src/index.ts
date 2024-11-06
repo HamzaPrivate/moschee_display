@@ -1,6 +1,6 @@
 import * as MMD from './ResourceDisplayer';
-import { adaptBackground, calcTimeTillPrayer, initiatePrayerTable, timeUntilMidnight } from './PrayerTable';
-import { time } from 'console';
+import {adaptBackground, calcTimeTillPrayer, initiatePrayerTable, timeUntilMidnight } from './PrayerTable';
+import {addZero} from './Utility';
 import NoSleep from 'nosleep.js';
 
 var noSleep = new NoSleep();
@@ -49,16 +49,6 @@ async function main() {
 
         digit1!.textContent = `${addZero(date.getSeconds())}`;
     }, 1000);//60000
-    if ('wakeLock' in navigator && 'request' in navigator.wakeLock) {
-        try {
-            await navigator.wakeLock.request('screen');
-        } catch(err) {
-           console.log(err);
-        }
-    } else {
-        console.warn('Wake Lock API or request method is not supported in this browser.');
-    }
-
 }
 
 function initiateDatum(){
@@ -113,9 +103,4 @@ function mapToBosnianDay(day: string): string {
         case "Sunday": return "Nedjelja";
         default: return "";
     }
-}
-
-
-function addZero(number: number): string {
-    return number < 10 ? `0${number}` : `${number}`;
 }
