@@ -33,8 +33,7 @@ function initiatePrayerTable() {
         // console.log(prayerTimes);
         //islMitternacht.textContent = calculateMiddleTime(prayerTimes[0], prayerTimes[5]);
         if (prayerTable && prayerTimes) {
-            //TODO -1 entfernen wenn Frühling
-            for (let i = 0; i < prayerTimes.length - 1; i++) {
+            for (let i = 0; i < prayerTimes.length; i++) {
                 prayerTable[i].textContent = prayerTimes[i];
             }
             //islMitternacht.textContent = calculateMiddleTime(prayerTimes[4], prayerTimes[0]);
