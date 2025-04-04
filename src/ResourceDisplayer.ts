@@ -5,7 +5,7 @@ var narrow2 = document.getElementById("narrow2") as HTMLImageElement;
 var video = document.getElementById("vid") as HTMLVideoElement;
 
 const path = "pictures/narrow/";
-var narrow1Sources = [`${path}n1.jpeg`];
+var narrow1Sources = [`${path}n1.jpeg`,`${path}n2.jpeg`,`${path}n3.jpeg`];
 var narrow2Sources = [ `${path}n4.jpeg`,`${path}n5.jpeg`];
 var broadSources = [`pictures/broad/b0.jpeg`];//broad video sources possible
 
