@@ -99,6 +99,7 @@ body {
     /* Adjust the font size for the time */
     font-weight: bold;
     white-space: nowrap;
+    font-size: smaller !important;
 }
 #header {
     margin-top: 1%;
@@ -153,10 +154,9 @@ body {
 
 #text-before-time {
     font-weight: lighter;
-    margin-top: 15%;
     width: 78%;
     border-radius: 8px;
-    width: 75%;
+    width: 85% !important;
 }
 
 #time {
@@ -239,7 +239,7 @@ body {
 }
 
 .prayerdiv * {
-    font-size: 25px !important;
+    font-size: x-large;
 }
 
 .prayerdiv > * > *{
@@ -303,7 +303,7 @@ body {
     }
 }
 
-@media screen and (max-width: 999px) {
+@media screen and (max-width: 1523px) {
     .all-content {
         flex-direction: column;
     }
@@ -318,7 +318,3 @@ body {
     }
     
 }
-
-
-
-
