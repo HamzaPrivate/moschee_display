@@ -1,131 +1,143 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>IKRE</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheet.css">
-    <link rel="stylesheet" href="clock.css">
-</head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylesheet.css" />
+    <link rel="stylesheet" href="clock.css" />
+  </head>
 
-<body>
+  <body>
     <div class="all-content">
-        <div id="tableClockContainer" class="glass">
-            <div id="clock-container" class="bt-layout-middle">
-                <table id="bt-middle-table" style="width: 85%;">
+      <div id="tableClockContainer" class="glass">
+        <div id="clock-container" class="bt-layout-middle">
+          <table id="bt-middle-table" style="width: 85%">
+            <tbody>
+              <tr>
+                <td id="bt-top-line">
+                  <table style="display: flex; justify-content: center">
                     <tbody>
-                        <tr>
-                            <td id="bt-top-line">
-                                <table style="display: flex; justify-content: center;">
-                                    <tbody>
-                                        <tr>
-                                            <td id="time_text"></td>
-                                            <td>
-                                                <table>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td id="char1"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td id="digit1"></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </td>
-                                            <td>
-                                                <table>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td id="char2"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td id="digit2"></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td id="bt-bot-line"></td>
-                        </tr>
+                      <tr>
+                        <td id="time_text"></td>
+                        <td>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td id="char1"></td>
+                              </tr>
+                              <tr>
+                                <td id="digit1"></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                        <td>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td id="char2"></td>
+                              </tr>
+                              <tr>
+                                <td id="digit2"></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
                     </tbody>
-                </table>
-                <div id="text-before-time" class="glass">
-                    do ezana:   
-                    <span id="time" class="hightlight-red"></span>   
-                </div>
-            </div>
-            <div class="prayerdiv">
-                <div class="sabah">
-                    <span class="bosnian-namaz-name">Sabah</span>
-                    <span class="namaztime">05:01</span>
-                    <span class="arabic-namaz-name">افجر</span>
-                </div>
-                <div class="izlazak ">
-                    <span class="bosnian-namaz-name">Izl. Sunca</span>
-                    <span class="namaztime">--:--</span>
-                    <span class="arabic-namaz-name">الشروق</span>
-                </div>
-                <div class="podne selectedPrayer">
-                    <span class="bosnian-namaz-name">Podne</span>
-                    <span class="namaztime hightlight-red">--:--</span>
-                    <span class="arabic-namaz-name">الظهر</span>
-                </div>
-                <div class="ikindija">
-                    <span class="bosnian-namaz-name">Ikindija</span>
-                    <span class="namaztime">--:--</span>
-                    <span class="arabic-namaz-name">العصر</span>
-                </div>
-                <div class="aksam">
-                    <span class="bosnian-namaz-name">Akšam</span>
-                    <span class="namaztime">--:--</span>
-                    <span class="arabic-namaz-name">المغرب</span>
-                </div>
-                <div class="jacija">
-                    <span class="bosnian-namaz-name">Jacija</span>
-                    <span class="namaztime">--:--</span>
-                    <span class="arabic-namaz-name">العشاء</span>
-                </div>
-                <div class="dzuma">
-                    <span class="bosnian-namaz-name">Džuma</span>
-                    <span>14:00</span>
-                    <span class="arabic-namaz-name">الجمعة</span>
-                </div>
-
-            </div>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td id="bt-bot-line"></td>
+              </tr>
+            </tbody>
+          </table>
+          <div id="text-before-time" class="glass">
+            do ezana:
+            <span id="time" class="hightlight-red"></span>
+          </div>
         </div>
-        <div id="header-img-footer-container">
-            <div id="header" style="z-index: 200;" class="three-d">
-                <div class="icon-text-wrapper">
-                    <span>Ikre Berlin</span>
-                    <img style="max-width: 7vw; height: 12vh;" src="pictures/misc/yt.png" alt="yt">
-                </div>
-                <div class="icon-text-wrapper">
-                    <span>dzemat_ikre.berlin</span>
-                    <img style="max-width: 6vw; height: 9vh; margin-left: 3%" src="pictures/misc/insta.webp" alt="yt">
-                </div>
-                <div class="icon-text-wrapper">
-                    <span>Dzemat Ikre Berlin</span>
-                    <img style="max-width: 6vw; height: 8vh; margin-left: 3%;" src="pictures/misc/fb.png" alt="yt">
-                    <img style="max-width: 7vw; height: 12vh;" src="pictures/misc/tiktok.webp" alt="yt">
-                </div>
-            </div>
-                <div id="img-container">
-                    <div id="narrow-img-container">
-                        <img id="narrow1" src="" class="fade-in-animation shadow">
-                        <img id="narrow2" src="" class="fade-in-animation shadow">
-                    </div>
-                    <img src="" id="broad" class="fade-in-animation shadow">
-                </div>
+        <div class="prayerdiv">
+          <div class="sabah">
+            <span class="bosnian-namaz-name">Sabah</span>
+            <span class="namaztime">05:01</span>
+            <span class="arabic-namaz-name">افجر</span>
+          </div>
+          <div class="izlazak">
+            <span class="bosnian-namaz-name">Izl. Sunca</span>
+            <span class="namaztime">--:--</span>
+            <span class="arabic-namaz-name">الشروق</span>
+          </div>
+          <div class="podne selectedPrayer">
+            <span class="bosnian-namaz-name">Podne</span>
+            <span class="namaztime hightlight-red">--:--</span>
+            <span class="arabic-namaz-name">الظهر</span>
+          </div>
+          <div class="ikindija">
+            <span class="bosnian-namaz-name">Ikindija</span>
+            <span class="namaztime">--:--</span>
+            <span class="arabic-namaz-name">العصر</span>
+          </div>
+          <div class="aksam">
+            <span class="bosnian-namaz-name">Akšam</span>
+            <span class="namaztime">--:--</span>
+            <span class="arabic-namaz-name">المغرب</span>
+          </div>
+          <div class="jacija">
+            <span class="bosnian-namaz-name">Jacija</span>
+            <span class="namaztime">--:--</span>
+            <span class="arabic-namaz-name">العشاء</span>
+          </div>
+          <div class="dzuma">
+            <span class="bosnian-namaz-name">Džuma</span>
+            <span>14:00</span>
+            <span class="arabic-namaz-name">الجمعة</span>
+          </div>
         </div>
-        
+      </div>
+      <div id="header-img-footer-container">
+        <div id="header" style="z-index: 200" class="three-d">
+          <div class="icon-text-wrapper">
+            <span>Ikre Berlin</span>
+            <img
+              style="max-width: 7vw; height: 12vh"
+              src="pictures/misc/yt.png"
+              alt="yt"
+            />
+          </div>
+          <div class="icon-text-wrapper">
+            <span>dzemat_ikre.berlin</span>
+            <img
+              style="max-width: 6vw; height: 9vh; margin-left: 3%"
+              src="pictures/misc/insta.webp"
+              alt="yt"
+            />
+          </div>
+          <div class="icon-text-wrapper">
+            <span>Dzemat Ikre Berlin</span>
+            <img
+              style="max-width: 6vw; height: 8vh; margin-left: 3%"
+              src="pictures/misc/fb.png"
+              alt="yt"
+            />
+            <img
+              style="max-width: 7vw; height: 12vh"
+              src="pictures/misc/tiktok.webp"
+              alt="yt"
+            />
+          </div>
+        </div>
+        <div id="img-container">
+          <div id="narrow-img-container">
+            <img id="narrow1" src="" class="fade-in-animation shadow" />
+            <img id="narrow2" src="" class="fade-in-animation shadow" />
+          </div>
+          <img src="" id="broad" class="fade-in-animation shadow" />
+        </div>
+      </div>
     </div>
     <script type="module" src="dist/main.js"></script>
-</body>
-
+  </body>
 </html>
