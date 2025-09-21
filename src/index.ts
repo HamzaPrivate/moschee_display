@@ -1,4 +1,3 @@
-import NoSleep from "nosleep.js";
 import {
   adaptBackground,
   calcTimeTillPrayer,
@@ -8,15 +7,6 @@ import {
 import * as MMD from "./ResourceDisplayer";
 import { addZero } from "./Utility";
 
-var noSleep = new NoSleep();
-document.addEventListener(
-  "click",
-  function enableNoSleep() {
-    document.removeEventListener("click", enableNoSleep, false);
-    noSleep.enable();
-  },
-  false
-);
 //page reload on table click
 document.querySelector("table")?.addEventListener("click", () => {
   window.location.reload();
@@ -30,6 +20,7 @@ const timeText = document.querySelector("#time_text");
 main();
 
 async function main() {
+  await MMD.fetchPictures();
   MMD.videoComing() ? MMD.displayVideo() : MMD.displayBroadImage();
   await initiatePrayerTable();
   initiateDatum();

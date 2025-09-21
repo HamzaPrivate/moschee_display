@@ -3,3 +3,13 @@ Gebetszeiten anzuzeigen, sowie die verbleibende Zeit bis zum nächsten Gebet. Au
 
 Website unter: https://hamzaprivate.github.io/moschee_display/demo.html
 (nicht für mobile konzipiert)
+
+# Dev
+
+npm install
+
+npx tsc -w
+
+npm run build
+
+npx http-server . -p 3000

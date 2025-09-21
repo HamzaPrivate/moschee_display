@@ -31,20 +31,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
-const MMD = __importStar(require("./ResourceDisplayer"));
 const PrayerTable_1 = require("./PrayerTable");
+const MMD = __importStar(require("./ResourceDisplayer"));
 const Utility_1 = require("./Utility");
-const nosleep_js_1 = __importDefault(require("nosleep.js"));
-var noSleep = new nosleep_js_1.default();
-document.addEventListener('click', function enableNoSleep() {
-    document.removeEventListener('click', enableNoSleep, false);
-    noSleep.enable();
-}, false);
 //page reload on table click
 (_a = document.querySelector("table")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
     window.location.reload();
@@ -56,6 +47,7 @@ const timeText = document.querySelector("#time_text");
 main();
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
+        yield MMD.fetchPictures();
         MMD.videoComing() ? MMD.displayVideo() : MMD.displayBroadImage();
         yield (0, PrayerTable_1.initiatePrayerTable)();
         initiateDatum();
@@ -86,49 +78,70 @@ function initiateDatum() {
     const date = new Date();
     timeText.textContent = `${(0, Utility_1.addZero)(date.getHours())}:${(0, Utility_1.addZero)(date.getMinutes())}`;
     const datumText = document.querySelector("#bt-bot-line");
-    datumText.textContent = `${mapToBosnianDay(date.toLocaleString('default', { weekday: 'long' }))} - ${date.getDate()}. ${mapToBosnianMonth(date.toLocaleString('default', { month: 'long' }))}`;
+    datumText.textContent = `${mapToBosnianDay(date.toLocaleString("default", { weekday: "long" }))} - ${date.getDate()}. ${mapToBosnianMonth(date.toLocaleString("default", { month: "long" }))}`;
 }
 function mapToBosnianMonth(month) {
     switch (month) {
         case "Januar":
-        case "January": return "Januar";
+        case "January":
+            return "Januar";
         case "Februar":
-        case "February": return "Februar";
+        case "February":
+            return "Februar";
         case "März":
-        case "March": return "Mart";
-        case "April": return "April";
+        case "March":
+            return "Mart";
+        case "April":
+            return "April";
         case "Mai":
-        case "May": return "Maj";
+        case "May":
+            return "Maj";
         case "Juni":
-        case "June": return "Juni";
+        case "June":
+            return "Juni";
         case "Juli":
-        case "July": return "Juli";
-        case "August": return "August";
-        case "September": return "Septembar";
+        case "July":
+            return "Juli";
+        case "August":
+            return "August";
+        case "September":
+            return "Septembar";
         case "Oktober":
-        case "October": return "Oktobar";
-        case "November": return "Novembar";
+        case "October":
+            return "Oktobar";
+        case "November":
+            return "Novembar";
         case "Dezember":
-        case "December": return "Decembar";
-        default: return "";
+        case "December":
+            return "Decembar";
+        default:
+            return "";
     }
 }
 function mapToBosnianDay(day) {
     switch (day) {
         case "Montag":
-        case "Monday": return "Ponedjeljak";
+        case "Monday":
+            return "Ponedjeljak";
         case "Dienstag":
-        case "Tuesday": return "Utorak";
+        case "Tuesday":
+            return "Utorak";
         case "Mittwoch":
-        case "Wednesday": return "Srijeda";
+        case "Wednesday":
+            return "Srijeda";
         case "Donnerstag":
-        case "Thursday": return "Četvrtak";
+        case "Thursday":
+            return "Četvrtak";
         case "Freitag":
-        case "Friday": return "Petak";
+        case "Friday":
+            return "Petak";
         case "Samstag":
-        case "Saturday": return "Subota";
+        case "Saturday":
+            return "Subota";
         case "Sonntag":
-        case "Sunday": return "Nedjelja";
-        default: return "";
+        case "Sunday":
+            return "Nedjelja";
+        default:
+            return "";
     }
 }
