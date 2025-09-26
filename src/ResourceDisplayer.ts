@@ -151,6 +151,7 @@ export async function fetchPictures() {
             }
           }
           displayBroadImage();
+          document.querySelectorAll("img").forEach(el => el.style.display = "unset")
         };
       }
       console.log(urlsArr); // Array of direct image URLs

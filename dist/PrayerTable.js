@@ -98,40 +98,40 @@ function adaptBackground() {
     const time = "" + date.getHours() + "" + date.getMinutes();
     const hours = date.getHours();
     if (time === fajr) {
-        bg.style.backgroundImage = "url('pictures/broad/dark.webp')";
+        bg.style.backgroundImage = "url('pictures/broad/dark.jpg')";
         isPrayerPinpointed = true;
     }
     else if (time === ishraq) {
-        bg.style.backgroundImage = "url('pictures/broad/early.webp')";
+        bg.style.backgroundImage = "url('pictures/broad/early.jpg')";
         isPrayerPinpointed = true;
     }
     else if (time === dhuhr || time === asr) {
-        bg.style.backgroundImage = "url('pictures/broad/mid.webp')";
+        bg.style.backgroundImage = "url('pictures/broad/mid.jpg')";
         isPrayerPinpointed = true;
     }
     else if (time === maghrib) {
-        bg.style.backgroundImage = "url('pictures/broad/late.webp')";
+        bg.style.backgroundImage = "url('pictures/broad/late.jpg')";
         isPrayerPinpointed = true;
     }
     else if (time === isha) {
-        bg.style.backgroundImage = "url('pictures/broad/night.webp')";
+        bg.style.backgroundImage = "url('pictures/broad/night.jpg')";
         isPrayerPinpointed = true;
     }
     else if (!isPrayerPinpointed) {
         if (hours >= 0 && hours < 5) {
-            bg.style.backgroundImage = "url('pictures/broad/dark.webp')";
+            bg.style.backgroundImage = "url('pictures/broad/dark.jpg')";
         }
         else if (hours >= 5 && hours < 12) {
-            bg.style.backgroundImage = "url('pictures/broad/early.webp')";
+            bg.style.backgroundImage = "url('pictures/broad/early.jpg')";
         }
         else if (hours >= 12 && hours < 20) {
-            bg.style.backgroundImage = "url('pictures/broad/mid.webp')";
+            bg.style.backgroundImage = "url('pictures/broad/mid.jpg')";
         }
         else if (hours >= 20 && hours < 22) {
-            bg.style.backgroundImage = "url('pictures/broad/late.webp')";
+            bg.style.backgroundImage = "url('pictures/broad/late.jpg')";
         }
         else if (hours >= 22 && hours < 24) {
-            bg.style.backgroundImage = "url('pictures/broad/night.webp')";
+            bg.style.backgroundImage = "url('pictures/broad/night.jpg')";
         }
     }
 }

@@ -20,6 +20,7 @@ const timeText = document.querySelector("#time_text");
 main();
 
 async function main() {
+  document.querySelectorAll("img").forEach(el => el.style.display = "none")
   await MMD.fetchPictures();
   MMD.videoComing() ? MMD.displayVideo() : MMD.displayBroadImage();
   await initiatePrayerTable();

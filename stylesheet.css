@@ -279,7 +279,7 @@ body {
 }
 
 body {
-    background-image: url('pictures/broad/early.webp');
+    background-image: url('pictures/broad/early.jpg');
     background-size: 100% auto;
     animation: slide 10s linear infinite;
 }

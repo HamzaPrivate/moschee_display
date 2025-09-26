@@ -47,6 +47,7 @@ const timeText = document.querySelector("#time_text");
 main();
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
+        document.querySelectorAll("img").forEach(el => el.style.display = "none");
         yield MMD.fetchPictures();
         MMD.videoComing() ? MMD.displayVideo() : MMD.displayBroadImage();
         yield (0, PrayerTable_1.initiatePrayerTable)();
