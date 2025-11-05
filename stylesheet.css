@@ -305,7 +305,7 @@ body {
     }
 }
 
-@media screen and (max-width: 1523px) {
+@media screen and (max-width: 1364px) {
     .all-content {
         flex-direction: column;
     }
