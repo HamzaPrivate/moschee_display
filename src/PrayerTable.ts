@@ -25,7 +25,7 @@ export async function initiatePrayerTable() {
     if (prayerTable && prayerTimes) {
         for (let i = 0; i < prayerTimes.length; i++) {
             prayerTable[i].textContent = prayerTimes[i];
-        }
+        } 
 
         //islMitternacht.textContent = calculateMiddleTime(prayerTimes[4], prayerTimes[0]);
     }
