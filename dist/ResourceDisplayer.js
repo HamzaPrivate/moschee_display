@@ -23,7 +23,7 @@ var broadSources = [];
 var narrow1Index = getNewPicIndex(narrow1Sources);
 var narrow2Index = getNewPicIndex(narrow2Sources);
 var broadIndex = getNewPicIndex(broadSources);
-broadImg.addEventListener("click", () => {
+broadImg === null || broadImg === void 0 ? void 0 : broadImg.addEventListener("click", () => {
     console.log("clicked");
     displayNextResource();
 });
@@ -37,20 +37,20 @@ imageContainer.addEventListener("click", () => {
  */
 var displayCounter = 0;
 function displayNextResource() {
+    displayDoubleImage();
+    // TODO1 UNCOMMENT IF BROAD IMAGES NEEDED
     //2x narrow image, 1x broad or video into repeat
-    if (displayCounter < 2)
-        displayDoubleImage();
-    else if (displayCounter == 2) {
-        if (videoComing()) {
-            displayVideo();
-        }
-        else {
-            displayBroadImage();
-        }
-        displayCounter = 0;
-        return;
-    }
-    displayCounter++;
+    // if (displayCounter < 2) displayDoubleImage();
+    // else if (displayCounter == 2) {
+    //   if (videoComing()) {
+    //     displayVideo();
+    //   } else {
+    // displayBroadImage();
+    //   }
+    //   displayCounter = 0;
+    //   return;
+    // }
+    // displayCounter++;
 }
 exports.displayNextResource = displayNextResource;
 /**
@@ -121,8 +121,10 @@ function displayDoubleImage() {
     if (narrow1Sources.length === 0 || narrow2Sources.length === 0)
         return; // Safety check
     // video.style.display = "none";
-    broadImg.style.display = "none";
-    broadImg.src = "";
+    if (broadImg) {
+        broadImg.style.display = "none";
+        broadImg.src = "";
+    }
     imageContainer.style.display = "flex";
     narrow1.src = narrow1Sources[narrow1Index];
     narrow2.src = narrow2Sources[narrow2Index];
@@ -145,26 +147,27 @@ function fetchPictures() {
                 u.endsWith(".webp"));
             for (let i = 0; i < urlsArr.length; i++) {
                 // Create image element to check dimensions
+                // TODO1 UNCOMMENT IF BROAD IMAGES NEEDED
                 const img = document.createElement("img");
                 img.src = urlsArr[i];
                 img.onload = () => {
-                    // if width greater than height then put in broad, otherwise in narrow
-                    if (img.naturalWidth > img.naturalHeight) {
-                        broadSources.push(urlsArr[i]);
+                    // if (img.naturalWidth > img.naturalHeight) {
+                    //   broadSources.push(urlsArr[i]);
+                    // } 
+                    // else {
+                    if (narrow1Sources.length <= narrow2Sources.length) {
+                        narrow1Sources.push(urlsArr[i]);
                     }
                     else {
-                        // Alternate between narrow1 and narrow2
-                        if (narrow1Sources.length <= narrow2Sources.length) {
-                            narrow1Sources.push(urlsArr[i]);
-                        }
-                        else {
-                            narrow2Sources.push(urlsArr[i]);
-                        }
+                        narrow2Sources.push(urlsArr[i]);
                     }
-                    displayBroadImage();
+                    // }
+                    displayDoubleImage();
+                    // displayBroadImage();
                     document.querySelectorAll("img").forEach(el => el.style.display = "unset");
                 };
             }
+            displayDoubleImage();
             console.log(urlsArr); // Array of direct image URLs
             console.log(narrow1Sources); // Array of direct image URLs
             console.log(narrow2Sources); // Array of direct image URLs

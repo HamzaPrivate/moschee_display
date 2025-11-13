@@ -13,3 +13,6 @@ npx tsc -w
 npm run build
 
 npx http-server . -p 3000
+
+lsof -i :3000
+kill PID
