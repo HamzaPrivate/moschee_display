@@ -11,11 +11,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.adaptBackground = exports.calcTimeTillPrayer = exports.initiatePrayerTable = exports.timeUntilMidnight = void 0;
 const PrayerTimes_1 = require("./PrayerTimes");
+const Utility_1 = require("./Utility");
 var time = document.getElementById("time");
 var now = new Date();
 var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 exports.timeUntilMidnight = midnight.getTime() - now.getTime();
 const prayerTable = document.getElementsByClassName("namaztime");
+const ikametTimes = document.getElementsByClassName("ikamet-time");
 var fajr, ishraq, dhuhr, asr, maghrib, isha;
 var textCol = prayerTable[0].style.color;
 var isPrayerPinpointed = false;
@@ -27,16 +29,23 @@ var isPrayerPinpointed = false;
 */
 function initiatePrayerTable() {
     return __awaiter(this, void 0, void 0, function* () {
-        const prayerTimes = yield (0, PrayerTimes_1.getTodaysPrayerTimes)();
+        let prayerTimes = yield (0, PrayerTimes_1.getTodaysPrayerTimes)();
+        const sabah = prayerTimes[0];
+        const sh = prayerTimes[1];
+        prayerTimes = [sabah, ...prayerTimes.slice(2), sh];
+        console.log(prayerTimes);
         savePrayerTimes(prayerTimes);
         //injecting prayer times into the table
         // console.log(prayerTimes);
-        //islMitternacht.textContent = calculateMiddleTime(prayerTimes[0], prayerTimes[5]);
         if (prayerTable && prayerTimes) {
             for (let i = 0; i < prayerTimes.length; i++) {
                 prayerTable[i].textContent = prayerTimes[i];
+                if (ikametTimes[i])
+                    ikametTimes[i].textContent = (0, Utility_1.addMinutesToTime)(prayerTimes[i], 10);
             }
-            //islMitternacht.textContent = calculateMiddleTime(prayerTimes[4], prayerTimes[0]);
+            ikametTimes[0].textContent = "7:00";
+            ikametTimes[3].textContent = (0, Utility_1.addMinutesToTime)(prayerTimes[3], 5);
+            ikametTimes[4].textContent = "19:30";
         }
         else
             throw new Error(`Fehler in der Gebetszeitentabelle. prayerTable:${prayerTable}, prayerTimes: ${prayerTimes}`);

@@ -1,10 +1,12 @@
 import { getTodaysPrayerTimes } from "./PrayerTimes";
+import { addMinutesToTime } from "./Utility";
 
 var time = document.getElementById("time") as HTMLSpanElement;
 var now = new Date();
 var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 export const timeUntilMidnight = midnight.getTime() - now.getTime();
 const prayerTable = document.getElementsByClassName("namaztime") as HTMLCollectionOf<HTMLSpanElement>;
+const ikametTimes = document.getElementsByClassName("ikamet-time") as HTMLCollectionOf<HTMLSpanElement>;
 var fajr: string, ishraq: string, dhuhr: string, asr: string, maghrib: string, isha: string;
 var textCol = prayerTable[0].style.color;
 var isPrayerPinpointed = false;
@@ -17,17 +19,22 @@ var isPrayerPinpointed = false;
 * Otherwise, an error is thrown.
 */
 export async function initiatePrayerTable() {
-    const prayerTimes = await getTodaysPrayerTimes();
+    let prayerTimes = await getTodaysPrayerTimes();
+    const sabah = prayerTimes[0]
+    const sh = prayerTimes[1]
+    prayerTimes = [sabah, ...prayerTimes.slice(2), sh]
+    console.log(prayerTimes)
     savePrayerTimes(prayerTimes);
     //injecting prayer times into the table
     // console.log(prayerTimes);
-    //islMitternacht.textContent = calculateMiddleTime(prayerTimes[0], prayerTimes[5]);
     if (prayerTable && prayerTimes) {
         for (let i = 0; i < prayerTimes.length; i++) {
             prayerTable[i].textContent = prayerTimes[i];
+            if(ikametTimes[i]) ikametTimes[i].textContent = addMinutesToTime(prayerTimes[i], 10);
         } 
-
-        //islMitternacht.textContent = calculateMiddleTime(prayerTimes[4], prayerTimes[0]);
+        ikametTimes[0].textContent = "7:00"
+        ikametTimes[3].textContent = addMinutesToTime(prayerTimes[3], 5)
+        ikametTimes[4].textContent = "19:30"
     }
 
     else throw new Error(`Fehler in der Gebetszeitentabelle. prayerTable:${prayerTable}, prayerTimes: ${prayerTimes}`);

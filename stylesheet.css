@@ -97,7 +97,6 @@ body {
     justify-content: center;
     align-items: center;
     /* Adjust the font size for the time */
-    font-weight: bold;
     white-space: nowrap;
     font-size: smaller !important;
 }
@@ -153,7 +152,6 @@ body {
 } */
 
 #text-before-time {
-    font-weight: lighter;
     width: 78%;
     border-radius: 8px;
     width: 85% !important;
@@ -215,7 +213,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 25%;
+    max-width: 33%;
 }
 
 .prayerdiv {
