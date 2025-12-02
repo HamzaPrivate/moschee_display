@@ -32,7 +32,7 @@ export async function initiatePrayerTable() {
             prayerTable[i].textContent = prayerTimes[i];
             if(ikametTimes[i]) ikametTimes[i].textContent = addMinutesToTime(prayerTimes[i], 10);
         } 
-        ikametTimes[0].textContent = "7:00"
+        ikametTimes[0].textContent = "7:20"
         ikametTimes[3].textContent = addMinutesToTime(prayerTimes[3], 5)
         ikametTimes[4].textContent = "19:30"
     }
