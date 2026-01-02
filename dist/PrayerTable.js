@@ -43,7 +43,7 @@ function initiatePrayerTable() {
                 if (ikametTimes[i])
                     ikametTimes[i].textContent = (0, Utility_1.addMinutesToTime)(prayerTimes[i], 10);
             }
-            ikametTimes[0].textContent = "7:20";
+            ikametTimes[0].textContent = "6:30";
             ikametTimes[3].textContent = (0, Utility_1.addMinutesToTime)(prayerTimes[3], 5);
             ikametTimes[4].textContent = "19:30";
         }
