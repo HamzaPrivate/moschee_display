@@ -9,18 +9,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getTodaysPrayerTimes = void 0;
+exports.getTodaysPrayerTimes = exports.dzuma = void 0;
 const DateFormatter_1 = require("./DateFormatter");
+exports.dzuma = "14:00";
 function getTodaysPrayerTimes() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const response = yield fetch('PrayerTimes.json');
+            const url = 'https://cbbvkyvplqopcnlaabex.supabase.co/storage/v1/object/public/prayertimes/PrayerTimes.json';
+            const response = yield fetch(`${url}?t=${Date.now()}`, {
+                headers: {
+                    method: 'GET',
+                    cache: 'no-store',
+                },
+            });
             const data = yield response.json();
             const currentDate = new Date();
             const today = (0, DateFormatter_1.getFormattedDate)(currentDate);
             if (data.hasOwnProperty(today)) {
                 const prayerTimes = data[today].split('|');
                 // Perform any further actions with the prayer times for today
+                if (data.hasOwnProperty("dzuma")) {
+                    exports.dzuma = data["dzuma"];
+                }
                 return prayerTimes;
             }
             else {

@@ -58,7 +58,12 @@ function main() {
             MMD.displayNextResource();
             (0, PrayerTable_1.calcTimeTillPrayer)();
             (0, PrayerTable_1.adaptBackground)();
-        }, 60000); //60000
+        }, 60000); //60000  
+        setInterval(() => __awaiter(this, void 0, void 0, function* () {
+            yield (0, PrayerTable_1.initiatePrayerTable)();
+            yield MMD.fetchPictures();
+            console.log("prayer times reinitiated");
+        }), 185000);
         setInterval(() => {
             //increment time
             const date = new Date();

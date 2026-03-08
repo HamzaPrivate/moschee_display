@@ -145,6 +145,15 @@ function fetchPictures() {
                 u.endsWith(".jpg") ||
                 u.endsWith(".jpeg") ||
                 u.endsWith(".webp"));
+            if (!urlsArr || urlsArr.length <= 0) {
+                console.log("No pics in cloud");
+                return;
+            }
+            else {
+                narrow1Sources = [];
+                narrow2Sources = [];
+                broadSources = [];
+            }
             for (let i = 0; i < urlsArr.length; i++) {
                 // Create image element to check dimensions
                 // TODO1 UNCOMMENT IF BROAD IMAGES NEEDED
@@ -153,7 +162,7 @@ function fetchPictures() {
                 img.onload = () => {
                     // if (img.naturalWidth > img.naturalHeight) {
                     //   broadSources.push(urlsArr[i]);
-                    // } 
+                    // }
                     // else {
                     if (narrow1Sources.length <= narrow2Sources.length) {
                         narrow1Sources.push(urlsArr[i]);
@@ -164,7 +173,9 @@ function fetchPictures() {
                     // }
                     displayDoubleImage();
                     // displayBroadImage();
-                    document.querySelectorAll("img").forEach(el => el.style.display = "unset");
+                    document
+                        .querySelectorAll("img")
+                        .forEach((el) => (el.style.display = "unset"));
                 };
             }
             displayDoubleImage();

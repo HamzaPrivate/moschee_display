@@ -1,5 +1,5 @@
-import { getTodaysPrayerTimes } from "./PrayerTimes";
-import { addMinutesToTime } from "./Utility";
+import { dzuma, getTodaysPrayerTimes } from "./PrayerTimes";
+import { addMinutesToTime, subtractMinutesFromTime } from "./Utility";
 
 var time = document.getElementById("time") as HTMLSpanElement;
 var now = new Date();
@@ -7,6 +7,7 @@ var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 export const timeUntilMidnight = midnight.getTime() - now.getTime();
 const prayerTable = document.getElementsByClassName("namaztime") as HTMLCollectionOf<HTMLSpanElement>;
 const ikametTimes = document.getElementsByClassName("ikamet-time") as HTMLCollectionOf<HTMLSpanElement>;
+const dzumaTime = document.querySelector(".dzuma-time") as HTMLSpanElement;
 var fajr: string, ishraq: string, dhuhr: string, asr: string, maghrib: string, isha: string;
 var textCol = prayerTable[0].style.color;
 var isPrayerPinpointed = false;
@@ -27,16 +28,19 @@ export async function initiatePrayerTable() {
     savePrayerTimes(prayerTimes);
     //injecting prayer times into the table
     // console.log(prayerTimes);
+    console.log(prayerTimes)
+    console.log(ikametTimes)
+    const izlSunca = prayerTimes[prayerTimes.length-1]
     if (prayerTable && prayerTimes) {
         for (let i = 0; i < prayerTimes.length; i++) {
             prayerTable[i].textContent = prayerTimes[i];
             if(ikametTimes[i]) ikametTimes[i].textContent = addMinutesToTime(prayerTimes[i], 10);
         } 
-        ikametTimes[0].textContent = "6:30"
+        ikametTimes[0].textContent = subtractMinutesFromTime(izlSunca, 30)
         ikametTimes[3].textContent = addMinutesToTime(prayerTimes[3], 5)
-        ikametTimes[4].textContent = "19:30"
+        ikametTimes[4].textContent = addMinutesToTime(prayerTimes[4], 5)
+        dzumaTime.textContent = dzuma
     }
-
     else throw new Error(`Fehler in der Gebetszeitentabelle. prayerTable:${prayerTable}, prayerTimes: ${prayerTimes}`);
 }
 

@@ -31,7 +31,13 @@ async function main() {
     MMD.displayNextResource();
     calcTimeTillPrayer();
     adaptBackground();
-  }, 60000); //60000
+  }, 60000); //60000  
+  
+  setInterval(async () => {
+    await initiatePrayerTable();
+    await MMD.fetchPictures();
+    console.log("prayer times reinitiated")
+  }, 185000);
 
   setInterval(() => {
     //increment time

@@ -36,7 +36,7 @@ export function displayNextResource() {
   //   if (videoComing()) {
   //     displayVideo();
   //   } else {
-      // displayBroadImage();
+  // displayBroadImage();
   //   }
   //   displayCounter = 0;
   //   return;
@@ -52,7 +52,7 @@ export function displayNextResource() {
  */
 function getNewPicIndex(
   pictureGroup: string[],
-  indexToExclude?: number
+  indexToExclude?: number,
 ): number {
   if (pictureGroup.length === 0) return 0; // Handle empty arrays
   if (pictureGroup.length === 1) return indexToExclude || 0;
@@ -111,7 +111,7 @@ export function displayBroadImage(): void {
 export function displayDoubleImage() {
   if (narrow1Sources.length === 0 || narrow2Sources.length === 0) return; // Safety check
   // video.style.display = "none";
-  if(broadImg){
+  if (broadImg) {
     broadImg.style.display = "none";
     broadImg.src = "";
   }
@@ -136,8 +136,16 @@ export async function fetchPictures() {
             u.endsWith(".png") ||
             u.endsWith(".jpg") ||
             u.endsWith(".jpeg") ||
-            u.endsWith(".webp")
+            u.endsWith(".webp"),
         );
+      if (!urlsArr || urlsArr.length <= 0) {
+        console.log("No pics in cloud");
+        return;
+      } else {
+        narrow1Sources = []
+        narrow2Sources = []
+        broadSources = []
+      }
       for (let i = 0; i < urlsArr.length; i++) {
         // Create image element to check dimensions
         // TODO1 UNCOMMENT IF BROAD IMAGES NEEDED
@@ -146,18 +154,20 @@ export async function fetchPictures() {
         img.onload = () => {
           // if (img.naturalWidth > img.naturalHeight) {
           //   broadSources.push(urlsArr[i]);
-          // } 
+          // }
           // else {
-            if (narrow1Sources.length <= narrow2Sources.length) {
-              narrow1Sources.push(urlsArr[i]);
-            } else {
-              narrow2Sources.push(urlsArr[i]);
-            }
+          if (narrow1Sources.length <= narrow2Sources.length) {
+            narrow1Sources.push(urlsArr[i]);
+          } else {
+            narrow2Sources.push(urlsArr[i]);
+          }
           // }
           displayDoubleImage();
           // displayBroadImage();
-          
-          document.querySelectorAll("img").forEach(el => el.style.display = "unset")
+
+          document
+            .querySelectorAll("img")
+            .forEach((el) => (el.style.display = "unset"));
         };
       }
       displayDoubleImage();

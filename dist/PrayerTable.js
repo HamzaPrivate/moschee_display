@@ -18,6 +18,7 @@ var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 exports.timeUntilMidnight = midnight.getTime() - now.getTime();
 const prayerTable = document.getElementsByClassName("namaztime");
 const ikametTimes = document.getElementsByClassName("ikamet-time");
+const dzumaTime = document.querySelector(".dzuma-time");
 var fajr, ishraq, dhuhr, asr, maghrib, isha;
 var textCol = prayerTable[0].style.color;
 var isPrayerPinpointed = false;
@@ -37,15 +38,19 @@ function initiatePrayerTable() {
         savePrayerTimes(prayerTimes);
         //injecting prayer times into the table
         // console.log(prayerTimes);
+        console.log(prayerTimes);
+        console.log(ikametTimes);
+        const izlSunca = prayerTimes[prayerTimes.length - 1];
         if (prayerTable && prayerTimes) {
             for (let i = 0; i < prayerTimes.length; i++) {
                 prayerTable[i].textContent = prayerTimes[i];
                 if (ikametTimes[i])
                     ikametTimes[i].textContent = (0, Utility_1.addMinutesToTime)(prayerTimes[i], 10);
             }
-            ikametTimes[0].textContent = "6:30";
+            ikametTimes[0].textContent = (0, Utility_1.subtractMinutesFromTime)(izlSunca, 30);
             ikametTimes[3].textContent = (0, Utility_1.addMinutesToTime)(prayerTimes[3], 5);
-            ikametTimes[4].textContent = "19:30";
+            ikametTimes[4].textContent = (0, Utility_1.addMinutesToTime)(prayerTimes[4], 5);
+            dzumaTime.textContent = PrayerTimes_1.dzuma;
         }
         else
             throw new Error(`Fehler in der Gebetszeitentabelle. prayerTable:${prayerTable}, prayerTimes: ${prayerTimes}`);
