@@ -36,7 +36,8 @@ export async function initiatePrayerTable() {
             prayerTable[i].textContent = prayerTimes[i];
             if(ikametTimes[i]) ikametTimes[i].textContent = addMinutesToTime(prayerTimes[i], 10);
         } 
-        ikametTimes[0].textContent = subtractMinutesFromTime(izlSunca, 30)
+        // ikametTimes[0].textContent = subtractMinutesFromTime(izlSunca, 30)
+        ikametTimes[0].textContent = "07:00"
         ikametTimes[3].textContent = addMinutesToTime(prayerTimes[3], 5)
         ikametTimes[4].textContent = addMinutesToTime(prayerTimes[4], 5)
         dzumaTime.textContent = dzuma
@@ -48,7 +49,10 @@ export async function initiatePrayerTable() {
 * Calculates the time remaining until the next prayer based on the current time and the prayer table.
 * The function determines the closest prayer time from the table and sets it as the target time.
 * It then calculates the time difference between the current time and the target time in hours and minutes.
-* The calculated time difference is displayed in the corresponding HTML element.
+* The calculated time difference is displayed in the corresponding HTML npm error code ERR_INVALID_URL
+npm error Invalid URL
+npm error A complete log of this run can be found in: C:\Users\Hamza.Hodzic\AppData\Local\npm-cache\_logs\2026-10-17T21_24_33_690Z-debug-0.log
+hamzahodzic@NSO-NB-D33368YY:~/workspace/private/moschee_display$ element.
 * Note: The function assumes the presence of HTML elements with IDs: "time" and "text-before-time".
 */
 export function calcTimeTillPrayer() {
