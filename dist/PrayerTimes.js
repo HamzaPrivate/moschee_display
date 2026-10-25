@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getTodaysPrayerTimes = exports.dzuma = void 0;
 const DateFormatter_1 = require("./DateFormatter");
-exports.dzuma = "14:00";
+exports.dzuma = "13:00";
 function getTodaysPrayerTimes() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -30,6 +30,7 @@ function getTodaysPrayerTimes() {
                 // Perform any further actions with the prayer times for today
                 if (data.hasOwnProperty("dzuma")) {
                     exports.dzuma = data["dzuma"];
+                    exports.dzuma = "13:00";
                 }
                 return prayerTimes;
             }

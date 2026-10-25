@@ -1,6 +1,6 @@
 import { getFormattedDate } from "./DateFormatter";
 
-export var dzuma = "14:00"
+export var dzuma = "13:00"
 
 export async function getTodaysPrayerTimes(): Promise<string[]> {
     try {
@@ -20,6 +20,7 @@ export async function getTodaysPrayerTimes(): Promise<string[]> {
         // Perform any further actions with the prayer times for today
         if(data.hasOwnProperty("dzuma")){
           dzuma = data["dzuma"]
+          dzuma = "13:00"
         }
         return prayerTimes;
       } else {

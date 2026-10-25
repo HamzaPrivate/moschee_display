@@ -47,10 +47,10 @@ function initiatePrayerTable() {
                 if (ikametTimes[i])
                     ikametTimes[i].textContent = (0, Utility_1.addMinutesToTime)(prayerTimes[i], 10);
             }
-            // ikametTimes[0].textContent = subtractMinutesFromTime(izlSunca, 30)
-            ikametTimes[0].textContent = "07:00";
+            ikametTimes[0].textContent = (0, Utility_1.subtractMinutesFromTime)(izlSunca, 30);
             ikametTimes[3].textContent = (0, Utility_1.addMinutesToTime)(prayerTimes[3], 5);
-            ikametTimes[4].textContent = (0, Utility_1.addMinutesToTime)(prayerTimes[4], 5);
+            prayerTable[4].textContent = "19:20";
+            ikametTimes[4].textContent = "19:30";
             dzumaTime.textContent = PrayerTimes_1.dzuma;
         }
         else
