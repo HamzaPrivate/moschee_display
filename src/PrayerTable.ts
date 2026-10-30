@@ -38,7 +38,7 @@ export async function initiatePrayerTable() {
         } 
         ikametTimes[0].textContent = subtractMinutesFromTime(izlSunca, 30)
         ikametTimes[3].textContent = addMinutesToTime(prayerTimes[3], 5)
-        prayerTable[4].textContent = "19:20"; ikametTimes[4].textContent = "19:30"
+        ikametTimes[4].textContent = "19:30"
         dzumaTime.textContent = dzuma
     }
     else throw new Error(`Fehler in der Gebetszeitentabelle. prayerTable:${prayerTable}, prayerTimes: ${prayerTimes}`);
